@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucVerifierDashboard));
             label5 = new Label();
             label4 = new Label();
-            label3 = new Label();
+            lblName = new Label();
             label2 = new Label();
             pictureBox4 = new PictureBox();
             panel2 = new Panel();
@@ -52,7 +52,7 @@
             label5.ForeColor = SystemColors.ControlLightLight;
             label5.Location = new Point(242, 155);
             label5.Name = "label5";
-            label5.Size = new Size(216, 22);
+            label5.Size = new Size(256, 26);
             label5.TabIndex = 16;
             label5.Text = "Verifier Representative";
             // 
@@ -64,21 +64,21 @@
             label4.ForeColor = SystemColors.ControlLightLight;
             label4.Location = new Point(173, 155);
             label4.Name = "label4";
-            label4.Size = new Size(63, 22);
+            label4.Size = new Size(75, 26);
             label4.TabIndex = 15;
             label4.Text = "Role :";
             // 
-            // label3
+            // lblName
             // 
-            label3.AutoSize = true;
-            label3.BackColor = Color.FromArgb(0, 64, 64);
-            label3.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = SystemColors.ControlLightLight;
-            label3.Location = new Point(242, 119);
-            label3.Name = "label3";
-            label3.Size = new Size(107, 22);
-            label3.TabIndex = 14;
-            label3.Text = "First Name";
+            lblName.AutoSize = true;
+            lblName.BackColor = Color.FromArgb(0, 64, 64);
+            lblName.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblName.ForeColor = SystemColors.ControlLightLight;
+            lblName.Location = new Point(242, 119);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(129, 26);
+            lblName.TabIndex = 14;
+            lblName.Text = "First Name";
             // 
             // label2
             // 
@@ -88,7 +88,7 @@
             label2.ForeColor = SystemColors.ControlLightLight;
             label2.Location = new Point(133, 119);
             label2.Name = "label2";
-            label2.Size = new Size(103, 22);
+            label2.Size = new Size(125, 26);
             label2.TabIndex = 12;
             label2.Text = "Welcome :";
             // 
@@ -131,7 +131,7 @@
             label6.ForeColor = Color.FromArgb(0, 64, 64);
             label6.Location = new Point(23, 10);
             label6.Name = "label6";
-            label6.Size = new Size(445, 41);
+            label6.Size = new Size(526, 48);
             label6.TabIndex = 0;
             label6.Text = "Certificate Verification System";
             // 
@@ -153,13 +153,14 @@
             BackColor = Color.FromArgb(0, 64, 64);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(label3);
+            Controls.Add(lblName);
             Controls.Add(label2);
             Controls.Add(pictureBox4);
             Controls.Add(panel2);
             Controls.Add(pictureBox2);
             Name = "ucVerifierDashboard";
             Size = new Size(960, 691);
+            Load += ucVerifierDashboard_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -172,7 +173,7 @@
         #endregion
         private Label label5;
         private Label label4;
-        private Label label3;
+        private Label lblName;
         private Label label2;
         private PictureBox pictureBox4;
         private Panel panel2;

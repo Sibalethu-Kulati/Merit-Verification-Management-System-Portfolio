@@ -9,7 +9,9 @@ using System.Windows.Forms;
 namespace Updated_Information_System_3
 {
     public partial class verifierRepresentative_Dashboard : Form
+
     {
+        
         // Declarations for user controls referenced by this form.
         private ucVerifierDashboard ucVerifierDashboard2;
         private ucVerifierProfile ucVerifierProfile2;
@@ -18,6 +20,7 @@ namespace Updated_Information_System_3
         public verifierRepresentative_Dashboard()
         {
             InitializeComponent();
+            
             // Instantiate and add all verifier user controls (designer does not add them)
             var rightX = panel1.Width; // left panel width
             var contentSize = new Size(ClientSize.Width - rightX, ClientSize.Height);
@@ -103,9 +106,13 @@ namespace Updated_Information_System_3
 
         private void btn_verifierRepresentative_LogOut_Click(object sender, EventArgs e)
         {
-            sign_in outL = new sign_in();
-            this.Hide();
-            outL.Show();
+           UserSession.Clear();
+           Application.Restart();
+        }
+
+        private void ucVerifierHighSchools1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

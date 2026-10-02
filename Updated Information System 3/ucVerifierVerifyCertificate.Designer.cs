@@ -38,8 +38,8 @@
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
-            button1 = new Button();
-            textBox1 = new TextBox();
+            btnSearch = new Button();
+            txtSearchBar = new TextBox();
             panel3 = new Panel();
             pictureBox3 = new PictureBox();
             pictureBox2 = new PictureBox();
@@ -64,6 +64,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(931, 652);
             panel2.TabIndex = 5;
+            panel2.Paint += panel2_Paint;
             // 
             // groupBox2
             // 
@@ -81,11 +82,12 @@
             dataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
-            dataGridView1.Location = new Point(19, 56);
+            dataGridView1.Location = new Point(19, 44);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(846, 188);
             dataGridView1.TabIndex = 6;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Column1
             // 
@@ -124,8 +126,8 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(btnSearch);
+            groupBox1.Controls.Add(txtSearchBar);
             groupBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(17, 122);
             groupBox1.Name = "groupBox1";
@@ -134,25 +136,26 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Enter Certificate Code";
             // 
-            // button1
+            // btnSearch
             // 
-            button1.BackColor = Color.FromArgb(0, 64, 64);
-            button1.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.ControlLightLight;
-            button1.Location = new Point(656, 60);
-            button1.Name = "button1";
-            button1.Size = new Size(209, 45);
-            button1.TabIndex = 5;
-            button1.Text = "Verify Certificate";
-            button1.UseVisualStyleBackColor = false;
+            btnSearch.BackColor = Color.FromArgb(0, 64, 64);
+            btnSearch.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSearch.ForeColor = SystemColors.ControlLightLight;
+            btnSearch.Location = new Point(656, 60);
+            btnSearch.Name = "btnSearch";
+            btnSearch.Size = new Size(209, 45);
+            btnSearch.TabIndex = 5;
+            btnSearch.Text = "Verify Certificate";
+            btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += btnSearch_Click;
             // 
-            // textBox1
+            // txtSearchBar
             // 
-            textBox1.Location = new Point(19, 62);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(617, 43);
-            textBox1.TabIndex = 0;
+            txtSearchBar.Location = new Point(19, 62);
+            txtSearchBar.Multiline = true;
+            txtSearchBar.Name = "txtSearchBar";
+            txtSearchBar.Size = new Size(617, 43);
+            txtSearchBar.TabIndex = 0;
             // 
             // panel3
             // 
@@ -193,7 +196,7 @@
             label1.ForeColor = Color.FromArgb(0, 64, 64);
             label1.Location = new Point(105, 9);
             label1.Name = "label1";
-            label1.Size = new Size(289, 46);
+            label1.Size = new Size(341, 54);
             label1.TabIndex = 5;
             label1.Text = "Verify Certificate";
             // 
@@ -227,8 +230,8 @@
         private DataGridViewTextBoxColumn Column4;
         private DataGridViewTextBoxColumn Column5;
         private GroupBox groupBox1;
-        private Button button1;
-        private TextBox textBox1;
+        private Button btnSearch;
+        private TextBox txtSearchBar;
         private Panel panel3;
         private PictureBox pictureBox3;
         private PictureBox pictureBox2;

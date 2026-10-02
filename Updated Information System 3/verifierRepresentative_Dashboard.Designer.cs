@@ -166,10 +166,11 @@
             // ucVerifierHighSchools1
             // 
             ucVerifierHighSchools1.BorderStyle = BorderStyle.Fixed3D;
-            ucVerifierHighSchools1.Location = new Point(266, 0);
+            ucVerifierHighSchools1.Location = new Point(256, 0);
             ucVerifierHighSchools1.Name = "ucVerifierHighSchools1";
             ucVerifierHighSchools1.Size = new Size(1196, 859);
             ucVerifierHighSchools1.TabIndex = 4;
+            ucVerifierHighSchools1.Load += ucVerifierHighSchools1_Load;
             // 
             // verifierRepresentative_Dashboard
             // 

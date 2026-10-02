@@ -12,7 +12,7 @@ namespace Updated_Information_System_3
 
         private void btn_signIn_Click(object sender, EventArgs e)
         {
-            
+
 
             string email = txtUsername.Text.Trim();
             string password = txtPassword.Text;
@@ -84,6 +84,13 @@ namespace Updated_Information_System_3
         private void sign_in_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSchool_Click(object sender, EventArgs e)
+        {
+            schoolClerk_Dashboard schoolClerkDashboard = new schoolClerk_Dashboard();
+            this.Hide();
+            schoolClerkDashboard.Show();
         }
     }
 }

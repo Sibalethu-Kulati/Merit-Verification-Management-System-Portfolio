@@ -44,6 +44,7 @@
             linkLabel1 = new LinkLabel();
             label1 = new Label();
             panel3 = new Panel();
+            btnSchool = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -106,7 +107,7 @@
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(157, 16);
             label4.Name = "label4";
-            label4.Size = new Size(421, 38);
+            label4.Size = new Size(341, 31);
             label4.TabIndex = 7;
             label4.Text = "SIGN IN INTO YOUR ACCOUNT";
             // 
@@ -128,14 +129,14 @@
             // 
             txtPassword.Location = new Point(164, 122);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(368, 36);
+            txtPassword.Size = new Size(368, 31);
             txtPassword.TabIndex = 9;
             // 
             // txtUsername
             // 
             txtUsername.Location = new Point(164, 55);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(368, 36);
+            txtUsername.Size = new Size(368, 31);
             txtUsername.TabIndex = 8;
             // 
             // label3
@@ -144,7 +145,7 @@
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(32, 122);
             label3.Name = "label3";
-            label3.Size = new Size(122, 30);
+            label3.Size = new Size(104, 25);
             label3.TabIndex = 7;
             label3.Text = "Password  :";
             // 
@@ -154,7 +155,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(32, 52);
             label2.Name = "label2";
-            label2.Size = new Size(123, 30);
+            label2.Size = new Size(105, 25);
             label2.TabIndex = 6;
             label2.Text = "Username :";
             // 
@@ -165,7 +166,7 @@
             lnkForgotPassword.LinkColor = Color.DarkCyan;
             lnkForgotPassword.Location = new Point(434, 331);
             lnkForgotPassword.Name = "lnkForgotPassword";
-            lnkForgotPassword.Size = new Size(187, 30);
+            lnkForgotPassword.Size = new Size(159, 25);
             lnkForgotPassword.TabIndex = 4;
             lnkForgotPassword.TabStop = true;
             lnkForgotPassword.Text = "Forgot Password?";
@@ -176,7 +177,7 @@
             checkBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             checkBox1.Location = new Point(28, 331);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(192, 34);
+            checkBox1.Size = new Size(162, 29);
             checkBox1.TabIndex = 3;
             checkBox1.Text = "Show Password";
             checkBox1.UseVisualStyleBackColor = true;
@@ -188,7 +189,7 @@
             linkLabel1.LinkColor = Color.DarkCyan;
             linkLabel1.Location = new Point(387, 436);
             linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(91, 30);
+            linkLabel1.Size = new Size(78, 25);
             linkLabel1.TabIndex = 2;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Sign Up";
@@ -199,7 +200,7 @@
             label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(192, 436);
             label1.Name = "label1";
-            label1.Size = new Size(239, 30);
+            label1.Size = new Size(199, 25);
             label1.TabIndex = 1;
             label1.Text = "Dont have an account?";
             // 
@@ -207,10 +208,20 @@
             // 
             panel3.BackColor = Color.DarkCyan;
             panel3.Controls.Add(panel1);
-            panel3.Location = new Point(255, 68);
+            panel3.Location = new Point(244, 57);
             panel3.Name = "panel3";
             panel3.Size = new Size(701, 545);
             panel3.TabIndex = 2;
+            // 
+            // btnSchool
+            // 
+            btnSchool.Location = new Point(985, 496);
+            btnSchool.Name = "btnSchool";
+            btnSchool.Size = new Size(149, 74);
+            btnSchool.TabIndex = 3;
+            btnSchool.Text = "School Clerk";
+            btnSchool.UseVisualStyleBackColor = true;
+            btnSchool.Click += btnSchool_Click;
             // 
             // sign_in
             // 
@@ -219,8 +230,10 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1195, 691);
+            Controls.Add(btnSchool);
             Controls.Add(panel3);
             Name = "sign_in";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sign In";
             Load += sign_in_Load;
             panel1.ResumeLayout(false);
@@ -251,5 +264,6 @@
         private PictureBox pictureBox1;
         private Label label4;
         private Panel panel3;
+        private Button btnSchool;
     }
 }

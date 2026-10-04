@@ -92,5 +92,12 @@ namespace Updated_Information_System_3
             this.Hide();
             schoolClerkDashboard.Show();
         }
+
+        private void btnStudent_login_Click(object sender, EventArgs e)
+        {
+            StudentDashboard stuDAsh = new StudentDashboard();
+            this.Hide();
+            stuDAsh.Show();
+        }
     }
 }

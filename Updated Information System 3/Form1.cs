@@ -9,7 +9,7 @@ namespace Updated_Information_System_3
             InitializeComponent();
 
         }
-
+       
         private void btn_signIn_Click(object sender, EventArgs e)
         {
 
@@ -27,12 +27,63 @@ namespace Updated_Information_System_3
                 return;
             }
 
-            string query = @"
-    SELECT PERSON_ID, FIRST_NAME, LAST_NAME, EMAIL
-    FROM PERSONS
-    WHERE EMAIL = @Email
-      AND PASSWORD_HASH = @Password
-      AND ACCOUNT_STATUS = 'ACTIVE'";
+            string query = @"SELECT 
+                            P.PERSON_ID,
+                            P.FIRST_NAME,
+                            P.LAST_NAME,
+                            P.EMAIL,
+                            CASE
+                                WHEN EXISTS (
+                                    SELECT 1
+                                    FROM SYSTEM_ADMINS SA
+                                    WHERE SA.PERSON_ID = P.PERSON_ID
+                                ) THEN 'SYSTEM_ADMIN'
+
+                                WHEN EXISTS (
+                                    SELECT 1
+                                    FROM LEARNERS L
+                                    WHERE L.PERSON_ID = P.PERSON_ID
+                                ) THEN 'LEARNER'
+
+                                WHEN EXISTS (
+                                    SELECT 1
+                                    FROM SCHOOL_CLERKS SC
+                                    WHERE SC.PERSON_ID = P.PERSON_ID
+                                ) THEN 'SCHOOL_CLERK'
+
+                                WHEN EXISTS (
+                                    SELECT 1
+                                    FROM PRINCIPALS PR
+                                    WHERE PR.PERSON_ID = P.PERSON_ID
+                                ) THEN 'PRINCIPAL'
+
+                                WHEN EXISTS (
+                                    SELECT 1
+                                    FROM SCHOOL_IT_ADMINS SIA
+                                    WHERE SIA.PERSON_ID = P.PERSON_ID
+                                ) THEN 'SCHOOL_IT_ADMIN'
+
+                                WHEN EXISTS (
+                                    SELECT 1
+                                    FROM ORG_IT_ADMINS OIA
+                                    WHERE OIA.PERSON_ID = P.PERSON_ID
+                                ) THEN 'ORG_IT_ADMIN'
+
+                                WHEN EXISTS (
+                                    SELECT 1
+                                    FROM VERIFIER_REPRESENTATIVES VR
+                                    WHERE VR.PERSON_ID = P.PERSON_ID
+                                ) THEN 'VERIFIER_REPRESENTATIVE'
+
+                                ELSE NULL
+                            END AS USER_ROLE
+
+                        FROM PERSONS P
+
+                        WHERE P.EMAIL = @Email
+                          AND P.PASSWORD_HASH = @Password
+                          AND P.ACCOUNT_STATUS = 'ACTIVE'
+                        ";
 
             try
             {
@@ -52,13 +103,39 @@ namespace Updated_Information_System_3
                             UserSession.FirstName = reader["FIRST_NAME"].ToString();
                             UserSession.LastName = reader["LAST_NAME"].ToString();
                             UserSession.Email = reader["EMAIL"].ToString();
-
+                            String userRole = reader["USER_ROLE"].ToString();
+                            /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~S.Kulati~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+                             * the form gets hidden immediately then depending on the results the new one is opened
+                             * validation/ authentication is done behind the scene when the form is hidden
+                            */
                             this.Hide();
 
-                            verifierRepresentative_Dashboard dashboard =
-                                new verifierRepresentative_Dashboard();
+                            switch (userRole)
+                            {
+                                case "SCHOOL_CLERK":
+                                    schoolClerk_Dashboard schoolClerkDashboard =
+                                        new schoolClerk_Dashboard();
 
-                            dashboard.Show();
+                                    schoolClerkDashboard.Show();
+                                    break;
+
+                                case "VERIFIER_REPRESENTATIVE":
+                                    verifierRepresentative_Dashboard verifierDashboard =
+                                        new verifierRepresentative_Dashboard();
+
+                                    verifierDashboard.Show();
+                                    break;
+
+                                default:
+                                    MessageBox.Show(
+                                        "Your account does not have a valid application role.",
+                                        "Authorization Failed",
+                                        MessageBoxButtons.OK,
+                                        MessageBoxIcon.Error);
+
+                                    this.Show();
+                                    break;
+                            }
                         }
                         else
                         {
@@ -88,9 +165,16 @@ namespace Updated_Information_System_3
 
         private void btnSchool_Click(object sender, EventArgs e)
         {
+            /* S.Kulati
             schoolClerk_Dashboard schoolClerkDashboard = new schoolClerk_Dashboard();
             this.Hide();
-            schoolClerkDashboard.Show();
+            schoolClerkDashboard.Show();*/
+            
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
         }
     }
 }

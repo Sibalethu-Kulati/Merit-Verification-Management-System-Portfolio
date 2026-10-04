@@ -32,7 +32,6 @@
             btn_signIn = new Button();
             panel1 = new Panel();
             panel2 = new Panel();
-            pictureBox1 = new PictureBox();
             label4 = new Label();
             groupBox1 = new GroupBox();
             txtPassword = new TextBox();
@@ -41,13 +40,11 @@
             label2 = new Label();
             lnkForgotPassword = new LinkLabel();
             checkBox1 = new CheckBox();
-            linkLabel1 = new LinkLabel();
-            label1 = new Label();
+            lnkSignUp = new LinkLabel();
             panel3 = new Panel();
             btnSchool = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox1.SuspendLayout();
             panel3.SuspendLayout();
             SuspendLayout();
@@ -73,8 +70,7 @@
             panel1.Controls.Add(groupBox1);
             panel1.Controls.Add(lnkForgotPassword);
             panel1.Controls.Add(checkBox1);
-            panel1.Controls.Add(linkLabel1);
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(lnkSignUp);
             panel1.Controls.Add(btn_signIn);
             panel1.Location = new Point(36, 33);
             panel1.Name = "panel1";
@@ -84,30 +80,19 @@
             // panel2
             // 
             panel2.BackColor = Color.Lavender;
-            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(label4);
             panel2.Location = new Point(28, 20);
             panel2.Name = "panel2";
             panel2.Size = new Size(565, 66);
             panel2.TabIndex = 6;
             // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(105, 65);
-            pictureBox1.TabIndex = 8;
-            pictureBox1.TabStop = false;
-            // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(157, 16);
+            label4.Location = new Point(68, 12);
             label4.Name = "label4";
-            label4.Size = new Size(341, 31);
+            label4.Size = new Size(421, 38);
             label4.TabIndex = 7;
             label4.Text = "SIGN IN INTO YOUR ACCOUNT";
             // 
@@ -129,14 +114,14 @@
             // 
             txtPassword.Location = new Point(164, 122);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(368, 31);
+            txtPassword.Size = new Size(368, 36);
             txtPassword.TabIndex = 9;
             // 
             // txtUsername
             // 
             txtUsername.Location = new Point(164, 55);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(368, 31);
+            txtUsername.Size = new Size(368, 36);
             txtUsername.TabIndex = 8;
             // 
             // label3
@@ -145,7 +130,7 @@
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(32, 122);
             label3.Name = "label3";
-            label3.Size = new Size(104, 25);
+            label3.Size = new Size(122, 30);
             label3.TabIndex = 7;
             label3.Text = "Password  :";
             // 
@@ -155,7 +140,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(32, 52);
             label2.Name = "label2";
-            label2.Size = new Size(105, 25);
+            label2.Size = new Size(123, 30);
             label2.TabIndex = 6;
             label2.Text = "Username :";
             // 
@@ -164,9 +149,9 @@
             lnkForgotPassword.AutoSize = true;
             lnkForgotPassword.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lnkForgotPassword.LinkColor = Color.DarkCyan;
-            lnkForgotPassword.Location = new Point(434, 331);
+            lnkForgotPassword.Location = new Point(406, 331);
             lnkForgotPassword.Name = "lnkForgotPassword";
-            lnkForgotPassword.Size = new Size(159, 25);
+            lnkForgotPassword.Size = new Size(187, 30);
             lnkForgotPassword.TabIndex = 4;
             lnkForgotPassword.TabStop = true;
             lnkForgotPassword.Text = "Forgot Password?";
@@ -177,32 +162,23 @@
             checkBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             checkBox1.Location = new Point(28, 331);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(162, 29);
+            checkBox1.Size = new Size(192, 34);
             checkBox1.TabIndex = 3;
             checkBox1.Text = "Show Password";
             checkBox1.UseVisualStyleBackColor = true;
             // 
-            // linkLabel1
+            // lnkSignUp
             // 
-            linkLabel1.AutoSize = true;
-            linkLabel1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            linkLabel1.LinkColor = Color.DarkCyan;
-            linkLabel1.Location = new Point(387, 436);
-            linkLabel1.Name = "linkLabel1";
-            linkLabel1.Size = new Size(78, 25);
-            linkLabel1.TabIndex = 2;
-            linkLabel1.TabStop = true;
-            linkLabel1.Text = "Sign Up";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(192, 436);
-            label1.Name = "label1";
-            label1.Size = new Size(199, 25);
-            label1.TabIndex = 1;
-            label1.Text = "Dont have an account?";
+            lnkSignUp.AutoSize = true;
+            lnkSignUp.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lnkSignUp.LinkColor = Color.DarkCyan;
+            lnkSignUp.Location = new Point(158, 426);
+            lnkSignUp.Name = "lnkSignUp";
+            lnkSignUp.Size = new Size(328, 30);
+            lnkSignUp.TabIndex = 2;
+            lnkSignUp.TabStop = true;
+            lnkSignUp.Text = "Don't have an account? Sign Up";
+            lnkSignUp.LinkClicked += linkLabel1_LinkClicked;
             // 
             // panel3
             // 
@@ -240,7 +216,6 @@
             panel1.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             panel3.ResumeLayout(false);
@@ -251,8 +226,7 @@
 
         private Button btn_signIn;
         private Panel panel1;
-        private LinkLabel linkLabel1;
-        private Label label1;
+        private LinkLabel lnkSignUp;
         private GroupBox groupBox1;
         private TextBox txtPassword;
         private TextBox txtUsername;
@@ -261,7 +235,6 @@
         private LinkLabel lnkForgotPassword;
         private CheckBox checkBox1;
         private Panel panel2;
-        private PictureBox pictureBox1;
         private Label label4;
         private Panel panel3;
         private Button btnSchool;

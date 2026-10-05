@@ -43,6 +43,7 @@
             lnkSignUp = new LinkLabel();
             panel3 = new Panel();
             btnSchool = new Button();
+            btnStudent_login = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -199,6 +200,16 @@
             btnSchool.UseVisualStyleBackColor = true;
             btnSchool.Click += btnSchool_Click;
             // 
+            // btnStudent_login
+            // 
+            btnStudent_login.Location = new Point(985, 283);
+            btnStudent_login.Name = "btnStudent_login";
+            btnStudent_login.Size = new Size(149, 74);
+            btnStudent_login.TabIndex = 4;
+            btnStudent_login.Text = "Student";
+            btnStudent_login.UseVisualStyleBackColor = true;
+            btnStudent_login.Click += btnStudent_login_Click;
+            // 
             // sign_in
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -206,6 +217,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1195, 691);
+            Controls.Add(btnStudent_login);
             Controls.Add(btnSchool);
             Controls.Add(panel3);
             Name = "sign_in";
@@ -238,5 +250,6 @@
         private Label label4;
         private Panel panel3;
         private Button btnSchool;
+        private Button btnStudent_login;
     }
 }

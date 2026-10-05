@@ -13,7 +13,12 @@ namespace Updated_Information_System_3
         private void btn_signIn_Click(object sender, EventArgs e)
         {
 
-
+            /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~S.Kulati~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+             * Used SQL for routing the different type of users.
+             * this method checks is a user exists in the PERSONS table first!
+             * if true then it checks if does it exist in any of the subtypes
+             * if they don't exist in the person then login is cancelled
+             */
             string email = txtUsername.Text.Trim();
             string password = txtPassword.Text;
             if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
@@ -113,10 +118,15 @@ namespace Updated_Information_System_3
                             switch (userRole)
                             {
                                 case "SCHOOL_CLERK":
+                                case "PRINCIPAL":
                                     schoolClerk_Dashboard schoolClerkDashboard =
                                         new schoolClerk_Dashboard();
 
                                     schoolClerkDashboard.Show();
+                                    break;
+                                case "LEARNER":
+                                    StudentDashboard studentDashboard = new StudentDashboard();
+                                    studentDashboard.Show();
                                     break;
 
                                 case "VERIFIER_REPRESENTATIVE":
@@ -179,9 +189,9 @@ namespace Updated_Information_System_3
 
         private void btnStudent_login_Click(object sender, EventArgs e)
         {
-            StudentDashboard stuDAsh = new StudentDashboard();
+            /*StudentDashboard stuDAsh = new StudentDashboard();
             this.Hide();
-            stuDAsh.Show();
+            stuDAsh.Show();*/
         }
     }
 }

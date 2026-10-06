@@ -9,7 +9,7 @@ namespace Updated_Information_System_3
             InitializeComponent();
 
         }
-       
+
         private void btn_signIn_Click(object sender, EventArgs e)
         {
 
@@ -170,7 +170,7 @@ namespace Updated_Information_System_3
 
         private void sign_in_Load(object sender, EventArgs e)
         {
-
+            txtPassword.UseSystemPasswordChar = true;
         }
 
         private void btnSchool_Click(object sender, EventArgs e)
@@ -179,7 +179,7 @@ namespace Updated_Information_System_3
             schoolClerk_Dashboard schoolClerkDashboard = new schoolClerk_Dashboard();
             this.Hide();
             schoolClerkDashboard.Show();*/
-            
+
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -192,6 +192,14 @@ namespace Updated_Information_System_3
             /*StudentDashboard stuDAsh = new StudentDashboard();
             this.Hide();
             stuDAsh.Show();*/
+        }
+
+        private void txtPassword_TextChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+                txtPassword.UseSystemPasswordChar = true;
+            else if (checkBox1.Checked==false)
+                txtPassword.UseSystemPasswordChar = false;
         }
     }
 }

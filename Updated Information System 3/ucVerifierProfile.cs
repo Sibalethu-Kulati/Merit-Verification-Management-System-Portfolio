@@ -11,9 +11,9 @@ using System.Windows.Forms;
 namespace Updated_Information_System_3
 {
     [ToolboxItem(true)]
-    public partial class ucVerifierProfile : UserControl
+    public partial class ucProfilePage : UserControl
     {
-        public ucVerifierProfile()
+        public ucProfilePage()
         {
             InitializeComponent();
             

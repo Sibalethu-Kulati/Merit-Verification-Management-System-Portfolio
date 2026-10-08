@@ -8,73 +8,47 @@ using System.Windows.Forms;
 
 namespace Updated_Information_System_3
 {
+    
     public partial class StudentDashboard : Form
     {
+        private ucProfilePage ucProfile;
+        private ucVerifierDashboard ucVerifierDashboard2;
         public StudentDashboard()
         {
             InitializeComponent();
+            ucProfile = UTILITY_CLASS.addUserControl<ucProfilePage>(this, panel1);
+
+            ucVerifierDashboard2 = UTILITY_CLASS.addUserControl<ucVerifierDashboard>(this, panel1);
         }
 
         private void btn_student_LogOut_Click(object sender, EventArgs e)
         {
-            sign_in signInForm1 = new sign_in();
-            this.Hide();
-            signInForm1.Show();
+            UTILITY_CLASS.logOut();
         }
 
         private void StudentDashboard_Load(object sender, EventArgs e)
-        {
-            //show the student dashboard user control by default on startup
-            ucStudentDashboard1.Show();
-            ucStudentDashboard1.BringToFront();
-            // Hide the other user controls
-            ucStudentProfile1.Hide();
-            ucStudentCertificates1.Hide();
-            ucStudentVerifications1.Hide();
+        {         //
+            UTILITY_CLASS.openUserControl(ucVerifierDashboard2, this);
         }
 
         private void btn_student_Dashboard_Click(object sender, EventArgs e)
         {
-            //show the student dashboard 
-            ucStudentDashboard1.Show();
-            ucStudentDashboard1.BringToFront();
-            // Hide the other user controls
-            ucStudentProfile1.Hide();
-            ucStudentCertificates1.Hide();
-            ucStudentVerifications1.Hide();
+            UTILITY_CLASS.openUserControl(ucVerifierDashboard2, this);
         }
 
         private void btn_student_Profile_Click(object sender, EventArgs e)
         {
-            //show the student profile 
-            ucStudentProfile1.Show();
-            ucStudentProfile1.BringToFront();
-            // Hide the other user controls
-            ucStudentDashboard1.Hide();
-            ucStudentCertificates1.Hide();
-            ucStudentVerifications1.Hide();
+            UTILITY_CLASS.openUserControl(ucProfile, this);
         }
 
         private void btn_certificates_student_Click(object sender, EventArgs e)
         {
-            //show the student certificates 
-            ucStudentCertificates1.Show();
-            ucStudentCertificates1.BringToFront();
-            // Hide the other user controls
-            ucStudentDashboard1.Hide();
-            ucStudentProfile1.Hide();
-            ucStudentVerifications1.Hide();
+            UTILITY_CLASS.openUserControl(ucStudentCertificates1, this);
         }
 
         private void btn_verifications_student_Click(object sender, EventArgs e)
         {
-            //show the student verifications 
-            ucStudentVerifications1.Show();
-            ucStudentVerifications1.BringToFront();
-            // Hide the other user controls
-            ucStudentDashboard1.Hide();
-            ucStudentProfile1.Hide();
-            ucStudentCertificates1.Hide();
+            UTILITY_CLASS.openUserControl(ucStudentVerifications1, this);
         }
     }
 }

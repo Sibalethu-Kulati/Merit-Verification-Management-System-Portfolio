@@ -37,7 +37,7 @@
             btn_verifierRepresentative_Profile = new Button();
             btn_verifierRepresentative_Dashboard = new Button();
             ucVerifierDashboard1 = new ucVerifierDashboard();
-            ucVerifierProfile1 = new ucVerifierProfile();
+            ucVerifierProfile1 = new ucProfilePage();
             ucVerifierVerifyCertificate2 = new ucVerifierVerifyCertificate();
             ucVerifierHighSchools1 = new ucVerifierHighSchools();
             panel1.SuspendLayout();
@@ -202,7 +202,7 @@
         private Button btn_verifierRepresentative_Profile;
         private PictureBox pictureBox1;
         private ucVerifierDashboard ucVerifierDashboard1;
-        private ucVerifierProfile ucVerifierProfile1;
+        private ucProfilePage ucVerifierProfile1;
         private ucVerifierVerifyCertificate ucVerifierVerifyCertificate2;
     }
 }

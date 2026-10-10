@@ -94,6 +94,7 @@
             btn_systemAdmin_LogOut.TabIndex = 1;
             btn_systemAdmin_LogOut.Text = "Log Out";
             btn_systemAdmin_LogOut.UseVisualStyleBackColor = false;
+            btn_systemAdmin_LogOut.Click += btn_systemAdmin_LogOut_Click;
             // 
             // btn_highSchools_systemAdmin
             // 
@@ -160,6 +161,7 @@
             Name = "systemAdmin_Dashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "systemAdmin_Dashboard";
+            Load += systemAdmin_Dashboard_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

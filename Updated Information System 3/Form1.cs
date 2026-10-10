@@ -198,8 +198,14 @@ namespace Updated_Information_System_3
         {
             if (checkBox1.Checked)
                 txtPassword.UseSystemPasswordChar = true;
-            else if (checkBox1.Checked==false)
+            else if (checkBox1.Checked == false)
                 txtPassword.UseSystemPasswordChar = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            systemAdmin_Dashboard mojo = new systemAdmin_Dashboard();
+            mojo.Show();
         }
     }
 }

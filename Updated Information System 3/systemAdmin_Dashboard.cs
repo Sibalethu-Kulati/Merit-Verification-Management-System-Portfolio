@@ -18,10 +18,7 @@ namespace Updated_Information_System_3
         private void btn_highSchools_systemAdmin_Click(object sender, EventArgs e)
         {
             // Show user controls
-            ucHighSchools_SystemAdmin1.Show();
-            ucHighSchools_SystemAdmin1.BringToFront();
-            // Hide the other user control
-            ucRequests_systemAdmin1.Hide();
+            UTILITY_CLASS.openUserControl(ucHighSchools_SystemAdmin1, this);
 
 
 
@@ -30,10 +27,18 @@ namespace Updated_Information_System_3
         private void btn_requests_systemAdmin_Click(object sender, EventArgs e)
         {
             //Show user controls
-            ucRequests_systemAdmin1.Show();
-            ucRequests_systemAdmin1.BringToFront();
-            // Hide the other user control
-            ucHighSchools_SystemAdmin1.Hide();
+            UTILITY_CLASS.openUserControl(ucRequests_systemAdmin1, this);
+            ;
+        }
+
+        private void systemAdmin_Dashboard_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_systemAdmin_LogOut_Click(object sender, EventArgs e)
+        {
+            UTILITY_CLASS.logOut();
         }
     }
 }

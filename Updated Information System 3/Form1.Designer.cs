@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(sign_in));
             btn_signIn = new Button();
             panel1 = new Panel();
+            label1 = new Label();
+            lnkRequestAccess = new LinkLabel();
             panel2 = new Panel();
             label4 = new Label();
             groupBox1 = new GroupBox();
@@ -40,7 +42,6 @@
             label2 = new Label();
             lnkForgotPassword = new LinkLabel();
             checkBox1 = new CheckBox();
-            lnkSignUp = new LinkLabel();
             panel3 = new Panel();
             button1 = new Button();
             panel1.SuspendLayout();
@@ -66,16 +67,40 @@
             // 
             panel1.BackColor = SystemColors.ButtonFace;
             panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(lnkRequestAccess);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(groupBox1);
             panel1.Controls.Add(lnkForgotPassword);
             panel1.Controls.Add(checkBox1);
-            panel1.Controls.Add(lnkSignUp);
             panel1.Controls.Add(btn_signIn);
             panel1.Location = new Point(36, 33);
             panel1.Name = "panel1";
             panel1.Size = new Size(623, 480);
             panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(109, 436);
+            label1.Name = "label1";
+            label1.Size = new Size(254, 25);
+            label1.TabIndex = 10;
+            label1.Text = "New school or organization? ";
+            // 
+            // lnkRequestAccess
+            // 
+            lnkRequestAccess.AutoSize = true;
+            lnkRequestAccess.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lnkRequestAccess.LinkColor = Color.DarkCyan;
+            lnkRequestAccess.Location = new Point(356, 436);
+            lnkRequestAccess.Name = "lnkRequestAccess";
+            lnkRequestAccess.Size = new Size(139, 25);
+            lnkRequestAccess.TabIndex = 7;
+            lnkRequestAccess.TabStop = true;
+            lnkRequestAccess.Text = "Request Access";
+            lnkRequestAccess.LinkClicked += lnkRequestAccess_LinkClicked;
             // 
             // panel2
             // 
@@ -90,7 +115,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(68, 12);
+            label4.Location = new Point(126, 17);
             label4.Name = "label4";
             label4.Size = new Size(341, 31);
             label4.TabIndex = 7;
@@ -103,9 +128,9 @@
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label2);
             groupBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(28, 118);
+            groupBox1.Location = new Point(28, 114);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(565, 186);
+            groupBox1.Size = new Size(565, 189);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Sign In ";
@@ -151,7 +176,7 @@
             lnkForgotPassword.AutoSize = true;
             lnkForgotPassword.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lnkForgotPassword.LinkColor = Color.DarkCyan;
-            lnkForgotPassword.Location = new Point(406, 331);
+            lnkForgotPassword.Location = new Point(434, 331);
             lnkForgotPassword.Name = "lnkForgotPassword";
             lnkForgotPassword.Size = new Size(159, 25);
             lnkForgotPassword.TabIndex = 4;
@@ -168,20 +193,6 @@
             checkBox1.TabIndex = 3;
             checkBox1.Text = "Show Password";
             checkBox1.UseVisualStyleBackColor = true;
-            // 
-            // lnkSignUp
-            // 
-            lnkSignUp.AutoSize = true;
-            lnkSignUp.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lnkSignUp.ForeColor = Color.Teal;
-            lnkSignUp.LinkColor = SystemColors.ActiveCaptionText;
-            lnkSignUp.Location = new Point(158, 426);
-            lnkSignUp.Name = "lnkSignUp";
-            lnkSignUp.Size = new Size(274, 25);
-            lnkSignUp.TabIndex = 2;
-            lnkSignUp.TabStop = true;
-            lnkSignUp.Text = "Don't have an account? Sign Up";
-            lnkSignUp.LinkClicked += linkLabel1_LinkClicked;
             // 
             // panel3
             // 
@@ -229,7 +240,6 @@
 
         private Button btn_signIn;
         private Panel panel1;
-        private LinkLabel lnkSignUp;
         private GroupBox groupBox1;
         private TextBox txtPassword;
         private TextBox txtUsername;
@@ -241,5 +251,7 @@
         private Label label4;
         private Panel panel3;
         private Button button1;
+        private Label label1;
+        private LinkLabel lnkRequestAccess;
     }
 }

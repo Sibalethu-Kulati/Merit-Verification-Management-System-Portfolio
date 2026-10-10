@@ -207,5 +207,10 @@ namespace Updated_Information_System_3
             systemAdmin_Dashboard mojo = new systemAdmin_Dashboard();
             mojo.Show();
         }
+
+        private void lnkRequestAccess_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            UTILITY_CLASS.openRequestAccess(this);
+        }
     }
 }

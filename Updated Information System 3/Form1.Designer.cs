@@ -42,6 +42,7 @@
             checkBox1 = new CheckBox();
             lnkSignUp = new LinkLabel();
             panel3 = new Panel();
+            button1 = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -91,7 +92,7 @@
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(68, 12);
             label4.Name = "label4";
-            label4.Size = new Size(421, 38);
+            label4.Size = new Size(341, 31);
             label4.TabIndex = 7;
             label4.Text = "SIGN IN INTO YOUR ACCOUNT";
             // 
@@ -113,7 +114,7 @@
             // 
             txtPassword.Location = new Point(164, 122);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(368, 36);
+            txtPassword.Size = new Size(368, 31);
             txtPassword.TabIndex = 9;
             txtPassword.UseSystemPasswordChar = true;
             txtPassword.TextChanged += txtPassword_TextChanged;
@@ -122,7 +123,7 @@
             // 
             txtUsername.Location = new Point(164, 55);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(368, 36);
+            txtUsername.Size = new Size(368, 31);
             txtUsername.TabIndex = 8;
             // 
             // label3
@@ -131,7 +132,7 @@
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(32, 122);
             label3.Name = "label3";
-            label3.Size = new Size(122, 30);
+            label3.Size = new Size(104, 25);
             label3.TabIndex = 7;
             label3.Text = "Password  :";
             // 
@@ -141,7 +142,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(32, 52);
             label2.Name = "label2";
-            label2.Size = new Size(123, 30);
+            label2.Size = new Size(105, 25);
             label2.TabIndex = 6;
             label2.Text = "Username :";
             // 
@@ -152,7 +153,7 @@
             lnkForgotPassword.LinkColor = Color.DarkCyan;
             lnkForgotPassword.Location = new Point(406, 331);
             lnkForgotPassword.Name = "lnkForgotPassword";
-            lnkForgotPassword.Size = new Size(187, 30);
+            lnkForgotPassword.Size = new Size(159, 25);
             lnkForgotPassword.TabIndex = 4;
             lnkForgotPassword.TabStop = true;
             lnkForgotPassword.Text = "Forgot Password?";
@@ -163,7 +164,7 @@
             checkBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             checkBox1.Location = new Point(28, 331);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(192, 34);
+            checkBox1.Size = new Size(162, 29);
             checkBox1.TabIndex = 3;
             checkBox1.Text = "Show Password";
             checkBox1.UseVisualStyleBackColor = true;
@@ -176,7 +177,7 @@
             lnkSignUp.LinkColor = SystemColors.ActiveCaptionText;
             lnkSignUp.Location = new Point(158, 426);
             lnkSignUp.Name = "lnkSignUp";
-            lnkSignUp.Size = new Size(328, 30);
+            lnkSignUp.Size = new Size(274, 25);
             lnkSignUp.TabIndex = 2;
             lnkSignUp.TabStop = true;
             lnkSignUp.Text = "Don't have an account? Sign Up";
@@ -191,6 +192,16 @@
             panel3.Size = new Size(701, 545);
             panel3.TabIndex = 2;
             // 
+            // button1
+            // 
+            button1.Location = new Point(1052, 398);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 64);
+            button1.TabIndex = 3;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // sign_in
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -198,6 +209,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1195, 691);
+            Controls.Add(button1);
             Controls.Add(panel3);
             Name = "sign_in";
             StartPosition = FormStartPosition.CenterScreen;
@@ -228,5 +240,6 @@
         private Panel panel2;
         private Label label4;
         private Panel panel3;
+        private Button button1;
     }
 }

@@ -14,5 +14,10 @@ namespace Updated_Information_System_3
         {
             InitializeComponent();
         }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

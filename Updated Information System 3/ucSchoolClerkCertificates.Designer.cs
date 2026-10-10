@@ -37,10 +37,6 @@
             textBox1 = new TextBox();
             groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
-            panel2 = new Panel();
-            pictureBox1 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            label6 = new Label();
             Column1 = new DataGridViewTextBoxColumn();
             Column7 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
@@ -48,6 +44,10 @@
             Column4 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
+            panel2 = new Panel();
+            pictureBox1 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            label6 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -90,6 +90,7 @@
             btnSave.TabIndex = 34;
             btnSave.Text = "Add Certificate";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // label2
             // 
@@ -97,7 +98,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(547, 143);
             label2.Name = "label2";
-            label2.Size = new Size(91, 25);
+            label2.Size = new Size(109, 30);
             label2.TabIndex = 33;
             label2.Text = "Search By";
             // 
@@ -137,49 +138,6 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(839, 188);
             dataGridView1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(0, 64, 64);
-            panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(pictureBox3);
-            panel2.Controls.Add(label6);
-            panel2.Location = new Point(35, 29);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(892, 77);
-            panel2.TabIndex = 29;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
-            pictureBox1.Location = new Point(12, 1);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(78, 69);
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
-            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.Location = new Point(633, 1);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(257, 67);
-            pictureBox3.TabIndex = 5;
-            pictureBox3.TabStop = false;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.WhiteSmoke;
-            label6.Location = new Point(114, 17);
-            label6.Name = "label6";
-            label6.Size = new Size(326, 41);
-            label6.TabIndex = 0;
-            label6.Text = "List Of All Certificates";
             // 
             // Column1
             // 
@@ -229,6 +187,49 @@
             Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
             Column6.Width = 125;
+            // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(0, 64, 64);
+            panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(pictureBox3);
+            panel2.Controls.Add(label6);
+            panel2.Location = new Point(35, 29);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(892, 77);
+            panel2.TabIndex = 29;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Zoom;
+            pictureBox1.Location = new Point(12, 1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(78, 69);
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
+            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox3.Location = new Point(633, 1);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(257, 67);
+            pictureBox3.TabIndex = 5;
+            pictureBox3.TabStop = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.WhiteSmoke;
+            label6.Location = new Point(114, 17);
+            label6.Name = "label6";
+            label6.Size = new Size(383, 48);
+            label6.TabIndex = 0;
+            label6.Text = "List Of All Certificates";
             // 
             // ucSchoolClerkCertificates
             // 

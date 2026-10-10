@@ -172,7 +172,8 @@
             // 
             lnkSignUp.AutoSize = true;
             lnkSignUp.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lnkSignUp.LinkColor = Color.DarkCyan;
+            lnkSignUp.ForeColor = Color.Teal;
+            lnkSignUp.LinkColor = SystemColors.ActiveCaptionText;
             lnkSignUp.Location = new Point(158, 426);
             lnkSignUp.Name = "lnkSignUp";
             lnkSignUp.Size = new Size(328, 30);

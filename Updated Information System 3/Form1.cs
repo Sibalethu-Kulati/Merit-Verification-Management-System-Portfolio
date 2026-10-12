@@ -212,5 +212,12 @@ namespace Updated_Information_System_3
         {
             UTILITY_CLASS.openRequestAccess(this);
         }
+
+        private void btn_ITadminLogin_Click(object sender, EventArgs e)
+        {
+            // UTILITY_CLASS.openForm(itAdmin_Dashboard, this);
+            itAdmin_Dashboard ekse = new itAdmin_Dashboard();
+            ekse.Show();
+        }
     }
 }

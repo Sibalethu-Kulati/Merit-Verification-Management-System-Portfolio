@@ -17,11 +17,17 @@ namespace Updated_Information_System_3
         private static readonly Color Teal = Color.FromArgb(0, 62, 64);
         private static readonly Color Green = Color.FromArgb(0, 128, 0);
         private static readonly Color Red = Color.FromArgb(192, 0, 0);
+        private static readonly Color Amber = Color.FromArgb(200, 120, 0);
 
-        private readonly bool _isValid;
+        // The application's status as stored in the database:
+        // PENDING, APPROVED or REJECTED.
+        private readonly string _status;
+
+        // A request can only be approved or rejected while it is still PENDING.
+        private readonly bool _canReview;
 
         // Used by the designer and by plain "new viewRequest_SystemAdmin()" calls.
-        public viewRequest_SystemAdmin() : this(isValid: true)
+        public viewRequest_SystemAdmin() : this(status: "PENDING")
         {
         }
 
@@ -36,11 +42,12 @@ namespace Updated_Information_System_3
             string recipientName = "",
             string recipientRole = "",
             string recipientEmail = "",
-            bool isValid = true)
+            string status = "PENDING")
         {
             InitializeComponent();   // keep: created by the designer
 
-            _isValid = isValid;
+            _status = (status ?? "PENDING").ToUpper();
+            _canReview = _status == "PENDING";
 
             Text = "Request Details";
             Font = new Font("Segoe UI", 10);
@@ -98,15 +105,15 @@ namespace Updated_Information_System_3
             var statusCaption = new Label { Text = "Status", AutoSize = true, Location = new Point(42, statusY) };
             var statusValue = new Label
             {
-                Text = _isValid ? "Valid" : "Not Valid",
-                ForeColor = _isValid ? Green : Red,
+                Text = _status,
+                ForeColor = _status == "APPROVED" ? Green : _status == "REJECTED" ? Red : Amber,
                 Font = new Font("Segoe UI", 11, FontStyle.Bold),
                 AutoSize = true,
                 Location = new Point(204, statusY - 2)
             };
             var statusNote = new Label
             {
-                Text = _isValid ? "" : "This request cannot be approved until it is valid.",
+                Text = _canReview ? "" : "This request has already been " + _status.ToLower() + " and cannot be reviewed again.",
                 ForeColor = Color.FromArgb(90, 90, 90),
                 Font = new Font("Segoe UI", 9),
                 AutoSize = true,
@@ -133,10 +140,13 @@ namespace Updated_Information_System_3
             var reject = MakeButton("Reject Request", Red, 170);
             var approve = MakeButton("Approve Request", Green, 170);
             close.Left = 24;
-            if (!_isValid)
+            if (!_canReview)
             {
-                approve.BackColor = Color.FromArgb(150, 195, 150);   // looks greyed out
+                // Both buttons look greyed out once the request has been decided.
+                approve.BackColor = Color.FromArgb(150, 195, 150);
                 approve.Cursor = Cursors.Default;
+                reject.BackColor = Color.FromArgb(215, 150, 150);
+                reject.Cursor = Cursors.Default;
             }
             footer.Controls.Add(close);
             footer.Controls.Add(reject);
@@ -153,6 +163,12 @@ namespace Updated_Information_System_3
 
             reject.Click += (s, e) =>
             {
+                if (!_canReview)
+                {
+                    MessageBox.Show("This request has already been " + _status.ToLower() + ".", "Cannot reject",
+                                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (MessageBox.Show("Reject this request?", "Confirm",
                         MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes) return;
                 MessageBox.Show("Request rejected.", "Done",
@@ -162,9 +178,9 @@ namespace Updated_Information_System_3
 
             approve.Click += (s, e) =>
             {
-                if (!_isValid)
+                if (!_canReview)
                 {
-                    MessageBox.Show("This request is not valid, so it cannot be approved.", "Cannot approve",
+                    MessageBox.Show("This request has already been " + _status.ToLower() + ".", "Cannot approve",
                                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }

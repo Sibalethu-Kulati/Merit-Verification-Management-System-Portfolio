@@ -122,6 +122,7 @@
             btn_systemAdmin_Profile.TabIndex = 1;
             btn_systemAdmin_Profile.Text = "Profile";
             btn_systemAdmin_Profile.UseVisualStyleBackColor = false;
+            btn_systemAdmin_Profile.Click += btn_systemAdmin_Profile_Click;
             // 
             // btn_systemAdmin_Dashboard
             // 
@@ -135,6 +136,7 @@
             btn_systemAdmin_Dashboard.TabIndex = 0;
             btn_systemAdmin_Dashboard.Text = "Dashboard";
             btn_systemAdmin_Dashboard.UseVisualStyleBackColor = false;
+            btn_systemAdmin_Dashboard.Click += btn_systemAdmin_Dashboard_Click;
             // 
             // ucHighSchools_SystemAdmin1
             // 

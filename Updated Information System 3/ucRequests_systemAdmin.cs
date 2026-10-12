@@ -13,16 +13,90 @@ namespace Updated_Information_System_3
         public ucRequests_systemAdmin()
         {
             InitializeComponent();
+
         }
 
         private void ucRequests_systemAdmin_Load(object sender, EventArgs e)
         {
-
+            UTILITY_CLASS.RefreshGridData(dgvRequests);
         }
 
         private void btn_viewRequest_systemAdmin_Click(object sender, EventArgs e)
         {
-            new viewRequest_SystemAdmin().ShowDialog();
+
+            
+            {
+                // 1. Check if a row is selected
+                if (dgvRequests.CurrentRow == null)
+                {
+                    MessageBox.Show("Please select a request from the list first.",
+                                    "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var row = dgvRequests.CurrentRow;
+
+                // 2. Extract base fields using your exact grid column names
+                string emisNum = row.Cells["EMIS Number"]?.Value?.ToString() ?? "";
+                string orgName = row.Cells["Organization Name"]?.Value?.ToString() ?? "";
+                string email = row.Cells["Email Address"]?.Value?.ToString() ?? "";
+                string tel = row.Cells["Telephone"]?.Value?.ToString() ?? "";
+                string province = row.Cells["Province"]?.Value?.ToString() ?? "";
+                string orgType = row.Cells["Organization Type"]?.Value?.ToString() ?? "";
+
+                // 3. Extract separate address pieces and build the structured layout string
+                string sNum = row.Cells["Street Number"]?.Value?.ToString() ?? "";
+                string sName = row.Cells["Street Name"]?.Value?.ToString() ?? "";
+                string suburb = row.Cells["Suburb"]?.Value?.ToString() ?? "";
+                string city = row.Cells["City"]?.Value?.ToString() ?? "";
+                string pCode = row.Cells["Postal Code"]?.Value?.ToString() ?? "";
+
+                // Safely combine pieces into a single readable line for your partner's form
+                string fullAddress = $"{sNum} {sName}, {suburb}, {city}, {pCode}".Trim(' ', ',');
+
+                // 4. Extract recipient and validation values
+                string fName = row.Cells["Recipient First Name"]?.Value?.ToString() ?? "";
+                string lName = row.Cells["Recipient Last Name"]?.Value?.ToString() ?? "";
+                string recName = $"{fName} {lName}".Trim(); // Merge first and last name together
+
+                string recEmail = row.Cells["Recipient Email"]?.Value?.ToString() ?? "";
+                string recRole = row.Cells["Recipient Role"]?.Value?.ToString() ?? "IT Admin"; // Fallback placeholder if missing
+
+                // Check your 'Status' column to dynamically decide if the validation check passes
+                string statusText = row.Cells["Status"]?.Value?.ToString() ?? "PENDING";
+
+                // 5. Fire open your partner's popup window with the parameters filled!
+                using (var detailsForm = new viewRequest_SystemAdmin(
+                    emis: emisNum,
+                    name: orgName,
+                    email: email,
+                    telephone: tel,
+                    address: fullAddress, // Sends the perfectly structured location text block
+                    province: province,
+                    organizationType: orgType,
+                    recipientName: recName, // Sends the fully concatenated full name
+                    recipientRole: recRole,
+                    recipientEmail: recEmail,
+                    status: statusText))
+
+
+                {
+                    DialogResult result = detailsForm.ShowDialog(this);
+
+                    // Optional dashboard list updates depending on what action was clicked
+                    if (result == DialogResult.Yes || result == DialogResult.No)
+                    {
+                        // Call your grid update method here to refresh data instantly
+                        // RefreshGridData(); 
+                    }
+                }
+            }
+        }
+            
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

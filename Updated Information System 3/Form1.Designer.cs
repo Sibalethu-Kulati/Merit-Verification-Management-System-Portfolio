@@ -43,7 +43,7 @@
             lnkForgotPassword = new LinkLabel();
             checkBox1 = new CheckBox();
             panel3 = new Panel();
-            button1 = new Button();
+            btn_ITadminLogin = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -203,15 +203,15 @@
             panel3.Size = new Size(701, 545);
             panel3.TabIndex = 2;
             // 
-            // button1
+            // btn_ITadminLogin
             // 
-            button1.Location = new Point(1052, 398);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 64);
-            button1.TabIndex = 3;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            btn_ITadminLogin.Location = new Point(973, 279);
+            btn_ITadminLogin.Name = "btn_ITadminLogin";
+            btn_ITadminLogin.Size = new Size(157, 86);
+            btn_ITadminLogin.TabIndex = 3;
+            btn_ITadminLogin.Text = "IT ADMIN";
+            btn_ITadminLogin.UseVisualStyleBackColor = true;
+            btn_ITadminLogin.Click += btn_ITadminLogin_Click;
             // 
             // sign_in
             // 
@@ -220,7 +220,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1195, 691);
-            Controls.Add(button1);
+            Controls.Add(btn_ITadminLogin);
             Controls.Add(panel3);
             Name = "sign_in";
             StartPosition = FormStartPosition.CenterScreen;
@@ -250,8 +250,8 @@
         private Panel panel2;
         private Label label4;
         private Panel panel3;
-        private Button button1;
         private Label label1;
         private LinkLabel lnkRequestAccess;
+        private Button btn_ITadminLogin;
     }
 }

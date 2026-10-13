@@ -135,6 +135,7 @@ namespace Updated_Information_System_3
                                     verifierDashboard.Show();
                                     break;
 
+
                                 case "SYSTEM_ADMIN":
                                     systemAdmin_Dashboard systemDashboard = new systemAdmin_Dashboard();
                                     systemDashboard.Show();
@@ -207,6 +208,7 @@ namespace Updated_Information_System_3
 
         private void button1_Click(object sender, EventArgs e)
         {   
+
         }
 
         private void lnkRequestAccess_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(systemAdmin_Dashboard));
             panel1 = new Panel();
+            btnOrgRequests = new Button();
             btn_requests_systemAdmin = new Button();
             pictureBox1 = new PictureBox();
             btn_systemAdmin_LogOut = new Button();
@@ -45,6 +46,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 64, 64);
+            panel1.Controls.Add(btnOrgRequests);
             panel1.Controls.Add(btn_requests_systemAdmin);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btn_systemAdmin_LogOut);
@@ -56,6 +58,20 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(270, 691);
             panel1.TabIndex = 2;
+            // 
+            // btnOrgRequests
+            // 
+            btnOrgRequests.BackColor = Color.FromArgb(0, 64, 64);
+            btnOrgRequests.FlatStyle = FlatStyle.Flat;
+            btnOrgRequests.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnOrgRequests.ForeColor = Color.White;
+            btnOrgRequests.Location = new Point(21, 484);
+            btnOrgRequests.Name = "btnOrgRequests";
+            btnOrgRequests.Size = new Size(229, 60);
+            btnOrgRequests.TabIndex = 6;
+            btnOrgRequests.Text = "ORG REQUESTS";
+            btnOrgRequests.UseVisualStyleBackColor = false;
+            btnOrgRequests.Click += btnOrgRequests_Click;
             // 
             // btn_requests_systemAdmin
             // 
@@ -151,6 +167,7 @@
             ucRequests_systemAdmin1.Name = "ucRequests_systemAdmin1";
             ucRequests_systemAdmin1.Size = new Size(1200, 864);
             ucRequests_systemAdmin1.TabIndex = 4;
+            ucRequests_systemAdmin1.Load += ucRequests_systemAdmin1_Load;
             // 
             // systemAdmin_Dashboard
             // 
@@ -180,5 +197,6 @@
         private Button btn_requests_systemAdmin;
         private ucHighSchools_SystemAdmin ucHighSchools_SystemAdmin1;
         private ucRequests_systemAdmin ucRequests_systemAdmin1;
+        private Button btnOrgRequests;
     }
 }

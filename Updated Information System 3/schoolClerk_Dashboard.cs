@@ -16,39 +16,39 @@ namespace Updated_Information_System_3
         public schoolClerk_Dashboard()
         {
             InitializeComponent();
-            ucProfile = UTILITY_CLASS.addUserControl<ucProfilePage>(this, panel1);
+            ucProfile = NavigationClass.addUserControl<ucProfilePage>(this, panel1);
 
-            ucVerifier = UTILITY_CLASS.addUserControl<ucVerifierDashboard>(this, panel1);
+            ucVerifier = NavigationClass.addUserControl<ucVerifierDashboard>(this, panel1);
         }
  
         private void schoolClerk_Dashboard_Load(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucVerifier, this);
+            NavigationClass.openUserControl(ucVerifier, this);
         }
 
         private void btn_schoolClerk_Dashboard_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucVerifier, this);
+            NavigationClass.openUserControl(ucVerifier, this);
         }
 
         private void btn_schoolClerk_Profile_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucProfile, this);
+            NavigationClass.openUserControl(ucProfile, this);
         }
 
         private void btn_learners_schoolClerk_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucSchoolClerkLearners1, this);
+            NavigationClass.openUserControl(ucSchoolClerkLearners1, this);
         }
 
         private void btn_certificates_schoolClerk_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucSchoolClerkCertificates1, this);
+            NavigationClass.openUserControl(ucSchoolClerkCertificates1, this);
         }
 
         private void btn_schoolClerk_LogOut_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.logOut();
+            NavigationClass.logOut();
         }
     }
 }

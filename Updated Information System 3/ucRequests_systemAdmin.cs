@@ -18,7 +18,7 @@ namespace Updated_Information_System_3
 
         private void ucRequests_systemAdmin_Load(object sender, EventArgs e)
         {
-            UTILITY_CLASS.RefreshGridData(dgvRequests);
+            ApplicationDatabase.RefreshHigh_SchoolGridData(dgvRequests);
         }
 
         private void btn_viewRequest_systemAdmin_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ namespace Updated_Information_System_3
                 }
 
                 var row = dgvRequests.CurrentRow;
-
+                int applicationId = Convert.ToInt32(row.Cells["Application ID"].Value);
                 // 2. Extract base fields using your exact grid column names
                 string emisNum = row.Cells["EMIS Number"]?.Value?.ToString() ?? "";
                 string orgName = row.Cells["Organization Name"]?.Value?.ToString() ?? "";
@@ -67,6 +67,7 @@ namespace Updated_Information_System_3
 
                 // 5. Fire open your partner's popup window with the parameters filled!
                 using (var detailsForm = new viewRequest_SystemAdmin(
+                    applicationId: applicationId,
                     emis: emisNum,
                     name: orgName,
                     email: email,
@@ -83,11 +84,10 @@ namespace Updated_Information_System_3
                 {
                     DialogResult result = detailsForm.ShowDialog(this);
 
-                    // Optional dashboard list updates depending on what action was clicked
+                    
                     if (result == DialogResult.Yes || result == DialogResult.No)
                     {
-                        // Call your grid update method here to refresh data instantly
-                        // RefreshGridData(); 
+                        ApplicationDatabase.RefreshHigh_SchoolGridData(dgvRequests);
                     }
                 }
             }

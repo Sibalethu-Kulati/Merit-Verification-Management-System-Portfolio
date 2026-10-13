@@ -17,43 +17,43 @@ namespace Updated_Information_System_3
         public itAdmin_Dashboard()
         {
             InitializeComponent();
-            ucProfile = UTILITY_CLASS.addUserControl<ucProfilePage>(this, panel1);
-            ucDashboard = UTILITY_CLASS.addUserControl<ucVerifierDashboard>(this, panel1);
+            ucProfile = NavigationClass.addUserControl<ucProfilePage>(this, panel1);
+            ucDashboard = NavigationClass.addUserControl<ucVerifierDashboard>(this, panel1);
         }
 
         private void btn_itAdmin_LogOut_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.logOut();
+            NavigationClass.logOut();
         }
 
         private void btn_itAdmin_organizations_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucItAdmin_organizations1, this);
+            NavigationClass.openUserControl(ucItAdmin_organizations1, this);
         }
 
         private void btn_learners_itAdmin_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucItAdmin_learners1, this);
+            NavigationClass.openUserControl(ucItAdmin_learners1, this);
         }
 
         private void btn_manageStaff_itAdmin_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucItAdmin_manageStaff1, this);
+            NavigationClass.openUserControl(ucItAdmin_manageStaff1, this);
         }
 
         private void btn_itAdmin_Dashboard_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucDashboard, this);
+            NavigationClass.openUserControl(ucDashboard, this);
         }
 
         private void btn_itAdmin_Profile_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucProfile, this);
+            NavigationClass.openUserControl(ucProfile, this);
         }
 
         private void itAdmin_Dashboard_Load(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucProfile, this);
+            NavigationClass.openUserControl(ucProfile, this);
            
         }
     }

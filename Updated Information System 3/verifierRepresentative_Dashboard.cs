@@ -21,43 +21,43 @@ namespace Updated_Information_System_3
         {
             InitializeComponent();
                                
-            ucVerifierDashboard2 = UTILITY_CLASS.addUserControl<ucVerifierDashboard>(this, panel1);
+            ucVerifierDashboard2 = NavigationClass.addUserControl<ucVerifierDashboard>(this, panel1);
 
-            ucVerifierProfile2 = UTILITY_CLASS.addUserControl<ucProfilePage>(this, panel1);
+            ucVerifierProfile2 = NavigationClass.addUserControl<ucProfilePage>(this, panel1);
 
-            ucVerifierVerifyCertificate1 = UTILITY_CLASS.addUserControl<ucVerifierVerifyCertificate>(this, panel1);
+            ucVerifierVerifyCertificate1 = NavigationClass.addUserControl<ucVerifierVerifyCertificate>(this, panel1);
 
-            ucVerifierHighSchools1 = UTILITY_CLASS.addUserControl<ucVerifierHighSchools>(this, panel1);
+            ucVerifierHighSchools1 = NavigationClass.addUserControl<ucVerifierHighSchools>(this, panel1);
         }
 
         private void verifierRepresentative_Dashboard_Load(object sender, EventArgs e)
-        {         
-            UTILITY_CLASS.openUserControl(ucVerifierDashboard2, this);
+        {
+            NavigationClass.openUserControl(ucVerifierDashboard2, this);
         }
 
         private void btn_verifierRepresentative_Dashboard_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucVerifierDashboard2, this);
+            NavigationClass.openUserControl(ucVerifierDashboard2, this);
         }
 
         private void btn_verifierRepresentative_Profile_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucVerifierProfile2,this);
+            NavigationClass.openUserControl(ucVerifierProfile2,this);
         }
 
         private void btn_verifyCertificate_Click(object sender, EventArgs e)
-        { 
-            UTILITY_CLASS.openUserControl(ucVerifierVerifyCertificate1, this);
+        {
+            NavigationClass.openUserControl(ucVerifierVerifyCertificate1, this);
         }
 
         private void btn_verifierRepresentative_HighSchools_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucVerifierHighSchools1, this);
+            NavigationClass.openUserControl(ucVerifierHighSchools1, this);
         }
 
         private void btn_verifierRepresentative_LogOut_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.logOut();
+            NavigationClass.logOut();
         }
 
         private void ucVerifierHighSchools1_Load(object sender, EventArgs e)

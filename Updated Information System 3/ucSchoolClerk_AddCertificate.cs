@@ -27,7 +27,7 @@ namespace Updated_Information_System_3
 
         private void lnkBacktoCertificates_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucToOpen: new ucSchoolClerkCertificates(), parentContainer: this);
+            NavigationClass.openUserControl(ucToOpen: new ucSchoolClerkCertificates(), parentContainer: this);
         }
     }
 }

@@ -213,7 +213,7 @@ namespace Updated_Information_System_3
 
         private void lnkRequestAccess_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            UTILITY_CLASS.openRequestAccess(this);
+            InterfaceCreation.openRequestAccess(this);
         }
 
         private void btn_ITadminLogin_Click(object sender, EventArgs e)

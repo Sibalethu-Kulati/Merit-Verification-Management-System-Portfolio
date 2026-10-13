@@ -16,45 +16,49 @@ namespace Updated_Information_System_3
         public systemAdmin_Dashboard()
         {
             InitializeComponent();
-            ucProfile = UTILITY_CLASS.addUserControl<ucProfilePage>(this, panel1);
-            ucDashboard = UTILITY_CLASS.addUserControl<ucVerifierDashboard>(this, panel1);
+            ucProfile = NavigationClass.addUserControl<ucProfilePage>(this, panel1);
+            ucDashboard = NavigationClass.addUserControl<ucVerifierDashboard>(this, panel1);
         }
 
         private void btn_highSchools_systemAdmin_Click(object sender, EventArgs e)
         {
-            // Show user controls
-            UTILITY_CLASS.openUserControl(ucHighSchools_SystemAdmin1, this);
-
-
-
+            NavigationClass.openUserControl(ucHighSchools_SystemAdmin1, this);
         }
 
         private void btn_requests_systemAdmin_Click(object sender, EventArgs e)
         {
-           
-            UTILITY_CLASS.openUserControl(ucRequests_systemAdmin1, this);
-
+            NavigationClass.openUserControl(ucRequests_systemAdmin1, this);
         }
 
         private void systemAdmin_Dashboard_Load(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucDashboard, this);
-
+            NavigationClass.openUserControl(ucDashboard, this);
         }
+        
 
         private void btn_systemAdmin_LogOut_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.logOut();
+            NavigationClass.logOut();
         }
 
         private void btn_systemAdmin_Profile_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucProfile, this);
+            NavigationClass.openUserControl(ucProfile, this);
         }
 
         private void btn_systemAdmin_Dashboard_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucDashboard, this);
+            NavigationClass.openUserControl(ucDashboard, this);
+        }
+
+        private void btnOrgRequests_Click(object sender, EventArgs e)
+        {
+            //NavigationClass.RefreshOrgGridData()
+        }
+
+        private void ucRequests_systemAdmin1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

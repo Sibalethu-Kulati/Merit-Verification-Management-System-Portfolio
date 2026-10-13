@@ -139,6 +139,7 @@
             btn_itAdmin_Profile.TabIndex = 1;
             btn_itAdmin_Profile.Text = "Profile";
             btn_itAdmin_Profile.UseVisualStyleBackColor = false;
+            btn_itAdmin_Profile.Click += btn_itAdmin_Profile_Click;
             // 
             // btn_itAdmin_Dashboard
             // 
@@ -152,6 +153,7 @@
             btn_itAdmin_Dashboard.TabIndex = 0;
             btn_itAdmin_Dashboard.Text = "Dashboard";
             btn_itAdmin_Dashboard.UseVisualStyleBackColor = false;
+            btn_itAdmin_Dashboard.Click += btn_itAdmin_Dashboard_Click;
             // 
             // ucItAdmin_manageStaff1
             // 
@@ -186,6 +188,7 @@
             Name = "itAdmin_Dashboard";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "itAdmin_Dashboard";
+            Load += itAdmin_Dashboard_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

@@ -12,12 +12,12 @@ namespace Updated_Information_System_3
     {
         private ucProfilePage ucProfile;
 
-        private ucVerifierDashboard ucSchoolClerk;
+        private ucVerifierDashboard ucDashboard;
         public systemAdmin_Dashboard()
         {
             InitializeComponent();
             ucProfile = UTILITY_CLASS.addUserControl<ucProfilePage>(this, panel1);
-            ucSchoolClerk = UTILITY_CLASS.addUserControl<ucVerifierDashboard>(this, panel1);
+            ucDashboard = UTILITY_CLASS.addUserControl<ucVerifierDashboard>(this, panel1);
         }
 
         private void btn_highSchools_systemAdmin_Click(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace Updated_Information_System_3
 
         private void systemAdmin_Dashboard_Load(object sender, EventArgs e)
         {
-          
+            UTILITY_CLASS.openUserControl(ucDashboard, this);
 
         }
 
@@ -54,7 +54,7 @@ namespace Updated_Information_System_3
 
         private void btn_systemAdmin_Dashboard_Click(object sender, EventArgs e)
         {
-            UTILITY_CLASS.openUserControl(ucSchoolClerk, this);
+            UTILITY_CLASS.openUserControl(ucDashboard, this);
         }
     }
 }

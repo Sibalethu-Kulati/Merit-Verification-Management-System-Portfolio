@@ -132,10 +132,19 @@ namespace Updated_Information_System_3
                                 case "VERIFIER_REPRESENTATIVE":
                                     verifierRepresentative_Dashboard verifierDashboard =
                                         new verifierRepresentative_Dashboard();
-
                                     verifierDashboard.Show();
                                     break;
 
+                                case "SYSTEM_ADMIN":
+                                    systemAdmin_Dashboard systemDashboard = new systemAdmin_Dashboard();
+                                    systemDashboard.Show();
+                                    break;
+
+                                case "SCHOOL_IT_ADMIN":
+                                case "ORG_IT_ADMIN":
+                                    itAdmin_Dashboard itAdminDashboard = new itAdmin_Dashboard();
+                                    itAdminDashboard.Show();
+                                    break;
                                 default:
                                     MessageBox.Show(
                                         "Your account does not have a valid application role.",
@@ -175,10 +184,6 @@ namespace Updated_Information_System_3
 
         private void btnSchool_Click(object sender, EventArgs e)
         {
-            /* S.Kulati
-            schoolClerk_Dashboard schoolClerkDashboard = new schoolClerk_Dashboard();
-            this.Hide();
-            schoolClerkDashboard.Show();*/
 
         }
 
@@ -189,9 +194,7 @@ namespace Updated_Information_System_3
 
         private void btnStudent_login_Click(object sender, EventArgs e)
         {
-            /*StudentDashboard stuDAsh = new StudentDashboard();
-            this.Hide();
-            stuDAsh.Show();*/
+           
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -203,9 +206,7 @@ namespace Updated_Information_System_3
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            systemAdmin_Dashboard mojo = new systemAdmin_Dashboard();
-            mojo.Show();
+        {   
         }
 
         private void lnkRequestAccess_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -215,9 +216,7 @@ namespace Updated_Information_System_3
 
         private void btn_ITadminLogin_Click(object sender, EventArgs e)
         {
-            // UTILITY_CLASS.openForm(itAdmin_Dashboard, this);
-            itAdmin_Dashboard ekse = new itAdmin_Dashboard();
-            ekse.Show();
+
         }
     }
 }

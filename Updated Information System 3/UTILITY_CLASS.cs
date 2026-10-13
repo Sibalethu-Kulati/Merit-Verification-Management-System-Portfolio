@@ -1,5 +1,4 @@
-﻿#nullable disable
-using Final_Attempt;
+﻿using Final_Attempt;
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;

@@ -135,7 +135,10 @@ namespace Updated_Information_System_3
 
                                     verifierDashboard.Show();
                                     break;
-
+                                case "SYSTEM_ADMIN":
+                                    systemAdmin_Dashboard sDashboard = new systemAdmin_Dashboard();
+                                    sDashboard.Show();
+                                    break;
                                 default:
                                     MessageBox.Show(
                                         "Your account does not have a valid application role.",
@@ -175,10 +178,7 @@ namespace Updated_Information_System_3
 
         private void btnSchool_Click(object sender, EventArgs e)
         {
-            /* S.Kulati
-            schoolClerk_Dashboard schoolClerkDashboard = new schoolClerk_Dashboard();
-            this.Hide();
-            schoolClerkDashboard.Show();*/
+            
 
         }
 
@@ -189,9 +189,7 @@ namespace Updated_Information_System_3
 
         private void btnStudent_login_Click(object sender, EventArgs e)
         {
-            /*StudentDashboard stuDAsh = new StudentDashboard();
-            this.Hide();
-            stuDAsh.Show();*/
+           
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -204,8 +202,8 @@ namespace Updated_Information_System_3
 
         private void button1_Click(object sender, EventArgs e)
         {
-            systemAdmin_Dashboard mojo = new systemAdmin_Dashboard();
-            mojo.Show();
+            systemAdmin_Dashboard sDashboard = new systemAdmin_Dashboard();
+            //mojo.Show();
         }
 
         private void lnkRequestAccess_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

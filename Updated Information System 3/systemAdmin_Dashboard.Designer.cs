@@ -196,6 +196,7 @@
         private Button btn_systemAdmin_Dashboard;
         private Button btn_requests_systemAdmin;
         private ucHighSchools_SystemAdmin ucHighSchools_SystemAdmin1;
+        private ucVerifyingOrgRequests ucVerifyingOrgRequests;
         private ucRequests_systemAdmin ucRequests_systemAdmin1;
         private Button btnOrgRequests;
     }

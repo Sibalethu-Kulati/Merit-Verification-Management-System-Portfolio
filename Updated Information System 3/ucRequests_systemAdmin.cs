@@ -24,7 +24,7 @@ namespace Updated_Information_System_3
         private void btn_viewRequest_systemAdmin_Click(object sender, EventArgs e)
         {
 
-            
+
             {
                 // 1. Check if a row is selected
                 if (dgvRequests.CurrentRow == null)
@@ -84,7 +84,7 @@ namespace Updated_Information_System_3
                 {
                     DialogResult result = detailsForm.ShowDialog(this);
 
-                    
+
                     if (result == DialogResult.Yes || result == DialogResult.No)
                     {
                         ApplicationDatabase.RefreshHigh_SchoolGridData(dgvRequests);
@@ -92,11 +92,21 @@ namespace Updated_Information_System_3
                 }
             }
         }
-            
+
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ApplicationDatabase.RefreshHigh_SchoolGridData(dgvRequests);
         }
     }
 }

@@ -49,7 +49,7 @@ namespace Updated_Information_System_3
             {
                 bool updated = ApplicationDatabase.UpdateApplicationStatus(
                     _applicationId,
-                    true,
+                    _isHighSchool,
                     "REJECTED",
                     UserSession.PersonId);
 
@@ -81,7 +81,7 @@ namespace Updated_Information_System_3
                     MessageBoxIcon.Error);
             }
         }
-        private void ApproveRequest()
+        private async void ApproveRequest()
         {
             if (!_canReview)
             {
@@ -109,12 +109,47 @@ namespace Updated_Information_System_3
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) != DialogResult.Yes)
                 return;
+            try
+            {
+                var result = DatabaseApproval.ApproveApplication(
+                    _applicationId, _isHighSchool, UserSession.PersonId);
+
+                 string note;
+                try
+                {
+                    await EmailSender.SendLoginDetailsAsync(
+                        result.AdminEmail, result.AdminName,
+                        result.InstitutionName, result.TempPassword);
+
+                    note = "Approved. Login details were emailed to " + result.AdminEmail + ".";
+                }
+                catch (Exception mailEx)
+                {
+                    note = "Approved, but the email could not be sent:\n" + mailEx.Message +
+                           "\n\nGive these details to the IT admin yourself:\n" +
+                           "Email: " + result.AdminEmail + "\n" +
+                           "Password: " + result.TempPassword;
+                }
+
+                MessageBox.Show(note, "Done");
+            }
+            catch (ApprovalException ex)
+            {
+                MessageBox.Show(ex.Message, "Cannot approve",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error approving request: " + ex.Message,
+                    "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return; // temporary: stops the real approval from running
 
             try
             {
                 bool updated = ApplicationDatabase.UpdateApplicationStatus(
                     _applicationId,
-                    true,
+                    _isHighSchool,
                     "APPROVED",
                     UserSession.PersonId);
 
@@ -152,6 +187,7 @@ namespace Updated_Information_System_3
 
         private readonly bool _canReview;
         private readonly int _applicationId;
+        private readonly bool _isHighSchool;
         public viewRequest_SystemAdmin(
             int applicationId = 0,string emis = "",string name = "",string email = "",string telephone = "",
             string address = "",string province = "",string organizationType = "",string recipientName = "",
@@ -159,7 +195,10 @@ namespace Updated_Information_System_3
             
         {
             InitializeComponent();
+
             _applicationId = applicationId;
+            _isHighSchool = organizationType == "High School";
+
 
             _status = (status ?? "PENDING").ToUpper();
             _canReview = _status == "PENDING";

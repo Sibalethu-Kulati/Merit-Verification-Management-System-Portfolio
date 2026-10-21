@@ -37,6 +37,7 @@ namespace Updated_Information_System_3
                             P.FIRST_NAME,
                             P.LAST_NAME,
                             P.EMAIL,
+                            P.PASSWORD_HASH,
                             CASE
                                 WHEN EXISTS (
                                     SELECT 1
@@ -86,8 +87,7 @@ namespace Updated_Information_System_3
                         FROM PERSONS P
 
                         WHERE P.EMAIL = @Email
-                          AND P.PASSWORD_HASH = @Password
-                          AND P.ACCOUNT_STATUS = 'ACTIVE'
+                        AND P.ACCOUNT_STATUS = 'ACTIVE'
                         ";
 
             try
@@ -96,13 +96,14 @@ namespace Updated_Information_System_3
                 using (var command = new Microsoft.Data.SqlClient.SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Email", email);
-                    command.Parameters.AddWithValue("@Password", password);
+                    
 
                     connection.Open();
 
                     using (var reader = command.ExecuteReader())
                     {
-                        if (reader.Read())
+                        if (reader.Read() && PasswordClass.Verify(password, reader["PASSWORD_HASH"].ToString()))
+    
                         {
                             UserSession.PersonId = Convert.ToInt32(reader["PERSON_ID"]);
                             UserSession.FirstName = reader["FIRST_NAME"].ToString();
@@ -177,6 +178,8 @@ namespace Updated_Information_System_3
                     MessageBoxIcon.Error);
             }
         }
+
+
 
         private void sign_in_Load(object sender, EventArgs e)
         {

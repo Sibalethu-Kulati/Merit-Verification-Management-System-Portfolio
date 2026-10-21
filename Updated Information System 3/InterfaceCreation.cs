@@ -275,6 +275,19 @@ namespace Updated_Information_System_3
 
             next.Click += (s, e) =>
             {
+                if (index == 0 && !Validations.IsValidEmail(email.Text))
+                {
+                    MessageBox.Show("Please enter a valid organization email address.",
+                        "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (index == 1 && !Validations.IsValidEmail(rEmail.Text))
+                {
+                    MessageBox.Show("Please enter a valid email address for the IT admin.",
+                        "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (index < 2)
                 {
                     ShowPage(index + 1);
@@ -285,24 +298,10 @@ namespace Updated_Information_System_3
 
                 try
                 {
-                    bool saved = ApplicationDatabase.SaveAccessRequest(
-                        isHighSchool,
-                        institutionId.Text,
-                        name.Text,
-                        email.Text,
-                        tel.Text,
-                        streetNumber.Text,
-                        streetName.Text,
-                        suburb.Text,
-                        city.Text,
-                        province.Text,
-                        postalCode.Text,
-                        rName.Text,
-                        rSurname.Text,
-                        rGender.Text,
-                        rEmail.Text,
-                        rPhone.Text,
-                        staffNumber.Text);
+                    bool saved = ApplicationDatabase.SaveAccessRequest(isHighSchool,institutionId.Text,name.Text,
+                        email.Text,tel.Text,streetNumber.Text,streetName.Text,suburb.Text,city.Text,province.Text,
+                        postalCode.Text,rName.Text,rSurname.Text,rGender.Text,rEmail.Text,rPhone.Text, staffNumber.Text);
+                        
 
                     if (saved)
                     {

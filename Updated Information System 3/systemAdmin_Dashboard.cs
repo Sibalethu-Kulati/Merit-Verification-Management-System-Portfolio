@@ -13,11 +13,14 @@ namespace Updated_Information_System_3
         private ucProfilePage ucProfile;
 
         private ucVerifierDashboard ucDashboard;
+
+        private ucVerifyingOrgRequests ucOrgRequests;
         public systemAdmin_Dashboard()
         {
             InitializeComponent();
             ucProfile = NavigationClass.addUserControl<ucProfilePage>(this, panel1);
             ucDashboard = NavigationClass.addUserControl<ucVerifierDashboard>(this, panel1);
+            ucOrgRequests = NavigationClass.addUserControl<ucVerifyingOrgRequests>(this, panel1);
         }
 
         private void btn_highSchools_systemAdmin_Click(object sender, EventArgs e)
@@ -53,7 +56,7 @@ namespace Updated_Information_System_3
 
         private void btnOrgRequests_Click(object sender, EventArgs e)
         {
-            //NavigationClass.RefreshOrgGridData()
+            NavigationClass.openUserControl(ucOrgRequests, this);
         }
 
         private void ucRequests_systemAdmin1_Load(object sender, EventArgs e)

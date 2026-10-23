@@ -80,6 +80,40 @@ namespace Updated_Information_System_3
                     MessageBoxIcon.Error);
             }
         }
+        internal static DataTable GetInstitutions(bool isHighSchool)
+        {
+            string table = isHighSchool ? "HIGH_SCHOOL" : "VERIFYING_ORGANIZATION";
+            string idCol = isHighSchool ? "HIGH_SCHOOL_ID" : "ORG_ID";
+            string codeCol = isHighSchool ? "EMIS_NO" : "PROVIDER_CODE";
+            string nameCol = isHighSchool ? "SCHOOL_NAME" : "ORG_NAME";
+
+            string sql = $@"
+                SELECT I.{idCol}   AS InstitutionId,
+                       I.{codeCol} AS Code,
+                       I.{nameCol} AS Name,
+                       I.EMAIL     AS Email,
+                       I.PHONE     AS Phone,
+                       CONCAT_WS(', ',
+                           A.STREET_NUMBER + ' ' + A.STREET_NAME,
+                           A.SUBURB,
+                           C.CITY_NAME,
+                           C.PROVINCE,
+                           A.POSTAL_CODE) AS Address
+                FROM {table} I
+                JOIN ADDRESS A ON A.ADDRESS_ID = I.ADDRESS_ID
+                JOIN CITY C    ON C.CITY_ID = A.CITY_ID
+                ORDER BY I.{nameCol}";
+
+            var dt = new DataTable();
+
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (var adapter = new SqlDataAdapter(sql, conn))
+            {
+                adapter.Fill(dt);
+            }
+
+            return dt;
+        }
 
         public static bool UpdateApplicationStatus(int applicationId, bool isHighSchool, string status, int reviewerPersonId)
         {
@@ -196,6 +230,11 @@ namespace Updated_Information_System_3
                 connection.Open();
                 return command.ExecuteNonQuery() == 1;
             }
+        }
+
+        public static void AddUser()
+        {
+
         }
     }
 }

@@ -92,7 +92,7 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(114, 17);
             label6.Name = "label6";
-            label6.Size = new Size(349, 41);
+            label6.Size = new Size(415, 48);
             label6.TabIndex = 0;
             label6.Text = "List Of All High Schools";
             // 
@@ -139,7 +139,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(547, 138);
             label2.Name = "label2";
-            label2.Size = new Size(91, 25);
+            label2.Size = new Size(109, 30);
             label2.TabIndex = 40;
             label2.Text = "Search By";
             // 
@@ -229,6 +229,7 @@
             Controls.Add(panel2);
             Name = "ucHighSchools_SystemAdmin";
             Size = new Size(960, 691);
+            Load += ucHighSchools_SystemAdmin_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

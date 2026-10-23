@@ -19,5 +19,10 @@ namespace Updated_Information_System_3
         {
             new SchoolRegistration_wizard().ShowDialog();
         }
+
+        private void ucHighSchools_SystemAdmin_Load(object sender, EventArgs e)
+        {
+            ApplicationDatabase.GetInstitutions(true);
+        }
     }
 }

@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(systemAdmin_Dashboard));
             panel1 = new Panel();
+            btnVerifiers = new Button();
             btnOrgRequests = new Button();
             btn_requests_systemAdmin = new Button();
-            pictureBox1 = new PictureBox();
             btn_systemAdmin_LogOut = new Button();
             btn_highSchools_systemAdmin = new Button();
             btn_systemAdmin_Profile = new Button();
@@ -40,15 +39,14 @@
             ucHighSchools_SystemAdmin1 = new ucHighSchools_SystemAdmin();
             ucRequests_systemAdmin1 = new ucRequests_systemAdmin();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 64, 64);
+            panel1.Controls.Add(btnVerifiers);
             panel1.Controls.Add(btnOrgRequests);
             panel1.Controls.Add(btn_requests_systemAdmin);
-            panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btn_systemAdmin_LogOut);
             panel1.Controls.Add(btn_highSchools_systemAdmin);
             panel1.Controls.Add(btn_systemAdmin_Profile);
@@ -59,17 +57,31 @@
             panel1.Size = new Size(270, 691);
             panel1.TabIndex = 2;
             // 
+            // btnVerifiers
+            // 
+            btnVerifiers.BackColor = Color.FromArgb(0, 64, 64);
+            btnVerifiers.FlatStyle = FlatStyle.Flat;
+            btnVerifiers.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnVerifiers.ForeColor = Color.White;
+            btnVerifiers.Location = new Point(21, 255);
+            btnVerifiers.Name = "btnVerifiers";
+            btnVerifiers.Size = new Size(229, 73);
+            btnVerifiers.TabIndex = 7;
+            btnVerifiers.Text = "VERIFYING ORGANIZATIONS";
+            btnVerifiers.UseVisualStyleBackColor = false;
+            btnVerifiers.Click += btnVerifiers_Click;
+            // 
             // btnOrgRequests
             // 
             btnOrgRequests.BackColor = Color.FromArgb(0, 64, 64);
             btnOrgRequests.FlatStyle = FlatStyle.Flat;
             btnOrgRequests.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnOrgRequests.ForeColor = Color.White;
-            btnOrgRequests.Location = new Point(21, 484);
+            btnOrgRequests.Location = new Point(21, 416);
             btnOrgRequests.Name = "btnOrgRequests";
-            btnOrgRequests.Size = new Size(229, 60);
+            btnOrgRequests.Size = new Size(229, 69);
             btnOrgRequests.TabIndex = 6;
-            btnOrgRequests.Text = "ORG REQUESTS";
+            btnOrgRequests.Text = "ORGANIZATION REQUESTS";
             btnOrgRequests.UseVisualStyleBackColor = false;
             btnOrgRequests.Click += btnOrgRequests_Click;
             // 
@@ -79,24 +91,13 @@
             btn_requests_systemAdmin.FlatStyle = FlatStyle.Flat;
             btn_requests_systemAdmin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_requests_systemAdmin.ForeColor = Color.White;
-            btn_requests_systemAdmin.Location = new Point(21, 418);
+            btn_requests_systemAdmin.Location = new Point(21, 334);
             btn_requests_systemAdmin.Name = "btn_requests_systemAdmin";
-            btn_requests_systemAdmin.Size = new Size(229, 60);
+            btn_requests_systemAdmin.Size = new Size(229, 76);
             btn_requests_systemAdmin.TabIndex = 5;
-            btn_requests_systemAdmin.Text = "Requests";
+            btn_requests_systemAdmin.Text = "HIGH SCHOOL REQUESTS";
             btn_requests_systemAdmin.UseVisualStyleBackColor = false;
             btn_requests_systemAdmin.Click += btn_requests_systemAdmin_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.BorderStyle = BorderStyle.Fixed3D;
-            pictureBox1.Location = new Point(21, 12);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(229, 127);
-            pictureBox1.TabIndex = 4;
-            pictureBox1.TabStop = false;
             // 
             // btn_systemAdmin_LogOut
             // 
@@ -118,7 +119,7 @@
             btn_highSchools_systemAdmin.FlatStyle = FlatStyle.Flat;
             btn_highSchools_systemAdmin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_highSchools_systemAdmin.ForeColor = Color.White;
-            btn_highSchools_systemAdmin.Location = new Point(21, 336);
+            btn_highSchools_systemAdmin.Location = new Point(21, 189);
             btn_highSchools_systemAdmin.Name = "btn_highSchools_systemAdmin";
             btn_highSchools_systemAdmin.Size = new Size(229, 60);
             btn_highSchools_systemAdmin.TabIndex = 2;
@@ -132,7 +133,7 @@
             btn_systemAdmin_Profile.FlatStyle = FlatStyle.Flat;
             btn_systemAdmin_Profile.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_systemAdmin_Profile.ForeColor = Color.White;
-            btn_systemAdmin_Profile.Location = new Point(21, 255);
+            btn_systemAdmin_Profile.Location = new Point(21, 123);
             btn_systemAdmin_Profile.Name = "btn_systemAdmin_Profile";
             btn_systemAdmin_Profile.Size = new Size(229, 60);
             btn_systemAdmin_Profile.TabIndex = 1;
@@ -146,7 +147,7 @@
             btn_systemAdmin_Dashboard.FlatStyle = FlatStyle.Flat;
             btn_systemAdmin_Dashboard.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_systemAdmin_Dashboard.ForeColor = Color.White;
-            btn_systemAdmin_Dashboard.Location = new Point(21, 167);
+            btn_systemAdmin_Dashboard.Location = new Point(21, 48);
             btn_systemAdmin_Dashboard.Name = "btn_systemAdmin_Dashboard";
             btn_systemAdmin_Dashboard.Size = new Size(229, 60);
             btn_systemAdmin_Dashboard.TabIndex = 0;
@@ -182,14 +183,12 @@
             Text = "systemAdmin_Dashboard";
             Load += systemAdmin_Dashboard_Load;
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private PictureBox pictureBox1;
         private Button btn_systemAdmin_LogOut;
         private Button btn_highSchools_systemAdmin;
         private Button btn_systemAdmin_Profile;
@@ -199,5 +198,6 @@
         private ucVerifyingOrgRequests ucVerifyingOrgRequests;
         private ucRequests_systemAdmin ucRequests_systemAdmin1;
         private Button btnOrgRequests;
+        private Button btnVerifiers;
     }
 }

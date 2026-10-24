@@ -23,6 +23,7 @@ namespace Updated_Information_System_3
         private void ucHighSchools_SystemAdmin_Load(object sender, EventArgs e)
         {
             ApplicationDatabase.GetInstitutions(true);
+            ApplicationDatabase.LoadHighSchools(dgvHighSchools);
         }
     }
 }

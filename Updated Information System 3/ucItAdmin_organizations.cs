@@ -14,5 +14,10 @@ namespace Updated_Information_System_3
         {
             InitializeComponent();
         }
+
+        private void ucItAdmin_organizations_Load(object sender, EventArgs e)
+        {
+            ApplicationDatabase.RefreshOrgGridData(dataGridView1);
+        }
     }
 }

@@ -38,11 +38,6 @@
             pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
             label6 = new Label();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -56,7 +51,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(542, 142);
             label2.Name = "label2";
-            label2.Size = new Size(91, 25);
+            label2.Size = new Size(109, 30);
             label2.TabIndex = 38;
             label2.Text = "Search By";
             // 
@@ -90,7 +85,6 @@
             // 
             dataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column5, Column4 });
             dataGridView1.Location = new Point(25, 66);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
@@ -136,44 +130,9 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(101, 15);
             label6.Name = "label6";
-            label6.Size = new Size(500, 41);
+            label6.Size = new Size(591, 48);
             label6.TabIndex = 0;
             label6.Text = "List Of All Verifying Organizations";
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Organization Name";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 210;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Email Address";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 170;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Telephone";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 125;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Address";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 190;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Province";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 140;
             // 
             // ucItAdmin_organizations
             // 
@@ -186,6 +145,7 @@
             Controls.Add(panel2);
             Name = "ucItAdmin_organizations";
             Size = new Size(960, 691);
+            Load += ucItAdmin_organizations_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
@@ -207,10 +167,5 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
         private Label label6;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column4;
     }
 }

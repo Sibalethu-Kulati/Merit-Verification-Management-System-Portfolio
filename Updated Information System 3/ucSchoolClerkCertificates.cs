@@ -10,6 +10,7 @@ namespace Updated_Information_System_3
 {
     public partial class ucSchoolClerkCertificates : UserControl
     {
+        
         public ucSchoolClerkCertificates()
         {
             InitializeComponent();

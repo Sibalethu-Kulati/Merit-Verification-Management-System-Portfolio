@@ -39,6 +39,45 @@ namespace Updated_Information_System_3
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        public bool AddLearnerToRegister(string saIdNumber, string firstName, string lastName,
+                                 string grade, int highSchoolId, out string message)
+        {
+            message = "";
+
+
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                conn.Open();
+
+                // Stop duplicates: same SA ID already in the register
+                string checkSql = "SELECT COUNT(*) FROM LEARNER_REGISTER WHERE SA_ID_NUMBER = @id";
+                using (SqlCommand check = new SqlCommand(checkSql, conn))
+                {
+                    check.Parameters.AddWithValue("@id", saIdNumber);
+                    if ((int)check.ExecuteScalar() > 0)
+                    {
+                        message = "A learner with this SA ID number is already in the register.";
+                        return false;
+                    }
+                }
+
+                string insertSql = @"INSERT INTO LEARNER_REGISTER
+                             (SA_ID_NUMBER, FIRST_NAME, LAST_NAME, GRADE, HIGH_SCHOOL_ID)
+                             VALUES (@id, @first, @last, @grade, @school)";
+                using (SqlCommand cmd = new SqlCommand(insertSql, conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", saIdNumber);
+                    cmd.Parameters.AddWithValue("@first", firstName);
+                    cmd.Parameters.AddWithValue("@last", lastName);
+                    cmd.Parameters.AddWithValue("@grade", grade);
+                    cmd.Parameters.AddWithValue("@school", highSchoolId);
+                    cmd.ExecuteNonQuery();
+                }
+
+                message = "Learner added to the register.";
+                return true;
+            }
+        }
         public static void RefreshOrgGridData(DataGridView dgvRequests)
         {
             string query =

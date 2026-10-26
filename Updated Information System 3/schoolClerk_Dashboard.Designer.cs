@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(schoolClerk_Dashboard));
             panel1 = new Panel();
+            button1 = new Button();
             pictureBox1 = new PictureBox();
             btn_schoolClerk_LogOut = new Button();
             btn_certificates_schoolClerk = new Button();
@@ -47,6 +48,7 @@
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(0, 64, 64);
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btn_schoolClerk_LogOut);
             panel1.Controls.Add(btn_certificates_schoolClerk);
@@ -58,6 +60,20 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(270, 691);
             panel1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            button1.BackColor = Color.FromArgb(0, 64, 64);
+            button1.FlatStyle = FlatStyle.Flat;
+            button1.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(21, 493);
+            button1.Name = "button1";
+            button1.Size = new Size(229, 71);
+            button1.TabIndex = 5;
+            button1.Text = "ADD CERTIFICATES";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
             // pictureBox1
             // 
@@ -104,7 +120,7 @@
             btn_learners_schoolClerk.FlatStyle = FlatStyle.Flat;
             btn_learners_schoolClerk.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_learners_schoolClerk.ForeColor = Color.White;
-            btn_learners_schoolClerk.Location = new Point(21, 332);
+            btn_learners_schoolClerk.Location = new Point(21, 336);
             btn_learners_schoolClerk.Name = "btn_learners_schoolClerk";
             btn_learners_schoolClerk.Size = new Size(229, 60);
             btn_learners_schoolClerk.TabIndex = 2;
@@ -169,6 +185,7 @@
             ucSchoolClerkCertificates1.Name = "ucSchoolClerkCertificates1";
             ucSchoolClerkCertificates1.Size = new Size(1200, 864);
             ucSchoolClerkCertificates1.TabIndex = 5;
+            ucSchoolClerkCertificates1.Load += ucSchoolClerkCertificates1_Load;
             // 
             // schoolClerk_Dashboard
             // 
@@ -202,5 +219,6 @@
         private ucSchoolClerkProfile ucSchoolClerkProfile1;
         private ucSchoolClerkLearners ucSchoolClerkLearners1;
         private ucSchoolClerkCertificates ucSchoolClerkCertificates1;
+        private Button button1;
     }
 }

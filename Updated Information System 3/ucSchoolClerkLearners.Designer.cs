@@ -30,9 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSchoolClerkLearners));
             panel2 = new Panel();
+            pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
             label6 = new Label();
-            pictureBox1 = new PictureBox();
             label2 = new Label();
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
@@ -47,8 +47,8 @@
             button1 = new Button();
             button2 = new Button();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -64,6 +64,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(892, 77);
             panel2.TabIndex = 21;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(12, 1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(78, 69);
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
             // 
             // pictureBox3
             // 
@@ -82,19 +92,9 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(112, 17);
             label6.Name = "label6";
-            label6.Size = new Size(283, 41);
+            label6.Size = new Size(335, 48);
             label6.TabIndex = 0;
             label6.Text = "List Of All Learners";
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(12, 1);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(78, 69);
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
             // 
             // label2
             // 
@@ -102,7 +102,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(541, 140);
             label2.Name = "label2";
-            label2.Size = new Size(91, 25);
+            label2.Size = new Size(109, 30);
             label2.TabIndex = 25;
             label2.Text = "Search By";
             // 
@@ -189,6 +189,7 @@
             btnSave.TabIndex = 26;
             btnSave.Text = "Add Student";
             btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // button1
             // 
@@ -230,8 +231,8 @@
             Size = new Size(960, 691);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

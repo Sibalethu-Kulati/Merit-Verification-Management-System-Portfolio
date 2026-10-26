@@ -143,9 +143,13 @@ namespace Updated_Information_System_3
                                     break;
 
                                 case "SCHOOL_IT_ADMIN":
-                                case "ORG_IT_ADMIN":
+                                
                                     itAdmin_Dashboard itAdminDashboard = new itAdmin_Dashboard();
                                     itAdminDashboard.Show();
+                                    break;
+                                case "ORG_IT_ADMIN":
+                                    itAdminVerifyingOrganisation admin = new itAdminVerifyingOrganisation();
+                                    admin.Show();
                                     break;
                                 default:
                                     MessageBox.Show(

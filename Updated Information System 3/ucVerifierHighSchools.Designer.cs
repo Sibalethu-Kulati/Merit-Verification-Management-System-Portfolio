@@ -40,8 +40,8 @@
             phone = new DataGridViewTextBoxColumn();
             address = new DataGridViewTextBoxColumn();
             groupBox1 = new GroupBox();
-            textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
+            txtSearchBy = new TextBox();
+            cboSearchBy = new ComboBox();
             label2 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -79,7 +79,7 @@
             label1.ForeColor = Color.FromArgb(0, 64, 64);
             label1.Location = new Point(94, 16);
             label1.Name = "label1";
-            label1.Size = new Size(409, 48);
+            label1.Size = new Size(344, 41);
             label1.TabIndex = 1;
             label1.Text = "List of All High Schools";
             // 
@@ -152,20 +152,22 @@
             groupBox1.Text = "List Of All High Schools";
             groupBox1.Enter += groupBox1_Enter;
             // 
-            // textBox1
+            // txtSearchBy
             // 
-            textBox1.Location = new Point(38, 141);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(462, 31);
-            textBox1.TabIndex = 9;
+            txtSearchBy.Location = new Point(38, 141);
+            txtSearchBy.Name = "txtSearchBy";
+            txtSearchBy.Size = new Size(462, 31);
+            txtSearchBy.TabIndex = 9;
+            txtSearchBy.TextChanged += txtSearchBy_TextChanged;
             // 
-            // comboBox1
+            // cboSearchBy
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(657, 141);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(273, 33);
-            comboBox1.TabIndex = 10;
+            cboSearchBy.FormattingEnabled = true;
+            cboSearchBy.Location = new Point(657, 141);
+            cboSearchBy.Name = "cboSearchBy";
+            cboSearchBy.Size = new Size(273, 33);
+            cboSearchBy.TabIndex = 10;
+            cboSearchBy.SelectedIndexChanged += cboSearchBy_SelectedIndexChanged;
             // 
             // label2
             // 
@@ -173,7 +175,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(550, 144);
             label2.Name = "label2";
-            label2.Size = new Size(109, 30);
+            label2.Size = new Size(91, 25);
             label2.TabIndex = 11;
             label2.Text = "Search By";
             // 
@@ -183,8 +185,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BorderStyle = BorderStyle.Fixed3D;
             Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox1);
+            Controls.Add(cboSearchBy);
+            Controls.Add(txtSearchBy);
             Controls.Add(groupBox1);
             Controls.Add(panel1);
             Name = "ucVerifierHighSchools";
@@ -208,8 +210,8 @@
         private PictureBox pictureBox3;
         private DataGridView dgvHighSchools;
         private GroupBox groupBox1;
-        private TextBox textBox1;
-        private ComboBox comboBox1;
+        private TextBox txtSearchBy;
+        private ComboBox cboSearchBy;
         private Label label2;
         private DataGridViewTextBoxColumn EmisNo;
         private DataGridViewTextBoxColumn highSchool;

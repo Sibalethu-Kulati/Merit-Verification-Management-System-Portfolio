@@ -36,8 +36,8 @@
             pictureBox3 = new PictureBox();
             label6 = new Label();
             label2 = new Label();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
+            cboSearchBy3 = new ComboBox();
+            txtSearchBy3 = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvOrganizations).BeginInit();
             panel2.SuspendLayout();
@@ -119,28 +119,30 @@
             label2.TabIndex = 57;
             label2.Text = "Search By";
             // 
-            // comboBox1
+            // cboSearchBy3
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(642, 139);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(273, 33);
-            comboBox1.TabIndex = 56;
+            cboSearchBy3.FormattingEnabled = true;
+            cboSearchBy3.Location = new Point(642, 139);
+            cboSearchBy3.Name = "cboSearchBy3";
+            cboSearchBy3.Size = new Size(273, 33);
+            cboSearchBy3.TabIndex = 56;
+            cboSearchBy3.SelectedIndexChanged += cboSearchBy3_SelectedIndexChanged;
             // 
-            // textBox1
+            // txtSearchBy3
             // 
-            textBox1.Location = new Point(23, 139);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(462, 31);
-            textBox1.TabIndex = 55;
+            txtSearchBy3.Location = new Point(23, 139);
+            txtSearchBy3.Name = "txtSearchBy3";
+            txtSearchBy3.Size = new Size(462, 31);
+            txtSearchBy3.TabIndex = 55;
+            txtSearchBy3.TextChanged += txtSearchBy3_TextChanged;
             // 
             // ucVerifyingOrgsList
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox1);
+            Controls.Add(cboSearchBy3);
+            Controls.Add(txtSearchBy3);
             Controls.Add(groupBox1);
             Controls.Add(panel2);
             Name = "ucVerifyingOrgsList";
@@ -165,7 +167,7 @@
         private PictureBox pictureBox3;
         private Label label6;
         private Label label2;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
+        private ComboBox cboSearchBy3;
+        private TextBox txtSearchBy3;
     }
 }

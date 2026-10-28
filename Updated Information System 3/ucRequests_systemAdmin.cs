@@ -18,6 +18,9 @@ namespace Updated_Information_System_3
 
         private void ucRequests_systemAdmin_Load(object sender, EventArgs e)
         {
+            cboSearchBy4.Items.Add("Organization Name");
+            cboSearchBy4.Items.Add("EMIS Number");
+            cboSearchBy4.SelectedIndex = 0;
             ApplicationDatabase.RefreshHigh_SchoolGridData(dgvRequests);
         }
 
@@ -107,6 +110,16 @@ namespace Updated_Information_System_3
         private void button2_Click(object sender, EventArgs e)
         {
             ApplicationDatabase.RefreshHigh_SchoolGridData(dgvRequests);
+        }
+
+        private void cboSearchBy4_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplicationDatabase.SearchHighSchoolRequests(dgvRequests, cboSearchBy4.Text, txtSearchBy4.Text);
+        }
+
+        private void txtSearchBy4_TextChanged(object sender, EventArgs e)
+        {
+            ApplicationDatabase.SearchHighSchoolRequests(dgvRequests, cboSearchBy4.Text, txtSearchBy4.Text);
         }
     }
 }

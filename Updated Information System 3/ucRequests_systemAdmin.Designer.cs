@@ -37,8 +37,8 @@
             pictureBox3 = new PictureBox();
             label6 = new Label();
             label2 = new Label();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
+            cboSearchBy4 = new ComboBox();
+            txtSearchBy4 = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRequests).BeginInit();
             panel2.SuspendLayout();
@@ -51,7 +51,7 @@
             btn_viewRequest_systemAdmin.BackColor = Color.FromArgb(0, 64, 64);
             btn_viewRequest_systemAdmin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_viewRequest_systemAdmin.ForeColor = SystemColors.Window;
-            btn_viewRequest_systemAdmin.Location = new Point(61, 602);
+            btn_viewRequest_systemAdmin.Location = new Point(35, 591);
             btn_viewRequest_systemAdmin.Name = "btn_viewRequest_systemAdmin";
             btn_viewRequest_systemAdmin.Size = new Size(257, 59);
             btn_viewRequest_systemAdmin.TabIndex = 49;
@@ -74,7 +74,7 @@
             // 
             dgvRequests.BackgroundColor = SystemColors.Control;
             dgvRequests.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRequests.GridColor = SystemColors.Control;
+            dgvRequests.GridColor = SystemColors.ActiveCaptionText;
             dgvRequests.Location = new Point(26, 66);
             dgvRequests.Name = "dgvRequests";
             dgvRequests.ReadOnly = true;
@@ -136,28 +136,30 @@
             label2.TabIndex = 54;
             label2.Text = "Search By";
             // 
-            // comboBox1
+            // cboSearchBy4
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(654, 150);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(273, 33);
-            comboBox1.TabIndex = 53;
+            cboSearchBy4.FormattingEnabled = true;
+            cboSearchBy4.Location = new Point(654, 150);
+            cboSearchBy4.Name = "cboSearchBy4";
+            cboSearchBy4.Size = new Size(273, 33);
+            cboSearchBy4.TabIndex = 53;
+            cboSearchBy4.SelectedIndexChanged += cboSearchBy4_SelectedIndexChanged;
             // 
-            // textBox1
+            // txtSearchBy4
             // 
-            textBox1.Location = new Point(35, 150);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(462, 31);
-            textBox1.TabIndex = 52;
+            txtSearchBy4.Location = new Point(35, 150);
+            txtSearchBy4.Name = "txtSearchBy4";
+            txtSearchBy4.Size = new Size(462, 31);
+            txtSearchBy4.TabIndex = 52;
+            txtSearchBy4.TextChanged += txtSearchBy4_TextChanged;
             // 
             // ucRequests_systemAdmin
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox1);
+            Controls.Add(cboSearchBy4);
+            Controls.Add(txtSearchBy4);
             Controls.Add(btn_viewRequest_systemAdmin);
             Controls.Add(groupBox1);
             Controls.Add(panel2);
@@ -183,7 +185,7 @@
         private Label label6;
         private DataGridView dgvRequests;
         private Label label2;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
+        private ComboBox cboSearchBy4;
+        private TextBox txtSearchBy4;
     }
 }

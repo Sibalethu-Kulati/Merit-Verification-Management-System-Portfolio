@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucItAdmin_organizations));
             label2 = new Label();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
+            cboSearchBy1 = new ComboBox();
+            txtSearchBy1 = new TextBox();
             groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
             panel2 = new Panel();
@@ -51,24 +51,26 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(542, 142);
             label2.Name = "label2";
-            label2.Size = new Size(109, 30);
+            label2.Size = new Size(91, 25);
             label2.TabIndex = 38;
             label2.Text = "Search By";
             // 
-            // comboBox1
+            // cboSearchBy1
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(649, 139);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(273, 33);
-            comboBox1.TabIndex = 37;
+            cboSearchBy1.FormattingEnabled = true;
+            cboSearchBy1.Location = new Point(649, 139);
+            cboSearchBy1.Name = "cboSearchBy1";
+            cboSearchBy1.Size = new Size(273, 33);
+            cboSearchBy1.TabIndex = 37;
+            cboSearchBy1.SelectedIndexChanged += cboSearchBy1_SelectedIndexChanged;
             // 
-            // textBox1
+            // txtSearchBy1
             // 
-            textBox1.Location = new Point(30, 139);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(462, 31);
-            textBox1.TabIndex = 36;
+            txtSearchBy1.Location = new Point(30, 139);
+            txtSearchBy1.Name = "txtSearchBy1";
+            txtSearchBy1.Size = new Size(462, 31);
+            txtSearchBy1.TabIndex = 36;
+            txtSearchBy1.TextChanged += txtSearchBy1_TextChanged;
             // 
             // groupBox1
             // 
@@ -130,7 +132,7 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(101, 15);
             label6.Name = "label6";
-            label6.Size = new Size(591, 48);
+            label6.Size = new Size(500, 41);
             label6.TabIndex = 0;
             label6.Text = "List Of All Verifying Organizations";
             // 
@@ -139,8 +141,8 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox1);
+            Controls.Add(cboSearchBy1);
+            Controls.Add(txtSearchBy1);
             Controls.Add(groupBox1);
             Controls.Add(panel2);
             Name = "ucItAdmin_organizations";
@@ -159,8 +161,8 @@
         #endregion
 
         private Label label2;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
+        private ComboBox cboSearchBy1;
+        private TextBox txtSearchBy1;
         private GroupBox groupBox1;
         private DataGridView dataGridView1;
         private Panel panel2;

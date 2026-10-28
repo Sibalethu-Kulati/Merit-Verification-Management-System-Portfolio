@@ -37,8 +37,8 @@
             button1 = new Button();
             btn_AddHighSchool_systemAdmin = new Button();
             label2 = new Label();
-            comboBox1 = new ComboBox();
-            textBox1 = new TextBox();
+            cboSearchBy2 = new ComboBox();
+            txtSearchBy2 = new TextBox();
             groupBox1 = new GroupBox();
             dgvHighSchools = new DataGridView();
             EmisNo = new DataGridViewTextBoxColumn();
@@ -92,7 +92,7 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(114, 17);
             label6.Name = "label6";
-            label6.Size = new Size(415, 48);
+            label6.Size = new Size(349, 41);
             label6.TabIndex = 0;
             label6.Text = "List Of All High Schools";
             // 
@@ -139,24 +139,26 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(547, 138);
             label2.Name = "label2";
-            label2.Size = new Size(109, 30);
+            label2.Size = new Size(91, 25);
             label2.TabIndex = 40;
             label2.Text = "Search By";
             // 
-            // comboBox1
+            // cboSearchBy2
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(654, 135);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(273, 33);
-            comboBox1.TabIndex = 39;
+            cboSearchBy2.FormattingEnabled = true;
+            cboSearchBy2.Location = new Point(654, 135);
+            cboSearchBy2.Name = "cboSearchBy2";
+            cboSearchBy2.Size = new Size(273, 33);
+            cboSearchBy2.TabIndex = 39;
+            cboSearchBy2.SelectedIndexChanged += cboSearchBy2_SelectedIndexChanged;
             // 
-            // textBox1
+            // txtSearchBy2
             // 
-            textBox1.Location = new Point(35, 135);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(462, 31);
-            textBox1.TabIndex = 38;
+            txtSearchBy2.Location = new Point(35, 135);
+            txtSearchBy2.Name = "txtSearchBy2";
+            txtSearchBy2.Size = new Size(462, 31);
+            txtSearchBy2.TabIndex = 38;
+            txtSearchBy2.TextChanged += txtSearchBy2_TextChanged;
             // 
             // groupBox1
             // 
@@ -223,8 +225,8 @@
             Controls.Add(button1);
             Controls.Add(btn_AddHighSchool_systemAdmin);
             Controls.Add(label2);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox1);
+            Controls.Add(cboSearchBy2);
+            Controls.Add(txtSearchBy2);
             Controls.Add(groupBox1);
             Controls.Add(panel2);
             Name = "ucHighSchools_SystemAdmin";
@@ -250,8 +252,8 @@
         private Button button1;
         private Button btn_AddHighSchool_systemAdmin;
         private Label label2;
-        private ComboBox comboBox1;
-        private TextBox textBox1;
+        private ComboBox cboSearchBy2;
+        private TextBox txtSearchBy2;
         private GroupBox groupBox1;
         private DataGridView dgvHighSchools;
         private DataGridViewTextBoxColumn EmisNo;

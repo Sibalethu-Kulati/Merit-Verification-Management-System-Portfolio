@@ -16,21 +16,69 @@ namespace Updated_Information_System_3
             cboGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cboRole.DropDownStyle = ComboBoxStyle.DropDownList;
         }
+
         private bool isSchool;
         private int institutionId;
 
         private async void btn_addStaffMember_itAdmin_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtName.Text) ||
-       string.IsNullOrWhiteSpace(txtSurname.Text) ||
-       string.IsNullOrWhiteSpace(txtEmail.Text) ||
-       string.IsNullOrWhiteSpace(txtPhone.Text) ||
-       string.IsNullOrWhiteSpace(txtStaffNumber.Text) ||
-       cboGender.SelectedItem == null ||
-       cboRole.SelectedItem == null)
+            // 1. Specific field-by-field empty checks
+            if (Validations.IsTextBoxEmpty(txtName, "First Name") ||
+                Validations.IsTextBoxEmpty(txtSurname, "Last Name") ||
+                Validations.IsTextBoxEmpty(txtStaffNumber, "Staff Number"))
             {
-                MessageBox.Show("Please fill in all the fields.", "Missing Information",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cboGender.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a gender.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboGender.Focus();
+                return;
+            }
+
+            if (cboRole.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a role.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cboRole.Focus();
+                return;
+            }
+
+            if (Validations.IsTextBoxEmpty(txtEmail, "Email Address") ||
+                Validations.IsTextBoxEmpty(txtPhone, "Phone Number"))
+            {
+                return;
+            }
+
+            // 2. First Name validation (Letters and spaces only)
+            if (!Validations.IsValidName(txtName.Text.Trim()))
+            {
+                MessageBox.Show("First name can only contain letters and spaces (no symbols or numbers).", "Invalid First Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtName.Focus();
+                return;
+            }
+
+            // 3. Last Name validation (Letters and spaces only)
+            if (!Validations.IsValidName(txtSurname.Text.Trim()))
+            {
+                MessageBox.Show("Last name can only contain letters and spaces (no symbols or numbers).", "Invalid Last Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtSurname.Focus();
+                return;
+            }
+
+            // 4. Email format validation
+            if (!Validations.IsValidEmail(txtEmail.Text.Trim()))
+            {
+                MessageBox.Show("Please enter a valid email address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtEmail.Focus();
+                return;
+            }
+
+            // 5. Phone number validation (Starts with 0 and 10 digits)
+            if (!Validations.IsValidPhoneNumber(txtPhone.Text.Trim()))
+            {
+                MessageBox.Show("Phone number must start with '0' and contain 10 digits.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPhone.Focus();
                 return;
             }
 
@@ -127,6 +175,11 @@ namespace Updated_Information_System_3
         private void btn_CancelStaffMember_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cboRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

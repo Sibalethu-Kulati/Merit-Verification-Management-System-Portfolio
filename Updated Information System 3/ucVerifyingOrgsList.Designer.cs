@@ -35,6 +35,9 @@
             pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
             label6 = new Label();
+            label2 = new Label();
+            comboBox1 = new ComboBox();
+            textBox1 = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvOrganizations).BeginInit();
             panel2.SuspendLayout();
@@ -46,7 +49,7 @@
             // 
             groupBox1.Controls.Add(dgvOrganizations);
             groupBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(23, 142);
+            groupBox1.Location = new Point(23, 199);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(892, 386);
             groupBox1.TabIndex = 42;
@@ -60,7 +63,7 @@
             dgvOrganizations.Location = new Point(26, 56);
             dgvOrganizations.Name = "dgvOrganizations";
             dgvOrganizations.RowHeadersWidth = 51;
-            dgvOrganizations.Size = new Size(839, 324);
+            dgvOrganizations.Size = new Size(839, 295);
             dgvOrganizations.TabIndex = 8;
             // 
             // panel2
@@ -100,16 +103,44 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label6.ForeColor = Color.WhiteSmoke;
-            label6.Location = new Point(160, 11);
+            label6.Location = new Point(119, 13);
             label6.Name = "label6";
-            label6.Size = new Size(506, 48);
+            label6.Size = new Size(429, 41);
             label6.TabIndex = 0;
             label6.Text = "VERIFYING ORGANIZATIONS";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(535, 142);
+            label2.Name = "label2";
+            label2.Size = new Size(91, 25);
+            label2.TabIndex = 57;
+            label2.Text = "Search By";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(642, 139);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(273, 33);
+            comboBox1.TabIndex = 56;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(23, 139);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(462, 31);
+            textBox1.TabIndex = 55;
             // 
             // ucVerifyingOrgsList
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label2);
+            Controls.Add(comboBox1);
+            Controls.Add(textBox1);
             Controls.Add(groupBox1);
             Controls.Add(panel2);
             Name = "ucVerifyingOrgsList";
@@ -122,6 +153,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -132,5 +164,8 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
         private Label label6;
+        private Label label2;
+        private ComboBox comboBox1;
+        private TextBox textBox1;
     }
 }

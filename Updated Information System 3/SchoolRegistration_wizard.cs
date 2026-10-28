@@ -159,7 +159,7 @@ namespace Updated_Information_System_3
 
             for (int i = 0; i < rows.Length; i++)
             {
-                int y = 8 + i * 46;
+                int y = 8 + (i * 46);
                 page.Controls.Add(new Label { Text = rows[i].Label, AutoSize = true, Location = new Point(0, y + 5) });
                 rows[i].Input.Location = new Point(160, y);
                 rows[i].Input.Width = 300;
@@ -208,12 +208,114 @@ namespace Updated_Information_System_3
 
         private void NextClicked()
         {
+            // ----- STEP 1 VALIDATIONS -----
+            if (_index == 0)
+            {
+                // 1. Check for empty fields
+                if (Validations.IsTextBoxEmpty(_emis, "EMIS Number") ||
+                    Validations.IsTextBoxEmpty(_name, "School Name") ||
+                    Validations.IsTextBoxEmpty(_address, "Address") ||
+                    Validations.IsTextBoxEmpty(_postal, "Postal Code") ||
+                    Validations.IsTextBoxEmpty(_email, "School Email") ||
+                    Validations.IsTextBoxEmpty(_tel, "Telephone"))
+                {
+                    return;
+                }
+
+                // 2. Validate High School EMIS number length (9 digits)
+                if (!Validations.IsValidEmisNumber(_emis.Text.Trim()))
+                {
+                    MessageBox.Show("Please enter a valid 9-digit EMIS number.", "Invalid EMIS Number", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _emis.Focus();
+                    return;
+                }
+
+                // 3. School Name validation (No symbols or numbers)
+                if (!Validations.IsValidName(_name.Text.Trim()))
+                {
+                    MessageBox.Show("School name can only contain letters and spaces (no symbols or numbers).", "Invalid School Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _name.Focus();
+                    return;
+                }
+
+                // 4. Postal Code validation (Digits only and exactly 4 digits)
+                if (!Validations.IsValidPostalCode(_postal.Text.Trim()))
+                {
+                    MessageBox.Show("Postal code must contain exactly 4 digits only (no letters or symbols).", "Invalid Postal Code", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _postal.Focus();
+                    return;
+                }
+
+                // 5. Email format validation
+                if (!Validations.IsValidEmail(_email.Text.Trim()))
+                {
+                    MessageBox.Show("Please enter a valid school email address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _email.Focus();
+                    return;
+                }
+
+                // 6. Telephone validation (Must start with 0 and be 10 digits)
+                if (!Validations.IsValidPhoneNumber(_tel.Text.Trim()))
+                {
+                    MessageBox.Show("Telephone number must start with '0' and contain 10 digits.", "Invalid Telephone", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _tel.Focus();
+                    return;
+                }
+            }
+
+            // ----- STEP 2 VALIDATIONS -----
+            if (_index == 1)
+            {
+                // 1. Check for empty fields
+                if (Validations.IsTextBoxEmpty(_aName, "Name") ||
+                    Validations.IsTextBoxEmpty(_aSurname, "Surname") ||
+                    Validations.IsTextBoxEmpty(_aEmail, "Email") ||
+                    Validations.IsTextBoxEmpty(_aPhone, "Phone Number"))
+                {
+                    return;
+                }
+
+                // 2. Admin First Name validation (No symbols or numbers)
+                if (!Validations.IsValidName(_aName.Text.Trim()))
+                {
+                    MessageBox.Show("Admin first name can only contain letters and spaces (no symbols or numbers).", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _aName.Focus();
+                    return;
+                }
+
+                // 3. Admin Surname validation (No symbols or numbers)
+                if (!Validations.IsValidName(_aSurname.Text.Trim()))
+                {
+                    MessageBox.Show("Admin surname can only contain letters and spaces (no symbols or numbers).", "Invalid Surname", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _aSurname.Focus();
+                    return;
+                }
+
+                // 4. Email format validation
+                if (!Validations.IsValidEmail(_aEmail.Text.Trim()))
+                {
+                    MessageBox.Show("Please enter a valid email address for the IT admin.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _aEmail.Focus();
+                    return;
+                }
+
+                // 5. Phone number validation (Must start with 0 and be 10 digits)
+                if (!Validations.IsValidPhoneNumber(_aPhone.Text.Trim()))
+                {
+                    MessageBox.Show("Phone number must start with '0' and contain 10 digits.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _aPhone.Focus();
+                    return;
+                }
+            }
+
+            // Move forward if checks pass and we are not yet on the review page
             if (_index < 2)
             {
                 ShowPage(_index + 1);
                 return;
             }
 
+            // ----- STEP 3: FINAL SUBMISSION -----
             MessageBox.Show("High school registered successfully.", "Done",
                             MessageBoxButtons.OK, MessageBoxIcon.Information);
             DialogResult = DialogResult.OK;   // closes the form

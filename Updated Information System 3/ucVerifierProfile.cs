@@ -16,13 +16,13 @@ namespace Updated_Information_System_3
         public ucProfilePage()
         {
             InitializeComponent();
-            
+
         }
         private void LoadUserProfile()
         {
             string query = @"
         SELECT FIRST_NAME, LAST_NAME, EMAIL, PHONE, GENDER
-        FROM PERSONS
+        FROM PERSON
         WHERE PERSON_ID = @PersonID";
 
             try
@@ -70,6 +70,12 @@ namespace Updated_Information_System_3
         private void ucVerifierProfile_Load(object sender, EventArgs e)
         {
             LoadUserProfile();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            txtFirstName.ReadOnly = false;
+            txtLastName.ReadOnly = false;
         }
     }
 }

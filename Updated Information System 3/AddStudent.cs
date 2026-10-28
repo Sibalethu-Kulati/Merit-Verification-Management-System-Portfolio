@@ -45,7 +45,7 @@ namespace Updated_Information_System_3
                     // 1. Which school does this clerk belong to?
                     int highSchoolId;
                     using (var cmd = new SqlCommand(
-                        "SELECT HIGH_SCHOOL_ID FROM SCHOOL_CLERKS WHERE PERSON_ID = @pid", conn))
+                        "SELECT HIGH_SCHOOL_ID FROM SCHOOL_CLERK WHERE PERSON_ID = @pid", conn))
                     {
                         cmd.Parameters.AddWithValue("@pid", UserSession.PersonId);
                         object result = cmd.ExecuteScalar();

@@ -24,9 +24,9 @@ namespace Updated_Information_System_3
                             VR.VERIFIER_REP_ID,
                             VR.REQUEST_DATE,
                             VR.STATUS
-                     FROM VERIFICATION_REQUESTS VR
+                     FROM VERIFICATION_REQUEST VR
                      WHERE VR.ORG_ID = (SELECT ORG_ID
-                                        FROM ORG_IT_ADMINS
+                                        FROM ORG_IT_ADMIN
                                         WHERE PERSON_ID = @PersonId)
                      ORDER BY VR.REQUEST_DATE DESC";
 

@@ -34,7 +34,6 @@
             pictureBox4 = new PictureBox();
             panel2 = new Panel();
             btnEdit = new Button();
-            btnSave = new Button();
             txtPhone = new TextBox();
             label7 = new Label();
             txtEmail = new TextBox();
@@ -45,6 +44,7 @@
             label4 = new Label();
             txtFirstName = new TextBox();
             label3 = new Label();
+            btnSave = new Button();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panel2.SuspendLayout();
@@ -115,24 +115,13 @@
             btnEdit.TabIndex = 15;
             btnEdit.Text = "Edit Profile";
             btnEdit.UseVisualStyleBackColor = false;
-            // 
-            // btnSave
-            // 
-            btnSave.BackColor = Color.FromArgb(0, 64, 64);
-            btnSave.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnSave.ForeColor = SystemColors.Window;
-            btnSave.Location = new Point(389, 480);
-            btnSave.Name = "btnSave";
-            btnSave.Size = new Size(239, 46);
-            btnSave.TabIndex = 14;
-            btnSave.Text = "Save Changes";
-            btnSave.UseVisualStyleBackColor = false;
-            btnSave.Click += btnSave_Click;
+            btnEdit.Click += btnEdit_Click;
             // 
             // txtPhone
             // 
             txtPhone.Location = new Point(264, 376);
             txtPhone.Name = "txtPhone";
+            txtPhone.ReadOnly = true;
             txtPhone.Size = new Size(400, 31);
             txtPhone.TabIndex = 9;
             // 
@@ -151,6 +140,7 @@
             // 
             txtEmail.Location = new Point(264, 279);
             txtEmail.Name = "txtEmail";
+            txtEmail.ReadOnly = true;
             txtEmail.Size = new Size(400, 31);
             txtEmail.TabIndex = 7;
             // 
@@ -168,6 +158,7 @@
             // 
             txtGender.Location = new Point(264, 191);
             txtGender.Name = "txtGender";
+            txtGender.ReadOnly = true;
             txtGender.Size = new Size(400, 31);
             txtGender.TabIndex = 5;
             // 
@@ -185,6 +176,7 @@
             // 
             txtLastName.Location = new Point(264, 110);
             txtLastName.Name = "txtLastName";
+            txtLastName.ReadOnly = true;
             txtLastName.Size = new Size(400, 31);
             txtLastName.TabIndex = 3;
             // 
@@ -202,6 +194,7 @@
             // 
             txtFirstName.Location = new Point(264, 33);
             txtFirstName.Name = "txtFirstName";
+            txtFirstName.ReadOnly = true;
             txtFirstName.Size = new Size(401, 31);
             txtFirstName.TabIndex = 1;
             // 
@@ -214,6 +207,19 @@
             label3.Size = new Size(134, 32);
             label3.TabIndex = 0;
             label3.Text = "First Name:";
+            // 
+            // btnSave
+            // 
+            btnSave.BackColor = Color.FromArgb(0, 64, 64);
+            btnSave.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSave.ForeColor = SystemColors.Window;
+            btnSave.Location = new Point(406, 480);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(239, 46);
+            btnSave.TabIndex = 14;
+            btnSave.Text = "Save Changes";
+            btnSave.UseVisualStyleBackColor = false;
+            btnSave.Click += btnSave_Click;
             // 
             // ucProfilePage
             // 
@@ -248,7 +254,7 @@
         private Label label3;
         private TextBox txtPhone;
         private Label label7;
-        private Button btnSave;
         private Button btnEdit;
+        private Button btnSave;
     }
 }

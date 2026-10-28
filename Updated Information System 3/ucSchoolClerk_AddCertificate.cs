@@ -40,7 +40,7 @@ namespace Updated_Information_System_3
         }
         private void LoadCategories()
         {
-            string query = "SELECT CERTIFICATE_TYPE_ID, TYPE_NAME FROM CERTIFICATE_TYPES ORDER BY TYPE_NAME";
+            string query = "SELECT CERTIFICATE_TYPE_ID, TYPE_NAME FROM CERTIFICATE_TYPE ORDER BY TYPE_NAME";
 
             using (SqlConnection conn = DatabaseConnection.GetConnection())
             using (var da = new SqlDataAdapter(query, conn))
@@ -60,7 +60,7 @@ namespace Updated_Information_System_3
             string query = @"SELECT REGISTER_ID, FIRST_NAME + ' ' + LAST_NAME AS FullName
                      FROM LEARNER_REGISTER
                      WHERE HIGH_SCHOOL_ID = (SELECT HIGH_SCHOOL_ID
-                                             FROM SCHOOL_CLERKS
+                                             FROM SCHOOL_CLERK
                                              WHERE PERSON_ID = @PersonId)
                      ORDER BY FullName";
 
@@ -127,7 +127,7 @@ namespace Updated_Information_System_3
                     conn.Open();
 
                     using (var check = new SqlCommand(
-                        "SELECT COUNT(*) FROM CERTIFICATES WHERE CERTIFICATE_NUMBER = @code", conn))
+                        "SELECT COUNT(*) FROM CERTIFICATE WHERE CERTIFICATE_NUMBER = @code", conn))
                     {
                         check.Parameters.AddWithValue("@code", code);
                         if ((int)check.ExecuteScalar() > 0)
@@ -138,7 +138,7 @@ namespace Updated_Information_System_3
                     }
 
                     using (var cmd = new SqlCommand(
-     @"INSERT INTO CERTIFICATES
+     @"INSERT INTO CERTIFICATE
         (HIGH_SCHOOL_ID, CERTIFICATE_TYPE_ID, HOLDER_ID_NUMBER, HOLDER_FIRST_NAME,
          HOLDER_LAST_NAME, ISSUE_DATE, CERTIFICATE_NUMBER, FILE_NAME, FILE_DATA)
       SELECT HIGH_SCHOOL_ID, @type, SA_ID_NUMBER, FIRST_NAME,

@@ -35,23 +35,23 @@
             textBox1 = new TextBox();
             groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
-            panel2 = new Panel();
-            pictureBox1 = new PictureBox();
-            pictureBox3 = new PictureBox();
-            label6 = new Label();
             Column1 = new DataGridViewTextBoxColumn();
             Column2 = new DataGridViewTextBoxColumn();
             Column3 = new DataGridViewTextBoxColumn();
             Column5 = new DataGridViewTextBoxColumn();
             Column4 = new DataGridViewTextBoxColumn();
             Column6 = new DataGridViewTextBoxColumn();
+            panel2 = new Panel();
+            pictureBox1 = new PictureBox();
+            pictureBox3 = new PictureBox();
+            label6 = new Label();
             groupBox2 = new GroupBox();
-            label1 = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            label3 = new Label();
             textBox4 = new TextBox();
             label4 = new Label();
+            textBox3 = new TextBox();
+            label3 = new Label();
+            textBox2 = new TextBox();
+            label1 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -78,7 +78,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(549, 131);
             label2.Name = "label2";
-            label2.Size = new Size(91, 25);
+            label2.Size = new Size(109, 30);
             label2.TabIndex = 33;
             label2.Text = "Search By";
             // 
@@ -118,49 +118,6 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(839, 162);
             dataGridView1.TabIndex = 0;
-            // 
-            // panel2
-            // 
-            panel2.BackColor = Color.FromArgb(0, 64, 64);
-            panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(pictureBox3);
-            panel2.Controls.Add(label6);
-            panel2.Location = new Point(36, 29);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(892, 77);
-            panel2.TabIndex = 29;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
-            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox1.Location = new Point(12, 1);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(78, 69);
-            pictureBox1.TabIndex = 6;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
-            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
-            pictureBox3.Location = new Point(633, 1);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(257, 67);
-            pictureBox3.TabIndex = 5;
-            pictureBox3.TabStop = false;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.WhiteSmoke;
-            label6.Location = new Point(112, 17);
-            label6.Name = "label6";
-            label6.Size = new Size(283, 41);
-            label6.TabIndex = 0;
-            label6.Text = "List Of All Learners";
             // 
             // Column1
             // 
@@ -204,6 +161,49 @@
             Column6.Name = "Column6";
             Column6.Width = 125;
             // 
+            // panel2
+            // 
+            panel2.BackColor = Color.FromArgb(0, 64, 64);
+            panel2.BorderStyle = BorderStyle.Fixed3D;
+            panel2.Controls.Add(pictureBox1);
+            panel2.Controls.Add(pictureBox3);
+            panel2.Controls.Add(label6);
+            panel2.Location = new Point(36, 29);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(892, 77);
+            panel2.TabIndex = 29;
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox1.Location = new Point(12, 1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(78, 69);
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            pictureBox3.BackgroundImage = (Image)resources.GetObject("pictureBox3.BackgroundImage");
+            pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
+            pictureBox3.Location = new Point(633, 1);
+            pictureBox3.Name = "pictureBox3";
+            pictureBox3.Size = new Size(257, 67);
+            pictureBox3.TabIndex = 5;
+            pictureBox3.TabStop = false;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.WhiteSmoke;
+            label6.Location = new Point(112, 17);
+            label6.Name = "label6";
+            label6.Size = new Size(335, 48);
+            label6.TabIndex = 0;
+            label6.Text = "List Of All Learners";
+            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(textBox4);
@@ -220,45 +220,11 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Student contact details";
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(23, 45);
-            label1.Name = "label1";
-            label1.Size = new Size(78, 25);
-            label1.TabIndex = 37;
-            label1.Text = "Student";
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(129, 45);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(735, 31);
-            textBox2.TabIndex = 37;
-            // 
-            // textBox3
-            // 
-            textBox3.Location = new Point(164, 93);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(272, 31);
-            textBox3.TabIndex = 38;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(23, 96);
-            label3.Name = "label3";
-            label3.Size = new Size(125, 25);
-            label3.TabIndex = 39;
-            label3.Text = "Email address";
-            // 
             // textBox4
             // 
-            textBox4.Location = new Point(593, 93);
+            textBox4.Location = new Point(619, 93);
             textBox4.Name = "textBox4";
-            textBox4.Size = new Size(272, 31);
+            textBox4.Size = new Size(246, 36);
             textBox4.TabIndex = 40;
             // 
             // label4
@@ -267,9 +233,43 @@
             label4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(452, 96);
             label4.Name = "label4";
-            label4.Size = new Size(136, 25);
+            label4.Size = new Size(161, 30);
             label4.TabIndex = 41;
             label4.Text = "Phone number";
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(185, 93);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(251, 36);
+            textBox3.TabIndex = 38;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.Location = new Point(23, 96);
+            label3.Name = "label3";
+            label3.Size = new Size(147, 30);
+            label3.TabIndex = 39;
+            label3.Text = "Email address";
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(129, 45);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(735, 36);
+            textBox2.TabIndex = 37;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(23, 45);
+            label1.Name = "label1";
+            label1.Size = new Size(91, 30);
+            label1.TabIndex = 37;
+            label1.Text = "Student";
             // 
             // ucItAdmin_learners
             // 

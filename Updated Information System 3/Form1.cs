@@ -15,7 +15,7 @@ namespace Updated_Information_System_3
 
             /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~S.Kulati~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
              * Used SQL for routing the different type of users.
-             * this method checks is a user exists in the PERSONS table first!
+             * this method checks is a user exists in the PERSON table first!
              * if true then it checks if does it exist in any of the subtypes
              * if they don't exist in the person then login is cancelled
              */
@@ -41,50 +41,50 @@ namespace Updated_Information_System_3
                             CASE
                                 WHEN EXISTS (
                                     SELECT 1
-                                    FROM SYSTEM_ADMINS SA
+                                    FROM SYSTEM_ADMIN SA
                                     WHERE SA.PERSON_ID = P.PERSON_ID
                                 ) THEN 'SYSTEM_ADMIN'
 
                                 WHEN EXISTS (
                                     SELECT 1
-                                    FROM LEARNERS L
+                                    FROM LEARNER L
                                     WHERE L.PERSON_ID = P.PERSON_ID
                                 ) THEN 'LEARNER'
 
                                 WHEN EXISTS (
                                     SELECT 1
-                                    FROM SCHOOL_CLERKS SC
+                                    FROM SCHOOL_CLERK SC
                                     WHERE SC.PERSON_ID = P.PERSON_ID
                                 ) THEN 'SCHOOL_CLERK'
 
                                 WHEN EXISTS (
                                     SELECT 1
-                                    FROM PRINCIPALS PR
+                                    FROM PRINCIPAL PR
                                     WHERE PR.PERSON_ID = P.PERSON_ID
                                 ) THEN 'PRINCIPAL'
 
                                 WHEN EXISTS (
                                     SELECT 1
-                                    FROM SCHOOL_IT_ADMINS SIA
+                                    FROM SCHOOL_IT_ADMIN SIA
                                     WHERE SIA.PERSON_ID = P.PERSON_ID
                                 ) THEN 'SCHOOL_IT_ADMIN'
 
                                 WHEN EXISTS (
                                     SELECT 1
-                                    FROM ORG_IT_ADMINS OIA
+                                    FROM ORG_IT_ADMIN OIA
                                     WHERE OIA.PERSON_ID = P.PERSON_ID
                                 ) THEN 'ORG_IT_ADMIN'
 
                                 WHEN EXISTS (
                                     SELECT 1
-                                    FROM VERIFIER_REPRESENTATIVES VR
+                                    FROM VERIFIER_REPRESENTATIVE VR
                                     WHERE VR.PERSON_ID = P.PERSON_ID
                                 ) THEN 'VERIFIER_REPRESENTATIVE'
 
                                 ELSE NULL
                             END AS USER_ROLE
 
-                        FROM PERSONS P
+                        FROM PERSON P
 
                         WHERE P.EMAIL = @Email
                         AND P.ACCOUNT_STATUS = 'ACTIVE'
@@ -96,14 +96,14 @@ namespace Updated_Information_System_3
                 using (var command = new Microsoft.Data.SqlClient.SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@Email", email);
-                    
+
 
                     connection.Open();
 
                     using (var reader = command.ExecuteReader())
                     {
                         if (reader.Read() && PasswordClass.Verify(password, reader["PASSWORD_HASH"].ToString()))
-    
+
                         {
                             UserSession.PersonId = Convert.ToInt32(reader["PERSON_ID"]);
                             UserSession.FirstName = reader["FIRST_NAME"].ToString();
@@ -143,7 +143,7 @@ namespace Updated_Information_System_3
                                     break;
 
                                 case "SCHOOL_IT_ADMIN":
-                                
+
                                     itAdmin_Dashboard itAdminDashboard = new itAdmin_Dashboard();
                                     itAdminDashboard.Show();
                                     break;
@@ -202,7 +202,7 @@ namespace Updated_Information_System_3
 
         private void btnStudent_login_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void txtPassword_TextChanged(object sender, EventArgs e)
@@ -214,7 +214,7 @@ namespace Updated_Information_System_3
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {   
+        {
 
         }
 
@@ -224,6 +224,11 @@ namespace Updated_Information_System_3
         }
 
         private void btn_ITadminLogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }

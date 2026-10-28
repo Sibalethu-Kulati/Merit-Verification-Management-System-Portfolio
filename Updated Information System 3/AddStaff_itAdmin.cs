@@ -19,7 +19,7 @@ namespace Updated_Information_System_3
         private bool isSchool;
         private int institutionId;
 
-        private async void  btn_addStaffMember_itAdmin_Click(object sender, EventArgs e)
+        private async void btn_addStaffMember_itAdmin_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtName.Text) ||
        string.IsNullOrWhiteSpace(txtSurname.Text) ||
@@ -122,6 +122,11 @@ namespace Updated_Information_System_3
         private void textBox3_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_CancelStaffMember_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

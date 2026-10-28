@@ -42,7 +42,7 @@ namespace Updated_Information_System_3
         internal static ApplicationRecord LoadPendingApplication( SqlConnection conn, SqlTransaction tx, int applicationId, bool isHighSchool)
            
         {
-            string table = isHighSchool ? "SCHOOL_APPLICATIONS" : "ORG_APPLICATIONS";
+            string table = isHighSchool ? "SCHOOL_APPLICATION" : "ORG_APPLICATION";
             string codeCol = isHighSchool ? "EMIS_NO" : "PROVIDER_CODE";
             string nameCol = isHighSchool ? "SCHOOL_NAME" : "ORG_NAME";
             string emailCol = isHighSchool ? "SCHOOL_EMAIL" : "ORG_EMAIL";
@@ -185,7 +185,7 @@ namespace Updated_Information_System_3
 
         internal static int InsertPerson(SqlConnection conn, SqlTransaction tx, ApplicationRecord app, string passwordHash)
         {
-            const string checkSql = @" SELECT COUNT(*) FROM PERSONS 
+            const string checkSql = @" SELECT COUNT(*) FROM PERSON 
                                        WHERE EMAIL = @Email OR PHONE = @Phone;";
               
             using (var check = new SqlCommand(checkSql, conn, tx))
@@ -198,7 +198,7 @@ namespace Updated_Information_System_3
                         "A user with this email address or phone number already exists.");
             }
 
-            const string insertSql = @" INSERT INTO PERSONS (FIRST_NAME, LAST_NAME, GENDER, EMAIL, PHONE, PASSWORD_HASH)
+            const string insertSql = @" INSERT INTO PERSON (FIRST_NAME, LAST_NAME, GENDER, EMAIL, PHONE, PASSWORD_HASH)
                                         OUTPUT INSERTED.PERSON_ID
                                         VALUES(@First, @Last, @Gender, @Email, @Phone, @Hash)";
                  
@@ -218,8 +218,8 @@ namespace Updated_Information_System_3
         internal static void InsertItAdmin( SqlConnection conn, SqlTransaction tx, ApplicationRecord app,int personId, int institutionId)            
         {
             string sql = app.IsHighSchool
-                ? "INSERT INTO SCHOOL_IT_ADMINS (PERSON_ID, HIGH_SCHOOL_ID, STAFF_NUMBER) VALUES (@P, @I, @S)"
-                : "INSERT INTO ORG_IT_ADMINS (PERSON_ID, ORG_ID, STAFF_NUMBER) VALUES (@P, @I, @S)";
+                ? "INSERT INTO SCHOOL_IT_ADMIN (PERSON_ID, HIGH_SCHOOL_ID, STAFF_NUMBER) VALUES (@P, @I, @S)"
+                : "INSERT INTO ORG_IT_ADMIN (PERSON_ID, ORG_ID, STAFF_NUMBER) VALUES (@P, @I, @S)";
 
             using (var cmd = new SqlCommand(sql, conn, tx))
             {
@@ -242,7 +242,7 @@ namespace Updated_Information_System_3
 
         internal static void MarkApproved(SqlConnection conn, SqlTransaction tx,int applicationId, bool isHighSchool, int reviewerPersonId)    
         {
-            string table = isHighSchool ? "SCHOOL_APPLICATIONS" : "ORG_APPLICATIONS";
+            string table = isHighSchool ? "SCHOOL_APPLICATION" : "ORG_APPLICATION";
 
             string sql = $@"UPDATE {table}
                     SET APPLICATION_STATUS = 'APPROVED',

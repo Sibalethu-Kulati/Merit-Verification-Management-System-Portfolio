@@ -40,10 +40,8 @@
             txtUsername = new TextBox();
             label3 = new Label();
             label2 = new Label();
-            lnkForgotPassword = new LinkLabel();
             checkBox1 = new CheckBox();
             panel3 = new Panel();
-            btn_ITadminLogin = new Button();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -71,7 +69,6 @@
             panel1.Controls.Add(lnkRequestAccess);
             panel1.Controls.Add(panel2);
             panel1.Controls.Add(groupBox1);
-            panel1.Controls.Add(lnkForgotPassword);
             panel1.Controls.Add(checkBox1);
             panel1.Controls.Add(btn_signIn);
             panel1.Location = new Point(36, 33);
@@ -85,7 +82,7 @@
             label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(109, 436);
             label1.Name = "label1";
-            label1.Size = new Size(254, 25);
+            label1.Size = new Size(303, 30);
             label1.TabIndex = 10;
             label1.Text = "New school or organization? ";
             // 
@@ -94,9 +91,9 @@
             lnkRequestAccess.AutoSize = true;
             lnkRequestAccess.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lnkRequestAccess.LinkColor = Color.DarkCyan;
-            lnkRequestAccess.Location = new Point(356, 436);
+            lnkRequestAccess.Location = new Point(411, 436);
             lnkRequestAccess.Name = "lnkRequestAccess";
-            lnkRequestAccess.Size = new Size(139, 25);
+            lnkRequestAccess.Size = new Size(164, 30);
             lnkRequestAccess.TabIndex = 7;
             lnkRequestAccess.TabStop = true;
             lnkRequestAccess.Text = "Request Access";
@@ -115,11 +112,12 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(126, 17);
+            label4.Location = new Point(81, 16);
             label4.Name = "label4";
-            label4.Size = new Size(341, 31);
+            label4.Size = new Size(421, 38);
             label4.TabIndex = 7;
             label4.Text = "SIGN IN INTO YOUR ACCOUNT";
+            label4.Click += label4_Click;
             // 
             // groupBox1
             // 
@@ -139,7 +137,7 @@
             // 
             txtPassword.Location = new Point(164, 122);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(368, 31);
+            txtPassword.Size = new Size(368, 36);
             txtPassword.TabIndex = 9;
             txtPassword.UseSystemPasswordChar = true;
             txtPassword.TextChanged += txtPassword_TextChanged;
@@ -148,7 +146,7 @@
             // 
             txtUsername.Location = new Point(164, 55);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(368, 31);
+            txtUsername.Size = new Size(368, 36);
             txtUsername.TabIndex = 8;
             // 
             // label3
@@ -157,7 +155,7 @@
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(32, 122);
             label3.Name = "label3";
-            label3.Size = new Size(104, 25);
+            label3.Size = new Size(122, 30);
             label3.TabIndex = 7;
             label3.Text = "Password  :";
             // 
@@ -167,21 +165,9 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(32, 52);
             label2.Name = "label2";
-            label2.Size = new Size(105, 25);
+            label2.Size = new Size(123, 30);
             label2.TabIndex = 6;
             label2.Text = "Username :";
-            // 
-            // lnkForgotPassword
-            // 
-            lnkForgotPassword.AutoSize = true;
-            lnkForgotPassword.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lnkForgotPassword.LinkColor = Color.DarkCyan;
-            lnkForgotPassword.Location = new Point(434, 331);
-            lnkForgotPassword.Name = "lnkForgotPassword";
-            lnkForgotPassword.Size = new Size(159, 25);
-            lnkForgotPassword.TabIndex = 4;
-            lnkForgotPassword.TabStop = true;
-            lnkForgotPassword.Text = "Forgot Password?";
             // 
             // checkBox1
             // 
@@ -189,7 +175,7 @@
             checkBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             checkBox1.Location = new Point(28, 331);
             checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(162, 29);
+            checkBox1.Size = new Size(192, 34);
             checkBox1.TabIndex = 3;
             checkBox1.Text = "Show Password";
             checkBox1.UseVisualStyleBackColor = true;
@@ -203,16 +189,6 @@
             panel3.Size = new Size(701, 545);
             panel3.TabIndex = 2;
             // 
-            // btn_ITadminLogin
-            // 
-            btn_ITadminLogin.Location = new Point(973, 279);
-            btn_ITadminLogin.Name = "btn_ITadminLogin";
-            btn_ITadminLogin.Size = new Size(157, 86);
-            btn_ITadminLogin.TabIndex = 3;
-            btn_ITadminLogin.Text = "IT ADMIN";
-            btn_ITadminLogin.UseVisualStyleBackColor = true;
-            btn_ITadminLogin.Click += btn_ITadminLogin_Click;
-            // 
             // sign_in
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -220,7 +196,6 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1195, 691);
-            Controls.Add(btn_ITadminLogin);
             Controls.Add(panel3);
             Name = "sign_in";
             StartPosition = FormStartPosition.CenterScreen;
@@ -245,13 +220,11 @@
         private TextBox txtUsername;
         private Label label3;
         private Label label2;
-        private LinkLabel lnkForgotPassword;
         private CheckBox checkBox1;
         private Panel panel2;
         private Label label4;
         private Panel panel3;
         private Label label1;
         private LinkLabel lnkRequestAccess;
-        private Button btn_ITadminLogin;
     }
 }

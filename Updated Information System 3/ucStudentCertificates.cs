@@ -14,5 +14,10 @@ namespace Updated_Information_System_3
         {
             InitializeComponent();
         }
+
+        private void ucStudentCertificates_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

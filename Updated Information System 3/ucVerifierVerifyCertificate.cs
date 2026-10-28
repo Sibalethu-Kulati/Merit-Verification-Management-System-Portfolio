@@ -39,10 +39,10 @@ namespace Updated_Information_System_3
             h.SCHOOL_NAME,
             ct.TYPE_NAME,
             c.STATUS
-        FROM CERTIFICATES c
+        FROM CERTIFICATE c
         INNER JOIN HIGH_SCHOOL h
             ON c.HIGH_SCHOOL_ID = h.HIGH_SCHOOL_ID
-        INNER JOIN CERTIFICATE_TYPES ct
+        INNER JOIN CERTIFICATE_TYPE ct
             ON c.CERTIFICATE_TYPE_ID = ct.CERTIFICATE_TYPE_ID
         WHERE c.CERTIFICATE_NUMBER = @CertificateNumber";
 

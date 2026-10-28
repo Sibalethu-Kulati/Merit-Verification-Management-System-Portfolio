@@ -256,6 +256,7 @@
             btn_CancelStaffMember.TabIndex = 36;
             btn_CancelStaffMember.Text = "Cancel";
             btn_CancelStaffMember.UseVisualStyleBackColor = false;
+            btn_CancelStaffMember.Click += btn_CancelStaffMember_Click;
             // 
             // AddStaff_itAdmin
             // 

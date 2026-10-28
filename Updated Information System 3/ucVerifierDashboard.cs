@@ -21,7 +21,7 @@ namespace Updated_Information_System_3
         {
             string query = @"
         SELECT FIRST_NAME, LAST_NAME
-        FROM PERSONS
+        FROM PERSON
         WHERE PERSON_ID = @PersonID";
 
             try

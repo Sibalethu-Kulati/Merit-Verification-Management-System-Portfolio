@@ -20,7 +20,7 @@ namespace Updated_Information_System_3
                             "IT_ADMIN_FIRST_NAME AS [Recipient First Name], IT_ADMIN_LAST_NAME AS [Recipient Last Name], " +
                             "IT_ADMIN_EMAIL AS [Recipient Email], 'IT Admin' AS [Recipient Role], " +
                             "APPLICATION_STATUS AS [Status] " +
-                            "FROM SCHOOL_APPLICATIONS";
+                            "FROM SCHOOL_APPLICATION";
 
             try
             {
@@ -97,7 +97,7 @@ namespace Updated_Information_System_3
                 "IT_ADMIN_EMAIL AS [Recipient Email], " +
                 "'IT Admin' AS [Recipient Role], " +
                 "APPLICATION_STATUS AS [Status] " +
-                "FROM ORG_APPLICATIONS";
+                "FROM ORG_APPLICATION";
 
             try
             {
@@ -213,8 +213,8 @@ namespace Updated_Information_System_3
         public static bool UpdateApplicationStatus(int applicationId, bool isHighSchool, string status, int reviewerPersonId)
         {
             string tableName = isHighSchool
-                ? "SCHOOL_APPLICATIONS"
-                : "ORG_APPLICATIONS";
+                ? "SCHOOL_APPLICATION"
+                : "ORG_APPLICATION";
 
             string query =
                 $"UPDATE {tableName} " +
@@ -242,8 +242,8 @@ namespace Updated_Information_System_3
             string adminLastName, string adminGender, string adminEmail, string adminPhone, string staffNumber)
         {
             string tableName = isHighSchool
-                ? "SCHOOL_APPLICATIONS"
-                : "ORG_APPLICATIONS";
+                ? "SCHOOL_APPLICATION"
+                : "ORG_APPLICATION";
 
             string institutionColumn = isHighSchool
                 ? "EMIS_NO"

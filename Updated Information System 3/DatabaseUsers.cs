@@ -37,7 +37,7 @@ namespace Updated_Information_System_3
     {
         internal static int InsertPerson(SqlConnection conn, SqlTransaction tx, NewUser u, string passwordHash)
         {
-            const string checkSql = @"SELECT COUNT(*) FROM PERSONS
+            const string checkSql = @"SELECT COUNT(*) FROM PERSON
                                       WHERE EMAIL = @Email OR PHONE = @Phone";
 
             using (var check = new SqlCommand(checkSql, conn, tx))
@@ -50,7 +50,7 @@ namespace Updated_Information_System_3
                         "A user with this email address or phone number already exists.");
             }
 
-            const string insertSql = @"INSERT INTO PERSONS (FIRST_NAME, LAST_NAME, GENDER, EMAIL, PHONE, PASSWORD_HASH)
+            const string insertSql = @"INSERT INTO PERSON (FIRST_NAME, LAST_NAME, GENDER, EMAIL, PHONE, PASSWORD_HASH)
                                        OUTPUT INSERTED.PERSON_ID
                                        VALUES (@First, @Last, @Gender, @Email, @Phone, @Hash)";
 
@@ -75,19 +75,19 @@ namespace Updated_Information_System_3
             switch (u.Role)
             {
                 case UserRole.SchoolClerk:
-                    table = "SCHOOL_CLERKS";
+                    table = "SCHOOL_CLERK";
                     institutionCol = "HIGH_SCHOOL_ID";
                     description = "a School Clerk";
                     break;
 
                 case UserRole.Principal:
-                    table = "PRINCIPALS";
+                    table = "PRINCIPAL";
                     institutionCol = "HIGH_SCHOOL_ID";
                     description = "a Principal";
                     break;
 
                 case UserRole.VerifierRepresentative:
-                    table = "VERIFIER_REPRESENTATIVES";
+                    table = "VERIFIER_REPRESENTATIVE";
                     institutionCol = "ORG_ID";
                     description = "a Verifier Representative";
                     break;
@@ -144,8 +144,8 @@ namespace Updated_Information_System_3
         }
         internal static (bool isSchool, int institutionId) GetInstitutionForItAdmin(int personId)
         {
-            const string schoolSql = "SELECT HIGH_SCHOOL_ID FROM SCHOOL_IT_ADMINS WHERE PERSON_ID = @P";
-            const string orgSql = "SELECT ORG_ID FROM ORG_IT_ADMINS WHERE PERSON_ID = @P";
+            const string schoolSql = "SELECT HIGH_SCHOOL_ID FROM SCHOOL_IT_ADMIN WHERE PERSON_ID = @P";
+            const string orgSql = "SELECT ORG_ID FROM ORG_IT_ADMIN WHERE PERSON_ID = @P";
 
             using (SqlConnection conn = DatabaseConnection.GetConnection())
             {

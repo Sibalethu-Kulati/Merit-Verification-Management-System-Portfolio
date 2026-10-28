@@ -99,7 +99,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(375, 156);
             label2.Name = "label2";
-            label2.Size = new Size(91, 25);
+            label2.Size = new Size(109, 30);
             label2.TabIndex = 41;
             label2.Text = "Search By";
             // 
@@ -229,7 +229,7 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(114, 17);
             label6.Name = "label6";
-            label6.Size = new Size(379, 41);
+            label6.Size = new Size(446, 48);
             label6.TabIndex = 0;
             label6.Text = "List Of All My Certificates";
             // 
@@ -239,7 +239,7 @@
             label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(667, 156);
             label1.Name = "label1";
-            label1.Size = new Size(88, 25);
+            label1.Size = new Size(104, 30);
             label1.TabIndex = 46;
             label1.Text = "Category";
             // 
@@ -267,6 +267,7 @@
             Controls.Add(panel2);
             Name = "ucStudentCertificates";
             Size = new Size(960, 691);
+            Load += ucStudentCertificates_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);

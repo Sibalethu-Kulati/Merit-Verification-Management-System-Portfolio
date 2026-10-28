@@ -56,7 +56,21 @@ namespace Updated_Information_System_3
                     client.Credentials = new NetworkCredential(
                         s.SenderEmail, s.AppPassword.Replace(" ", ""));
 
-                    await client.SendMailAsync(message);
+                    try
+                    {
+                        await client.SendMailAsync(message);
+                    }
+                    catch (Exception ex)
+                    {
+                        string detail = ex.Message;
+                        Exception inner = ex.InnerException;
+                        while (inner != null)
+                        {
+                            detail += "\n→ " + inner.Message;
+                            inner = inner.InnerException;
+                        }
+                        throw new Exception(detail);
+                    }
                 }
             }
         }

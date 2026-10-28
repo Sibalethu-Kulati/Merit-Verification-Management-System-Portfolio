@@ -92,7 +92,20 @@ namespace Updated_Information_System_3
 
         private void ucVerifyingOrgRequests_Load(object sender, EventArgs e)
         {
+            cboSearchBy5.Items.Add("Organization Name");
+            cboSearchBy5.Items.Add("Provider Code");
+            cboSearchBy5.SelectedIndex = 0;
             ApplicationDatabase.RefreshOrgGridData(dgvVerifierRequests);
+        }
+
+        private void txtSearchBy5_TextChanged(object sender, EventArgs e)
+        {
+            ApplicationDatabase.SearchOrgGridData(dgvVerifierRequests, cboSearchBy5.Text, txtSearchBy5.Text);
+        }
+
+        private void cboSearchBy5_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ApplicationDatabase.SearchOrgGridData(dgvVerifierRequests, cboSearchBy5.Text, txtSearchBy5.Text);
         }
     }
 }

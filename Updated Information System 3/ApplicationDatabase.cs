@@ -175,6 +175,146 @@ namespace Updated_Information_System_3
                     MessageBoxIcon.Error);
             }
         }
+        public static void SearchOrgGridData(DataGridView dgv, string searchBy, string searchText)
+        {
+            // empty box or nothing selected = show everything
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                RefreshOrgGridData(dgv);
+                return;
+            }
+
+            string column = searchBy == "Provider Code" ? "PROVIDER_CODE" : "ORG_NAME";
+
+            string query =
+                "SELECT APPLICATION_ID AS [Application ID], PROVIDER_CODE AS [Provider Code], " +
+                "ORG_NAME AS [Organization Name], ORG_EMAIL AS [Email Address], ORG_PHONE AS [Telephone], " +
+                "STREET_NUMBER AS [Street Number], STREET_NAME AS [Street Name], SUBURB AS [Suburb], " +
+                "POSTAL_CODE AS [Postal Code], CITY_NAME AS [City], PROVINCE AS [Province], " +
+                "'Verifying Organization' AS [Organization Type], " +
+                "IT_ADMIN_FIRST_NAME AS [Recipient First Name], IT_ADMIN_LAST_NAME AS [Recipient Last Name], " +
+                "IT_ADMIN_EMAIL AS [Recipient Email], 'IT Admin' AS [Recipient Role], " +
+                "APPLICATION_STATUS AS [Status] " +
+                "FROM ORG_APPLICATION " +
+                "WHERE " + column + " LIKE @search";
+
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (SqlCommand cmd = new SqlCommand(query, conn))
+            using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+            {
+                cmd.Parameters.AddWithValue("@search", "%" + searchText.Trim() + "%");
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgv.DataSource = dt;
+            }
+        }
+
+        public static void SearchHighSchoolRequests(DataGridView dgv, string searchBy, string searchText)
+        {
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                RefreshHigh_SchoolGridData(dgv);
+                return;
+            }
+
+            string column = searchBy == "EMIS Number" ? "EMIS_NO" : "SCHOOL_NAME";
+
+            string query =
+                "SELECT APPLICATION_ID AS [Application ID], EMIS_NO AS [EMIS Number], SCHOOL_NAME AS [Organization Name], " +
+                "SCHOOL_EMAIL AS [Email Address], SCHOOL_PHONE AS [Telephone], " +
+                "STREET_NUMBER AS [Street Number], STREET_NAME AS [Street Name], SUBURB AS [Suburb], " +
+                "POSTAL_CODE AS [Postal Code], CITY_NAME AS [City], PROVINCE AS [Province], " +
+                "'High School' AS [Organization Type], " +
+                "IT_ADMIN_FIRST_NAME AS [Recipient First Name], IT_ADMIN_LAST_NAME AS [Recipient Last Name], " +
+                "IT_ADMIN_EMAIL AS [Recipient Email], 'IT Admin' AS [Recipient Role], " +
+                "APPLICATION_STATUS AS [Status] " +
+                "FROM SCHOOL_APPLICATION " +
+                "WHERE CAST(" + column + " AS VARCHAR(100)) LIKE @search";
+
+            try
+            {
+                using (SqlConnection conn = DatabaseConnection.GetConnection())
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                {
+                    cmd.Parameters.AddWithValue("@search", "%" + searchText.Trim() + "%");
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+                    dgv.DataSource = dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error searching requests: " + ex.Message,
+                                "Database Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public static void SearchHighSchools(DataGridView dgv, string searchBy, string searchText)
+        {
+            // Whitelist the column (column names can't be SQL parameters)
+            string column;
+            switch (searchBy)
+            {
+                case "EMIS Number": column = "h.EMIS_NO"; break;
+                case "School Name": column = "h.SCHOOL_NAME"; break;
+                default:
+                    LoadHighSchools(dgv);   // nothing valid selected: show all
+                    return;
+            }
+
+            string query = $@"
+        SELECT
+            h.EMIS_NO,
+            h.SCHOOL_NAME,
+            h.EMAIL,
+            h.PHONE,
+            CONCAT(
+                a.STREET_NUMBER, ' ',
+                a.STREET_NAME, ', ',
+                COALESCE(a.SUBURB + ', ', ''),
+                c.CITY_NAME, ', ',
+                c.PROVINCE, ' ',
+                a.POSTAL_CODE
+            ) AS FULL_ADDRESS
+        FROM HIGH_SCHOOL h
+        INNER JOIN ADDRESS a ON h.ADDRESS_ID = a.ADDRESS_ID
+        INNER JOIN CITY c ON a.CITY_ID = c.CITY_ID
+        WHERE CAST({column} AS VARCHAR(100)) LIKE @search";
+
+            try
+            {
+                using (var connection = DatabaseConnection.GetConnection())
+                using (var command = new Microsoft.Data.SqlClient.SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@search", "%" + searchText.Trim() + "%");
+                    connection.Open();
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        dgv.Rows.Clear();
+
+                        while (reader.Read())
+                        {
+                            dgv.Rows.Add(
+                                reader["EMIS_NO"].ToString(),
+                                reader["SCHOOL_NAME"].ToString(),
+                                reader["EMAIL"].ToString(),
+                                reader["PHONE"].ToString(),
+                                reader["FULL_ADDRESS"].ToString()
+                            );
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    "Unable to search high schools:\n\n" + ex.Message,
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+        }
         internal static DataTable GetInstitutions(bool isHighSchool)
         {
             string table = isHighSchool ? "HIGH_SCHOOL" : "VERIFYING_ORGANIZATION";

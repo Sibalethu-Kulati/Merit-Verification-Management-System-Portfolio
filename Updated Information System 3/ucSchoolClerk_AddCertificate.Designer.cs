@@ -38,7 +38,6 @@
             btnBrowse = new Button();
             label7 = new Label();
             dtpIssueDate = new DateTimePicker();
-            pictureBox2 = new PictureBox();
             label5 = new Label();
             comboBox2 = new ComboBox();
             label4 = new Label();
@@ -50,9 +49,7 @@
             pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
             label6 = new Label();
-            lnkBacktoCertificates = new LinkLabel();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -63,7 +60,7 @@
             button1.BackColor = Color.FromArgb(192, 0, 0);
             button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.ForeColor = SystemColors.Window;
-            button1.Location = new Point(375, 592);
+            button1.Location = new Point(83, 592);
             button1.Name = "button1";
             button1.Size = new Size(223, 60);
             button1.TabIndex = 43;
@@ -89,7 +86,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(68, 57);
             label2.Name = "label2";
-            label2.Size = new Size(157, 30);
+            label2.Size = new Size(133, 25);
             label2.TabIndex = 41;
             label2.Text = "Select Student";
             // 
@@ -97,7 +94,7 @@
             // 
             textBox1.Location = new Point(260, 112);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(446, 36);
+            textBox1.Size = new Size(446, 31);
             textBox1.TabIndex = 39;
             // 
             // groupBox1
@@ -106,7 +103,6 @@
             groupBox1.Controls.Add(btnBrowse);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(dtpIssueDate);
-            groupBox1.Controls.Add(pictureBox2);
             groupBox1.Controls.Add(label5);
             groupBox1.Controls.Add(comboBox2);
             groupBox1.Controls.Add(label4);
@@ -130,7 +126,7 @@
             lblFileName.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblFileName.Location = new Point(377, 345);
             lblFileName.Name = "lblFileName";
-            lblFileName.Size = new Size(121, 30);
+            lblFileName.Size = new Size(101, 25);
             lblFileName.TabIndex = 51;
             lblFileName.Text = "FILE NAME";
             // 
@@ -153,7 +149,7 @@
             label7.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label7.Location = new Point(73, 345);
             label7.Name = "label7";
-            label7.Size = new Size(228, 30);
+            label7.Size = new Size(189, 25);
             label7.TabIndex = 50;
             label7.Text = "UPLOAD CERTIFICTAE";
             // 
@@ -161,17 +157,8 @@
             // 
             dtpIssueDate.Location = new Point(260, 285);
             dtpIssueDate.Name = "dtpIssueDate";
-            dtpIssueDate.Size = new Size(446, 36);
+            dtpIssueDate.Size = new Size(446, 31);
             dtpIssueDate.TabIndex = 49;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = SystemColors.AppWorkspace;
-            pictureBox2.Location = new Point(576, -25);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(213, 52);
-            pictureBox2.TabIndex = 48;
-            pictureBox2.TabStop = false;
             // 
             // label5
             // 
@@ -179,7 +166,7 @@
             label5.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.Location = new Point(73, 285);
             label5.Name = "label5";
-            label5.Size = new Size(115, 30);
+            label5.Size = new Size(98, 25);
             label5.TabIndex = 47;
             label5.Text = "Issue Date";
             // 
@@ -188,7 +175,7 @@
             comboBox2.FormattingEnabled = true;
             comboBox2.Location = new Point(260, 228);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(446, 38);
+            comboBox2.Size = new Size(446, 33);
             comboBox2.TabIndex = 45;
             // 
             // label4
@@ -197,7 +184,7 @@
             label4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(68, 228);
             label4.Name = "label4";
-            label4.Size = new Size(104, 30);
+            label4.Size = new Size(88, 25);
             label4.TabIndex = 46;
             label4.Text = "Category";
             // 
@@ -207,7 +194,7 @@
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(68, 171);
             label3.Name = "label3";
-            label3.Size = new Size(167, 30);
+            label3.Size = new Size(140, 25);
             label3.TabIndex = 44;
             label3.Text = "Certificate Title";
             // 
@@ -215,7 +202,7 @@
             // 
             textBox2.Location = new Point(260, 168);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(446, 36);
+            textBox2.Size = new Size(446, 31);
             textBox2.TabIndex = 43;
             // 
             // label1
@@ -224,7 +211,7 @@
             label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(68, 115);
             label1.Name = "label1";
-            label1.Size = new Size(175, 30);
+            label1.Size = new Size(146, 25);
             label1.TabIndex = 42;
             label1.Text = "Certificate Code";
             // 
@@ -233,7 +220,7 @@
             comboBox1.FormattingEnabled = true;
             comboBox1.Location = new Point(260, 57);
             comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(446, 38);
+            comboBox1.Size = new Size(446, 33);
             comboBox1.TabIndex = 40;
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
             // 
@@ -277,28 +264,14 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(114, 17);
             label6.Name = "label6";
-            label6.Size = new Size(414, 48);
+            label6.Size = new Size(352, 41);
             label6.TabIndex = 0;
             label6.Text = "Add Student Certificate";
-            // 
-            // lnkBacktoCertificates
-            // 
-            lnkBacktoCertificates.AutoSize = true;
-            lnkBacktoCertificates.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lnkBacktoCertificates.LinkColor = Color.FromArgb(0, 64, 64);
-            lnkBacktoCertificates.Location = new Point(83, 611);
-            lnkBacktoCertificates.Name = "lnkBacktoCertificates";
-            lnkBacktoCertificates.Size = new Size(205, 30);
-            lnkBacktoCertificates.TabIndex = 44;
-            lnkBacktoCertificates.TabStop = true;
-            lnkBacktoCertificates.Text = "Back to Certificates";
-            lnkBacktoCertificates.LinkClicked += lnkBacktoCertificates_LinkClicked;
             // 
             // ucSchoolClerk_AddCertificate
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(lnkBacktoCertificates);
             Controls.Add(button1);
             Controls.Add(btn_AddCetificate_schoolClerk);
             Controls.Add(groupBox1);
@@ -308,13 +281,11 @@
             Load += ucSchoolClerk_AddCertificate_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -336,9 +307,7 @@
         private Label label5;
         private Label label7;
         private DateTimePicker dtpIssueDate;
-        private LinkLabel lnkBacktoCertificates;
         private Button btnBrowse;
-        private PictureBox pictureBox2;
         private Label lblFileName;
     }
 }

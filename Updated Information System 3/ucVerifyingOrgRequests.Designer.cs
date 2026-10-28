@@ -36,8 +36,9 @@
             groupBox1 = new GroupBox();
             dgvVerifierRequests = new DataGridView();
             btn_viewRequest_systemAdmin = new Button();
-            button1 = new Button();
-            btnRefresh = new Button();
+            label2 = new Label();
+            comboBox1 = new ComboBox();
+            textBox1 = new TextBox();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -52,7 +53,7 @@
             panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(pictureBox3);
             panel2.Controls.Add(label6);
-            panel2.Location = new Point(73, 16);
+            panel2.Location = new Point(55, 24);
             panel2.Name = "panel2";
             panel2.Size = new Size(892, 77);
             panel2.TabIndex = 45;
@@ -84,7 +85,7 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(114, 17);
             label6.Name = "label6";
-            label6.Size = new Size(345, 48);
+            label6.Size = new Size(291, 41);
             label6.TabIndex = 0;
             label6.Text = "List Of All Requests";
             // 
@@ -92,9 +93,9 @@
             // 
             groupBox1.Controls.Add(dgvVerifierRequests);
             groupBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            groupBox1.Location = new Point(55, 173);
+            groupBox1.Location = new Point(55, 187);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(929, 337);
+            groupBox1.Size = new Size(892, 337);
             groupBox1.TabIndex = 46;
             groupBox1.TabStop = false;
             groupBox1.Text = "List Of All Requests";
@@ -116,45 +117,46 @@
             btn_viewRequest_systemAdmin.BackColor = Color.FromArgb(0, 64, 64);
             btn_viewRequest_systemAdmin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_viewRequest_systemAdmin.ForeColor = SystemColors.Window;
-            btn_viewRequest_systemAdmin.Location = new Point(55, 547);
+            btn_viewRequest_systemAdmin.Location = new Point(55, 558);
             btn_viewRequest_systemAdmin.Name = "btn_viewRequest_systemAdmin";
-            btn_viewRequest_systemAdmin.Size = new Size(156, 84);
+            btn_viewRequest_systemAdmin.Size = new Size(293, 62);
             btn_viewRequest_systemAdmin.TabIndex = 50;
             btn_viewRequest_systemAdmin.Text = "View Request";
             btn_viewRequest_systemAdmin.UseVisualStyleBackColor = false;
             btn_viewRequest_systemAdmin.Click += btn_viewRequest_systemAdmin_Click;
             // 
-            // button1
+            // label2
             // 
-            button1.BackColor = Color.FromArgb(192, 0, 0);
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.Window;
-            button1.Location = new Point(417, 551);
-            button1.Name = "button1";
-            button1.Size = new Size(180, 84);
-            button1.TabIndex = 51;
-            button1.Text = "Reject Request";
-            button1.UseVisualStyleBackColor = false;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.Location = new Point(567, 130);
+            label2.Name = "label2";
+            label2.Size = new Size(91, 25);
+            label2.TabIndex = 57;
+            label2.Text = "Search By";
             // 
-            // btnRefresh
+            // comboBox1
             // 
-            btnRefresh.BackColor = Color.Green;
-            btnRefresh.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnRefresh.ForeColor = SystemColors.Window;
-            btnRefresh.Location = new Point(806, 547);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(178, 88);
-            btnRefresh.TabIndex = 52;
-            btnRefresh.Text = "Refresh Requests";
-            btnRefresh.UseVisualStyleBackColor = false;
-            btnRefresh.Click += btnRefresh_Click;
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Location = new Point(674, 127);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(273, 33);
+            comboBox1.TabIndex = 56;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(55, 127);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(462, 31);
+            textBox1.TabIndex = 55;
             // 
             // ucVerifyingOrgRequests
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(btnRefresh);
-            Controls.Add(button1);
+            Controls.Add(label2);
+            Controls.Add(comboBox1);
+            Controls.Add(textBox1);
             Controls.Add(btn_viewRequest_systemAdmin);
             Controls.Add(groupBox1);
             Controls.Add(panel2);
@@ -168,6 +170,7 @@
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvVerifierRequests).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -179,7 +182,8 @@
         private GroupBox groupBox1;
         private DataGridView dgvVerifierRequests;
         private Button btn_viewRequest_systemAdmin;
-        private Button button1;
-        private Button btnRefresh;
+        private Label label2;
+        private ComboBox comboBox1;
+        private TextBox textBox1;
     }
 }

@@ -63,11 +63,11 @@
             btnVerifiers.FlatStyle = FlatStyle.Flat;
             btnVerifiers.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnVerifiers.ForeColor = Color.White;
-            btnVerifiers.Location = new Point(21, 255);
+            btnVerifiers.Location = new Point(21, 278);
             btnVerifiers.Name = "btnVerifiers";
             btnVerifiers.Size = new Size(229, 73);
             btnVerifiers.TabIndex = 7;
-            btnVerifiers.Text = "VERIFYING ORGANIZATIONS";
+            btnVerifiers.Text = "Verifying Organizations";
             btnVerifiers.UseVisualStyleBackColor = false;
             btnVerifiers.Click += btnVerifiers_Click;
             // 
@@ -77,11 +77,11 @@
             btnOrgRequests.FlatStyle = FlatStyle.Flat;
             btnOrgRequests.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnOrgRequests.ForeColor = Color.White;
-            btnOrgRequests.Location = new Point(21, 416);
+            btnOrgRequests.Location = new Point(21, 458);
             btnOrgRequests.Name = "btnOrgRequests";
             btnOrgRequests.Size = new Size(229, 69);
             btnOrgRequests.TabIndex = 6;
-            btnOrgRequests.Text = "ORGANIZATION REQUESTS";
+            btnOrgRequests.Text = "Organization Requests";
             btnOrgRequests.UseVisualStyleBackColor = false;
             btnOrgRequests.Click += btnOrgRequests_Click;
             // 
@@ -91,11 +91,11 @@
             btn_requests_systemAdmin.FlatStyle = FlatStyle.Flat;
             btn_requests_systemAdmin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_requests_systemAdmin.ForeColor = Color.White;
-            btn_requests_systemAdmin.Location = new Point(21, 334);
+            btn_requests_systemAdmin.Location = new Point(21, 366);
             btn_requests_systemAdmin.Name = "btn_requests_systemAdmin";
             btn_requests_systemAdmin.Size = new Size(229, 76);
             btn_requests_systemAdmin.TabIndex = 5;
-            btn_requests_systemAdmin.Text = "HIGH SCHOOL REQUESTS";
+            btn_requests_systemAdmin.Text = "School Requests";
             btn_requests_systemAdmin.UseVisualStyleBackColor = false;
             btn_requests_systemAdmin.Click += btn_requests_systemAdmin_Click;
             // 
@@ -119,7 +119,7 @@
             btn_highSchools_systemAdmin.FlatStyle = FlatStyle.Flat;
             btn_highSchools_systemAdmin.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_highSchools_systemAdmin.ForeColor = Color.White;
-            btn_highSchools_systemAdmin.Location = new Point(21, 189);
+            btn_highSchools_systemAdmin.Location = new Point(21, 202);
             btn_highSchools_systemAdmin.Name = "btn_highSchools_systemAdmin";
             btn_highSchools_systemAdmin.Size = new Size(229, 60);
             btn_highSchools_systemAdmin.TabIndex = 2;

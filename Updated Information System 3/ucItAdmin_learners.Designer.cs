@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucItAdmin_learners));
-            button2 = new Button();
+            btn_UpdateSendLogin = new Button();
             label2 = new Label();
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
@@ -46,11 +46,11 @@
             pictureBox3 = new PictureBox();
             label6 = new Label();
             groupBox2 = new GroupBox();
-            textBox4 = new TextBox();
+            txtPhoneNUmber = new TextBox();
             label4 = new Label();
-            textBox3 = new TextBox();
+            txtEmailAdress = new TextBox();
             label3 = new Label();
-            textBox2 = new TextBox();
+            txtStudentFullName = new TextBox();
             label1 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -60,17 +60,18 @@
             groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // button2
+            // btn_UpdateSendLogin
             // 
-            button2.BackColor = Color.FromArgb(0, 64, 64);
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.ForeColor = SystemColors.Window;
-            button2.Location = new Point(566, 602);
-            button2.Name = "button2";
-            button2.Size = new Size(363, 60);
-            button2.TabIndex = 36;
-            button2.Text = "Update & Send Login";
-            button2.UseVisualStyleBackColor = false;
+            btn_UpdateSendLogin.BackColor = Color.FromArgb(0, 64, 64);
+            btn_UpdateSendLogin.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btn_UpdateSendLogin.ForeColor = SystemColors.Window;
+            btn_UpdateSendLogin.Location = new Point(566, 602);
+            btn_UpdateSendLogin.Name = "btn_UpdateSendLogin";
+            btn_UpdateSendLogin.Size = new Size(363, 60);
+            btn_UpdateSendLogin.TabIndex = 36;
+            btn_UpdateSendLogin.Text = "Update & Send Login";
+            btn_UpdateSendLogin.UseVisualStyleBackColor = false;
+            btn_UpdateSendLogin.Click += btn_UpdateSendLogin_Click;
             // 
             // label2
             // 
@@ -78,7 +79,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(549, 131);
             label2.Name = "label2";
-            label2.Size = new Size(109, 30);
+            label2.Size = new Size(91, 25);
             label2.TabIndex = 33;
             label2.Text = "Search By";
             // 
@@ -200,17 +201,17 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(112, 17);
             label6.Name = "label6";
-            label6.Size = new Size(335, 48);
+            label6.Size = new Size(283, 41);
             label6.TabIndex = 0;
             label6.Text = "List Of All Learners";
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox4);
+            groupBox2.Controls.Add(txtPhoneNUmber);
             groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(textBox3);
+            groupBox2.Controls.Add(txtEmailAdress);
             groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(textBox2);
+            groupBox2.Controls.Add(txtStudentFullName);
             groupBox2.Controls.Add(label1);
             groupBox2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox2.Location = new Point(37, 432);
@@ -220,12 +221,12 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Student contact details";
             // 
-            // textBox4
+            // txtPhoneNUmber
             // 
-            textBox4.Location = new Point(619, 93);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(246, 36);
-            textBox4.TabIndex = 40;
+            txtPhoneNUmber.Location = new Point(619, 93);
+            txtPhoneNUmber.Name = "txtPhoneNUmber";
+            txtPhoneNUmber.Size = new Size(246, 31);
+            txtPhoneNUmber.TabIndex = 40;
             // 
             // label4
             // 
@@ -233,16 +234,16 @@
             label4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(452, 96);
             label4.Name = "label4";
-            label4.Size = new Size(161, 30);
+            label4.Size = new Size(136, 25);
             label4.TabIndex = 41;
             label4.Text = "Phone number";
             // 
-            // textBox3
+            // txtEmailAdress
             // 
-            textBox3.Location = new Point(185, 93);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(251, 36);
-            textBox3.TabIndex = 38;
+            txtEmailAdress.Location = new Point(185, 93);
+            txtEmailAdress.Name = "txtEmailAdress";
+            txtEmailAdress.Size = new Size(251, 31);
+            txtEmailAdress.TabIndex = 38;
             // 
             // label3
             // 
@@ -250,16 +251,16 @@
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(23, 96);
             label3.Name = "label3";
-            label3.Size = new Size(147, 30);
+            label3.Size = new Size(125, 25);
             label3.TabIndex = 39;
             label3.Text = "Email address";
             // 
-            // textBox2
+            // txtStudentFullName
             // 
-            textBox2.Location = new Point(129, 45);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(735, 36);
-            textBox2.TabIndex = 37;
+            txtStudentFullName.Location = new Point(129, 45);
+            txtStudentFullName.Name = "txtStudentFullName";
+            txtStudentFullName.Size = new Size(735, 31);
+            txtStudentFullName.TabIndex = 37;
             // 
             // label1
             // 
@@ -267,7 +268,7 @@
             label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(23, 45);
             label1.Name = "label1";
-            label1.Size = new Size(91, 30);
+            label1.Size = new Size(78, 25);
             label1.TabIndex = 37;
             label1.Text = "Student";
             // 
@@ -276,7 +277,7 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(groupBox2);
-            Controls.Add(button2);
+            Controls.Add(btn_UpdateSendLogin);
             Controls.Add(label2);
             Controls.Add(comboBox1);
             Controls.Add(textBox1);
@@ -298,7 +299,7 @@
 
         #endregion
 
-        private Button button2;
+        private Button btn_UpdateSendLogin;
         private Label label2;
         private ComboBox comboBox1;
         private TextBox textBox1;
@@ -315,11 +316,11 @@
         private PictureBox pictureBox3;
         private Label label6;
         private GroupBox groupBox2;
-        private TextBox textBox2;
+        private TextBox txtStudentFullName;
         private Label label1;
-        private TextBox textBox4;
+        private TextBox txtPhoneNUmber;
         private Label label4;
-        private TextBox textBox3;
+        private TextBox txtEmailAdress;
         private Label label3;
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Updated_Information_System_3
 {
@@ -119,7 +121,7 @@ namespace Updated_Information_System_3
                 TabStop = false
             };
 
-            var staffNumber = new TextBox(); // New Staff Number field
+            var staffNumber = new TextBox();
             var rName = new TextBox();
             var rSurname = new TextBox();
             var rEmail = new TextBox();
@@ -137,17 +139,14 @@ namespace Updated_Information_System_3
                     : "Enter institution's provider code";
             };
 
-            // Toggle Staff Number field based on Role selection
-
-
             // ----- Card, banner, progress bar -----
             var card = new Panel { Size = new Size(780, 640), BackColor = Color.FromArgb(240, 240, 240), Padding = new Padding(24), BorderStyle = BorderStyle.FixedSingle };
             var title = new Label { Text = "REQUEST ACCESS", Dock = DockStyle.Top, Height = 46, TextAlign = ContentAlignment.MiddleCenter, Font = new Font("Segoe UI", 15, FontStyle.Bold), ForeColor = Color.Black };
             var stepText = new Label { Dock = DockStyle.Fill, TextAlign = ContentAlignment.TopCenter, Font = new Font("Segoe UI", 9), ForeColor = Color.FromArgb(68, 68, 68) };
 
             var banner = new Panel { Dock = DockStyle.Top, Height = 78, BackColor = Color.FromArgb(230, 230, 250) };
-            banner.Controls.Add(stepText); // Fill first
-            banner.Controls.Add(title);    // then Top
+            banner.Controls.Add(stepText);
+            banner.Controls.Add(title);
 
             var track = new Panel { Dock = DockStyle.Top, Height = 4, BackColor = Color.FromArgb(215, 215, 215) };
             var bar = new Panel { Dock = DockStyle.Left, BackColor = RaTealBtn };
@@ -187,7 +186,7 @@ namespace Updated_Information_System_3
             var pages = new Panel[3];
             pages[0] = RaMakePage(
                 ("Organization Type", type),
-                ("Institution ID", institutionId), // Updated label and control
+                ("Institution ID", institutionId),
                 ("Organization Name", name),
                 ("Street number", streetNumber),
                 ("Street name", streetName),
@@ -250,8 +249,6 @@ namespace Updated_Information_System_3
                 {
                     bool org = type.SelectedIndex == 1;
 
-
-                    // Build a clean formatted address string
                     string fullAddress = $"{streetNumber.Text} {streetName.Text}, {suburb.Text}, {city.Text}";
                     if (province.Text.Length > 0) fullAddress += $", {province.Text}";
                     if (postalCode.Text.Length > 0) fullAddress += $" ({postalCode.Text})";
@@ -275,33 +272,125 @@ namespace Updated_Information_System_3
 
             next.Click += (s, e) =>
             {
-                if (index == 0 && !Validations.IsValidEmail(email.Text))
+                // ----- STEP 1 VALIDATIONS -----
+                if (index == 0)
                 {
-                    MessageBox.Show("Please enter a valid organization email address.",
-                        "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    // 1. Check for empty fields
+                    if (Validations.IsTextBoxEmpty(institutionId, "Institution ID") ||
+                        Validations.IsTextBoxEmpty(name, "Organization Name") ||
+                        Validations.IsTextBoxEmpty(streetNumber, "Street Number") ||
+                        Validations.IsTextBoxEmpty(streetName, "Street Name") ||
+                        Validations.IsTextBoxEmpty(suburb, "Suburb") ||
+                        Validations.IsTextBoxEmpty(city, "City") ||
+                        Validations.IsTextBoxEmpty(postalCode, "Postal Code") ||
+                        Validations.IsTextBoxEmpty(email, "Email Address") ||
+                        Validations.IsTextBoxEmpty(tel, "Telephone"))
+                    {
+                        return;
+                    }
+
+                    // 2. Validate High School EMIS number length (9 digits)
+                    if (type.SelectedIndex == 0 && !Validations.IsValidEmisNumber(institutionId.Text.Trim()))
+                    {
+                        MessageBox.Show("Please enter a valid 9-digit EMIS number for the High School.", "Invalid Institution ID", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        institutionId.Focus();
+                        return;
+                    }
+
+                    // 3. Organization Name validation (No symbols or numbers)
+                    if (!Validations.IsValidName(name.Text.Trim()))
+                    {
+                        MessageBox.Show("Organization name can only contain letters and spaces (no symbols or numbers).", "Invalid Organization Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        name.Focus();
+                        return;
+                    }
+
+                    // 4. Email format validation
+                    if (!Validations.IsValidEmail(email.Text.Trim()))
+                    {
+                        MessageBox.Show("Please enter a valid organization email address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        email.Focus();
+                        return;
+                    }
+
+                    // 5. Telephone validation (Must start with 0 and be 10 digits)
+                    if (!Validations.IsValidPhoneNumber(tel.Text.Trim()))
+                    {
+                        MessageBox.Show("Telephone number must start with '0' and contain 10 digits.", "Invalid Telephone", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        tel.Focus();
+                        return;
+                    }
+
+                    // 6. Postal Code validation (Must be digits only and exactly 4 digits long)
+                    if (!Validations.IsValidPostalCode(postalCode.Text.Trim()))
+                    {
+                        MessageBox.Show("Postal code must contain exactly 4 digits only (no letters or symbols).", "Invalid Postal Code", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        postalCode.Focus();
+                        return;
+                    }
                 }
 
-                if (index == 1 && !Validations.IsValidEmail(rEmail.Text))
+                // ----- STEP 2 VALIDATIONS -----
+                if (index == 1)
                 {
-                    MessageBox.Show("Please enter a valid email address for the IT admin.",
-                        "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    // 1. Check for empty fields
+                    if (Validations.IsTextBoxEmpty(staffNumber, "Staff Number") ||
+                        Validations.IsTextBoxEmpty(rName, "Name") ||
+                        Validations.IsTextBoxEmpty(rSurname, "Surname") ||
+                        Validations.IsTextBoxEmpty(rEmail, "Email Address") ||
+                        Validations.IsTextBoxEmpty(rPhone, "Phone Number"))
+                    {
+                        return;
+                    }
+
+                    // 2. First Name validation (No symbols or numbers)
+                    if (!Validations.IsValidName(rName.Text.Trim()))
+                    {
+                        MessageBox.Show("First name can only contain letters and spaces (no symbols or numbers).", "Invalid Name", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        rName.Focus();
+                        return;
+                    }
+
+                    // 3. Surname validation (No symbols or numbers)
+                    if (!Validations.IsValidName(rSurname.Text.Trim()))
+                    {
+                        MessageBox.Show("Surname can only contain letters and spaces (no symbols or numbers).", "Invalid Surname", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        rSurname.Focus();
+                        return;
+                    }
+
+                    // 4. Email format validation
+                    if (!Validations.IsValidEmail(rEmail.Text.Trim()))
+                    {
+                        MessageBox.Show("Please enter a valid email address for the IT admin.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        rEmail.Focus();
+                        return;
+                    }
+
+                    // 5. Phone number validation (Must start with 0 and be 10 digits)
+                    if (!Validations.IsValidPhoneNumber(rPhone.Text.Trim()))
+                    {
+                        MessageBox.Show("Phone number must start with '0' and contain 10 digits.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        rPhone.Focus();
+                        return;
+                    }
                 }
+
+                // Move forward if checks pass and we are not yet on the review page
                 if (index < 2)
                 {
                     ShowPage(index + 1);
                     return;
                 }
 
+                // ----- STEP 3: SUBMIT REQUEST -----
                 bool isHighSchool = type.SelectedIndex == 0;
 
                 try
                 {
-                    bool saved = ApplicationDatabase.SaveAccessRequest(isHighSchool,institutionId.Text,name.Text,
-                        email.Text,tel.Text,streetNumber.Text,streetName.Text,suburb.Text,city.Text,province.Text,
-                        postalCode.Text,rName.Text,rSurname.Text,rGender.Text,rEmail.Text,rPhone.Text, staffNumber.Text);
-                        
+                    bool saved = ApplicationDatabase.SaveAccessRequest(isHighSchool, institutionId.Text, name.Text,
+                        email.Text, tel.Text, streetNumber.Text, streetName.Text, suburb.Text, city.Text, province.Text,
+                        postalCode.Text, rName.Text, rSurname.Text, rGender.Text, rEmail.Text, rPhone.Text, staffNumber.Text);
 
                     if (saved)
                     {
@@ -333,15 +422,12 @@ namespace Updated_Information_System_3
                         MessageBoxButtons.OK,
                         MessageBoxIcon.Error);
                 }
-
             };
 
             form.Resize += (s, e) => CenterCard();
             form.Load += (s, e) =>
             {
                 CenterCard();
-                // Trigger the initial layout toggle for staff number
-
             };
 
             form.FormClosed += (s, e) =>

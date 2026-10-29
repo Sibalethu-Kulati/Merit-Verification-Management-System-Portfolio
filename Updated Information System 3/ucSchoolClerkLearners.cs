@@ -19,7 +19,13 @@ namespace Updated_Information_System_3
         {
             AddStudent addStudent = new AddStudent();
             addStudent.ShowDialog();
-            
+
+        }
+
+        private void ucSchoolClerkLearners_Load(object sender, EventArgs e)
+        {
+            int schoolId = ApplicationDatabase.GetClerkSchoolId(UserSession.PersonId);
+            ApplicationDatabase.LoadLearners(dataGridView1, schoolId);
         }
     }
 }

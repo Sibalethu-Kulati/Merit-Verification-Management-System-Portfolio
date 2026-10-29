@@ -30,25 +30,21 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ucSchoolClerkCertificates));
             button2 = new Button();
-            button1 = new Button();
             btnSave = new Button();
             label2 = new Label();
             comboBox1 = new ComboBox();
             textBox1 = new TextBox();
             groupBox1 = new GroupBox();
+            picPreview = new PictureBox();
             dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column7 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
             label6 = new Label();
+            btnUpdate = new Button();
+            btnDelete = new Button();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)picPreview).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -60,33 +56,22 @@
             button2.BackColor = Color.Green;
             button2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.ForeColor = SystemColors.Window;
-            button2.Location = new Point(654, 581);
+            button2.Location = new Point(727, 564);
             button2.Name = "button2";
-            button2.Size = new Size(264, 60);
+            button2.Size = new Size(184, 77);
             button2.TabIndex = 36;
-            button2.Text = "Update Certificate";
+            button2.Text = "REFRESH";
             button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.FromArgb(192, 0, 0);
-            button1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.ForeColor = SystemColors.Window;
-            button1.Location = new Point(339, 581);
-            button1.Name = "button1";
-            button1.Size = new Size(252, 60);
-            button1.TabIndex = 35;
-            button1.Text = "Remove Certificate";
-            button1.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
             // btnSave
             // 
             btnSave.BackColor = Color.FromArgb(0, 64, 64);
             btnSave.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSave.ForeColor = SystemColors.Window;
-            btnSave.Location = new Point(36, 581);
+            btnSave.Location = new Point(60, 564);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(241, 60);
+            btnSave.Size = new Size(174, 77);
             btnSave.TabIndex = 34;
             btnSave.Text = "Add Certificate";
             btnSave.UseVisualStyleBackColor = false;
@@ -119,74 +104,39 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(picPreview);
             groupBox1.Controls.Add(dataGridView1);
             groupBox1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             groupBox1.Location = new Point(35, 210);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(892, 328);
+            groupBox1.Size = new Size(912, 323);
             groupBox1.TabIndex = 30;
             groupBox1.TabStop = false;
             groupBox1.Text = "List Of All Certificates";
+            groupBox1.Enter += groupBox1_Enter;
+            // 
+            // picPreview
+            // 
+            picPreview.BorderStyle = BorderStyle.FixedSingle;
+            picPreview.Location = new Point(734, 67);
+            picPreview.Name = "picPreview";
+            picPreview.Size = new Size(142, 187);
+            picPreview.SizeMode = PictureBoxSizeMode.Zoom;
+            picPreview.TabIndex = 1;
+            picPreview.TabStop = false;
             // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column7, Column2, Column3, Column4, Column5, Column6 });
             dataGridView1.Location = new Point(25, 66);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(839, 188);
+            dataGridView1.Size = new Size(703, 188);
             dataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "First Name";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 150;
-            // 
-            // Column7
-            // 
-            Column7.HeaderText = "Last Name";
-            Column7.MinimumWidth = 6;
-            Column7.Name = "Column7";
-            Column7.Width = 150;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Certificate Code";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 190;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Certificate Title";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 180;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Category";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 140;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Issue Date";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 190;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Uploaded Certificate";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.Width = 125;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
             // 
             // panel2
             // 
@@ -231,12 +181,39 @@
             label6.TabIndex = 0;
             label6.Text = "List Of All Certificates";
             // 
+            // btnUpdate
+            // 
+            btnUpdate.BackColor = SystemColors.ActiveCaptionText;
+            btnUpdate.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnUpdate.ForeColor = SystemColors.Window;
+            btnUpdate.Location = new Point(267, 564);
+            btnUpdate.Name = "btnUpdate";
+            btnUpdate.Size = new Size(149, 77);
+            btnUpdate.TabIndex = 37;
+            btnUpdate.Text = "EDIT";
+            btnUpdate.UseVisualStyleBackColor = false;
+            btnUpdate.Click += btnUpdate_Click;
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.FromArgb(192, 0, 0);
+            btnDelete.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDelete.ForeColor = SystemColors.Window;
+            btnDelete.Location = new Point(490, 564);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(149, 77);
+            btnDelete.TabIndex = 38;
+            btnDelete.Text = "EDIT";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
             // ucSchoolClerkCertificates
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnDelete);
+            Controls.Add(btnUpdate);
             Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(btnSave);
             Controls.Add(label2);
             Controls.Add(comboBox1);
@@ -245,7 +222,9 @@
             Controls.Add(panel2);
             Name = "ucSchoolClerkCertificates";
             Size = new Size(960, 691);
+            Load += ucSchoolClerkCertificates_Load_1;
             groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)picPreview).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -258,7 +237,6 @@
         #endregion
 
         private Button button2;
-        private Button button1;
         private Button btnSave;
         private Label label2;
         private ComboBox comboBox1;
@@ -269,12 +247,8 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
         private Label label6;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column7;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
+        private PictureBox picPreview;
+        private Button btnUpdate;
+        private Button btnDelete;
     }
 }

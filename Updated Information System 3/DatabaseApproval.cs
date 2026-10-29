@@ -198,9 +198,9 @@ namespace Updated_Information_System_3
                         "A user with this email address or phone number already exists.");
             }
 
-            const string insertSql = @" INSERT INTO PERSON (FIRST_NAME, LAST_NAME, GENDER, EMAIL, PHONE, PASSWORD_HASH)
-                                        OUTPUT INSERTED.PERSON_ID
-                                        VALUES(@First, @Last, @Gender, @Email, @Phone, @Hash)";
+            const string insertSql = @" INSERT INTO PERSON (FIRST_NAME, LAST_NAME, GENDER, EMAIL, PHONE, PASSWORD_HASH, PERSON_TYPE)
+                            OUTPUT INSERTED.PERSON_ID
+                            VALUES(@First, @Last, @Gender, @Email, @Phone, @Hash, @Type);";
                  
             using (var cmd = new SqlCommand(insertSql, conn, tx))
             {
@@ -210,6 +210,7 @@ namespace Updated_Information_System_3
                 cmd.Parameters.AddWithValue("@Email", app.AdminEmail);
                 cmd.Parameters.AddWithValue("@Phone", app.AdminPhone);
                 cmd.Parameters.AddWithValue("@Hash", passwordHash);
+                cmd.Parameters.AddWithValue("@Type", app.IsHighSchool ? "School IT Admin" : "Org IT Admin");
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }

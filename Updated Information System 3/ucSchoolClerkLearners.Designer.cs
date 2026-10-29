@@ -38,11 +38,6 @@
             textBox1 = new TextBox();
             groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
             btnSave = new Button();
             button1 = new Button();
             button2 = new Button();
@@ -136,47 +131,11 @@
             // 
             dataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
             dataGridView1.Location = new Point(25, 66);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(839, 188);
             dataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "First Name";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 170;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Last Name";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 170;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Gender";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 125;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Email";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 140;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "SA ID Number";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 190;
             // 
             // btnSave
             // 
@@ -229,6 +188,7 @@
             Controls.Add(panel2);
             Name = "ucSchoolClerkLearners";
             Size = new Size(960, 691);
+            Load += ucSchoolClerkLearners_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
@@ -250,11 +210,6 @@
         private TextBox textBox1;
         private GroupBox groupBox1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
         private Button btnSave;
         private Button button1;
         private Button button2;

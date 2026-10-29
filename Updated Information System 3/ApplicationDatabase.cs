@@ -175,6 +175,47 @@ namespace Updated_Information_System_3
                     MessageBoxIcon.Error);
             }
         }
+        public static bool DeleteCertificate(int certificateId, out string message)
+        {
+            message = "";
+            try
+            {
+                using (SqlConnection conn = DatabaseConnection.GetConnection())
+                using (var cmd = new SqlCommand(
+                    "DELETE FROM CERTIFICATE WHERE CERTIFICATE_ID = @id", conn))
+                {
+                    cmd.Parameters.AddWithValue("@id", certificateId);
+                    conn.Open();
+                    return cmd.ExecuteNonQuery() == 1;
+                }
+            }
+            catch (SqlException ex) when (ex.Number == 547)
+            {
+                message = "This certificate is linked to a verification request and cannot be deleted.";
+                return false;
+            }
+        }
+        public static void LoadCertificates(DataGridView dgv)
+        {
+            string query = @"SELECT c.CERTIFICATE_ID, c.HOLDER_FIRST_NAME, c.HOLDER_LAST_NAME,
+                        c.CERTIFICATE_NUMBER, c.TITLE,
+                        t.TYPE_NAME, c.ISSUE_DATE, c.FILE_NAME
+                     FROM CERTIFICATE c
+                     JOIN CERTIFICATE_TYPE t ON t.CERTIFICATE_TYPE_ID = c.CERTIFICATE_TYPE_ID
+                     WHERE c.HIGH_SCHOOL_ID = (SELECT HIGH_SCHOOL_ID
+                                               FROM SCHOOL_CLERK
+                                               WHERE PERSON_ID = @PersonId)
+                     ORDER BY c.UPLOAD_DATE DESC";
+
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (var da = new SqlDataAdapter(query, conn))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@PersonId", UserSession.PersonId);
+                var dt = new DataTable();
+                da.Fill(dt);
+                dgv.DataSource = dt;
+            }
+        }
         public static void SearchOrgGridData(DataGridView dgv, string searchBy, string searchText)
         {
             // empty box or nothing selected = show everything
@@ -467,6 +508,137 @@ namespace Updated_Information_System_3
             }
         }
 
+        public static int GetClerkSchoolId(int personId)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (var cmd = new SqlCommand(
+                "SELECT HIGH_SCHOOL_ID FROM SCHOOL_CLERK WHERE PERSON_ID = @p", conn))
+            {
+                cmd.Parameters.AddWithValue("@p", personId);
+                conn.Open();
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+        public static int GetItAdminSchoolId(int personId)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (var cmd = new SqlCommand(
+                "SELECT HIGH_SCHOOL_ID FROM SCHOOL_IT_ADMIN WHERE PERSON_ID = @p", conn))
+            {
+                cmd.Parameters.AddWithValue("@p", personId);
+                conn.Open();
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+        public static void LoadSchoolStaff(DataGridView grid, int highSchoolId)
+        {
+            string query = @"
+        SELECT p.PERSON_ID, p.FIRST_NAME, p.LAST_NAME, p.GENDER, p.EMAIL, p.PHONE, 'IT Admin' AS ROLE
+        FROM PERSON p JOIN SCHOOL_IT_ADMIN a ON a.PERSON_ID = p.PERSON_ID
+        WHERE a.HIGH_SCHOOL_ID = @id
+        UNION ALL
+        SELECT p.PERSON_ID, p.FIRST_NAME, p.LAST_NAME, p.GENDER, p.EMAIL, p.PHONE, 'Principal'
+        FROM PERSON p JOIN PRINCIPAL pr ON pr.PERSON_ID = p.PERSON_ID
+        WHERE pr.HIGH_SCHOOL_ID = @id
+        UNION ALL
+        SELECT p.PERSON_ID, p.FIRST_NAME, p.LAST_NAME, p.GENDER, p.EMAIL, p.PHONE, 'School Clerk'
+        FROM PERSON p JOIN SCHOOL_CLERK c ON c.PERSON_ID = p.PERSON_ID
+        WHERE c.HIGH_SCHOOL_ID = @id
+        ORDER BY ROLE, LAST_NAME";
+
+            FillStaffGrid(grid, query, highSchoolId);
+        }
+
+        public static void LoadOrgStaff(DataGridView grid, int organizationId)
+        {
+            string query = @"
+        SELECT p.PERSON_ID, p.FIRST_NAME, p.LAST_NAME, p.GENDER, p.EMAIL, p.PHONE, 'Verifier Representative' AS ROLE
+        FROM PERSON p JOIN VERIFIER_REPRESENTATIVE v ON v.PERSON_ID = p.PERSON_ID
+        WHERE v.ORG_ID = @id
+        ORDER BY p.LAST_NAME";
+
+            FillStaffGrid(grid, query, organizationId);
+        }
+
+        public static void LoadStaffForItAdmin(DataGridView grid, int personId)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            {
+                conn.Open();
+
+                using (var cmd = new SqlCommand(
+                    "SELECT HIGH_SCHOOL_ID FROM SCHOOL_IT_ADMIN WHERE PERSON_ID = @p", conn))
+                {
+                    cmd.Parameters.AddWithValue("@p", personId);
+                    object school = cmd.ExecuteScalar();
+                    if (school != null)
+                    {
+                        LoadSchoolStaff(grid, Convert.ToInt32(school));
+                        return;
+                    }
+                }
+
+                using (var cmd = new SqlCommand(
+                    "SELECT ORG_ID FROM ORG_IT_ADMIN WHERE PERSON_ID = @p", conn))
+                {
+                    cmd.Parameters.AddWithValue("@p", personId);
+                    object org = cmd.ExecuteScalar();
+                    if (org != null)
+                        LoadOrgStaff(grid, Convert.ToInt32(org));
+                }
+            }
+        }
+
+        private static void FillStaffGrid(DataGridView grid, string query, int id)
+        {
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (var da = new SqlDataAdapter(query, conn))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@id", id);
+                var dt = new DataTable();
+                da.Fill(dt);
+                grid.AutoGenerateColumns = true;
+                grid.DataSource = dt;
+            }
+
+            grid.Columns["PERSON_ID"].Visible = false;
+            grid.Columns["FIRST_NAME"].HeaderText = "First Name";
+            grid.Columns["LAST_NAME"].HeaderText = "Last Name";
+            grid.Columns["GENDER"].HeaderText = "Gender";
+            grid.Columns["EMAIL"].HeaderText = "Email";
+            grid.Columns["PHONE"].HeaderText = "Phone";
+            grid.Columns["ROLE"].HeaderText = "Role";
+        }
+
+        public static void LoadLearners(DataGridView grid, int highSchoolId)
+        {
+            string query = @"SELECT l.REGISTER_ID, l.FIRST_NAME, l.LAST_NAME, l.GRADE, l.SA_ID_NUMBER,
+                            (SELECT COUNT(*)
+                             FROM CERTIFICATE c
+                             WHERE c.HOLDER_ID_NUMBER = l.SA_ID_NUMBER
+                               AND c.HIGH_SCHOOL_ID = l.HIGH_SCHOOL_ID) AS CERT_COUNT
+                     FROM LEARNER_REGISTER l
+                     WHERE l.HIGH_SCHOOL_ID = @school
+                     ORDER BY l.LAST_NAME, l.FIRST_NAME";
+
+            using (SqlConnection conn = DatabaseConnection.GetConnection())
+            using (var da = new SqlDataAdapter(query, conn))
+            {
+                da.SelectCommand.Parameters.AddWithValue("@school", highSchoolId);
+                var dt = new DataTable();
+                da.Fill(dt);
+                grid.AutoGenerateColumns = true;
+                grid.DataSource = dt;
+            }
+
+            grid.Columns["REGISTER_ID"].Visible = false;
+            grid.Columns["FIRST_NAME"].HeaderText = "First Name";
+            grid.Columns["LAST_NAME"].HeaderText = "Last Name";
+            grid.Columns["Grade"].HeaderText = "Grade";
+            grid.Columns["SA_ID_NUMBER"].HeaderText = "SA ID Number";
+            grid.Columns["CERT_COUNT"].HeaderText = "Certificates";
+        }
+        
         public static void AddUser()
         {
 

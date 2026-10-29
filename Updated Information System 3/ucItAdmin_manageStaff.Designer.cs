@@ -37,12 +37,6 @@
             textBox1 = new TextBox();
             groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -63,8 +57,9 @@
             btn_updateSatffMember.Name = "btn_updateSatffMember";
             btn_updateSatffMember.Size = new Size(264, 60);
             btn_updateSatffMember.TabIndex = 36;
-            btn_updateSatffMember.Text = "Update Staff Member";
+            btn_updateSatffMember.Text = "REFRESH";
             btn_updateSatffMember.UseVisualStyleBackColor = false;
+            btn_updateSatffMember.Click += btn_updateSatffMember_Click;
             // 
             // btnRemoveStaffMember
             // 
@@ -75,7 +70,7 @@
             btnRemoveStaffMember.Name = "btnRemoveStaffMember";
             btnRemoveStaffMember.Size = new Size(252, 60);
             btnRemoveStaffMember.TabIndex = 35;
-            btnRemoveStaffMember.Text = "Remove Staff Member";
+            btnRemoveStaffMember.Text = "REVOKE ACCESS";
             btnRemoveStaffMember.UseVisualStyleBackColor = false;
             // 
             // btn_addStaffMember
@@ -97,7 +92,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(546, 141);
             label2.Name = "label2";
-            label2.Size = new Size(91, 25);
+            label2.Size = new Size(109, 30);
             label2.TabIndex = 33;
             label2.Text = "Search By";
             // 
@@ -131,54 +126,12 @@
             // 
             dataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column5, Column4, Column6 });
             dataGridView1.Location = new Point(25, 66);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(839, 188);
             dataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "First Name";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 170;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Last Name";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 170;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Gender";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 125;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "Role";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 120;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Email";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 140;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Phone";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.Width = 125;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // panel2
             // 
@@ -219,7 +172,7 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(112, 17);
             label6.Name = "label6";
-            label6.Size = new Size(208, 41);
+            label6.Size = new Size(245, 48);
             label6.TabIndex = 0;
             label6.Text = "Manage Staff";
             // 
@@ -237,6 +190,7 @@
             Controls.Add(panel2);
             Name = "ucItAdmin_manageStaff";
             Size = new Size(960, 691);
+            Load += ucItAdmin_manageStaff_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
@@ -261,11 +215,5 @@
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;
         private Label label6;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column6;
     }
 }

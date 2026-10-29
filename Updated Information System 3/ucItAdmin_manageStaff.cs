@@ -20,5 +20,23 @@ namespace Updated_Information_System_3
             //new SchoolRegistration_wizard().ShowDialog();
             new AddStaff_itAdmin().ShowDialog();
         }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void ucItAdmin_manageStaff_Load(object sender, EventArgs e)
+        {
+            LoadStaff();
+        }
+        private void LoadStaff()
+        {
+            ApplicationDatabase.LoadStaffForItAdmin(dataGridView1, UserSession.PersonId);
+        }
+        private void btn_updateSatffMember_Click(object sender, EventArgs e)
+        {
+            LoadStaff();
+        }
     }
 }

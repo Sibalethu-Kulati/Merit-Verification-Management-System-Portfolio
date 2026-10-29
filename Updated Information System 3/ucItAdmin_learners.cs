@@ -102,5 +102,11 @@ namespace Updated_Information_System_3
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void ucItAdmin_learners_Load(object sender, EventArgs e)
+        {
+            int id = ApplicationDatabase.GetItAdminSchoolId(UserSession.PersonId);
+            ApplicationDatabase.LoadLearners(dataGridView1, id) ;
+        }
     }
 }

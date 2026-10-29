@@ -35,12 +35,6 @@
             textBox1 = new TextBox();
             groupBox1 = new GroupBox();
             dataGridView1 = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column5 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
-            Column6 = new DataGridViewTextBoxColumn();
             panel2 = new Panel();
             pictureBox1 = new PictureBox();
             pictureBox3 = new PictureBox();
@@ -79,7 +73,7 @@
             label2.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(549, 131);
             label2.Name = "label2";
-            label2.Size = new Size(91, 25);
+            label2.Size = new Size(109, 30);
             label2.TabIndex = 33;
             label2.Text = "Search By";
             // 
@@ -113,54 +107,11 @@
             // 
             dataGridView1.BackgroundColor = Color.WhiteSmoke;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column5, Column4, Column6 });
             dataGridView1.Location = new Point(25, 66);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(839, 162);
             dataGridView1.TabIndex = 0;
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "First Name";
-            Column1.MinimumWidth = 6;
-            Column1.Name = "Column1";
-            Column1.Width = 170;
-            // 
-            // Column2
-            // 
-            Column2.HeaderText = "Last Name";
-            Column2.MinimumWidth = 6;
-            Column2.Name = "Column2";
-            Column2.Width = 170;
-            // 
-            // Column3
-            // 
-            Column3.HeaderText = "Gender";
-            Column3.MinimumWidth = 6;
-            Column3.Name = "Column3";
-            Column3.Width = 125;
-            // 
-            // Column5
-            // 
-            Column5.HeaderText = "SA ID Number";
-            Column5.MinimumWidth = 6;
-            Column5.Name = "Column5";
-            Column5.Width = 190;
-            // 
-            // Column4
-            // 
-            Column4.HeaderText = "Email";
-            Column4.MinimumWidth = 6;
-            Column4.Name = "Column4";
-            Column4.Width = 140;
-            // 
-            // Column6
-            // 
-            Column6.HeaderText = "Phone";
-            Column6.MinimumWidth = 6;
-            Column6.Name = "Column6";
-            Column6.Width = 125;
             // 
             // panel2
             // 
@@ -201,7 +152,7 @@
             label6.ForeColor = Color.WhiteSmoke;
             label6.Location = new Point(112, 17);
             label6.Name = "label6";
-            label6.Size = new Size(283, 41);
+            label6.Size = new Size(335, 48);
             label6.TabIndex = 0;
             label6.Text = "List Of All Learners";
             // 
@@ -225,7 +176,7 @@
             // 
             txtPhoneNUmber.Location = new Point(619, 93);
             txtPhoneNUmber.Name = "txtPhoneNUmber";
-            txtPhoneNUmber.Size = new Size(246, 31);
+            txtPhoneNUmber.Size = new Size(246, 36);
             txtPhoneNUmber.TabIndex = 40;
             // 
             // label4
@@ -234,7 +185,7 @@
             label4.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label4.Location = new Point(452, 96);
             label4.Name = "label4";
-            label4.Size = new Size(136, 25);
+            label4.Size = new Size(161, 30);
             label4.TabIndex = 41;
             label4.Text = "Phone number";
             // 
@@ -242,7 +193,7 @@
             // 
             txtEmailAdress.Location = new Point(185, 93);
             txtEmailAdress.Name = "txtEmailAdress";
-            txtEmailAdress.Size = new Size(251, 31);
+            txtEmailAdress.Size = new Size(251, 36);
             txtEmailAdress.TabIndex = 38;
             // 
             // label3
@@ -251,7 +202,7 @@
             label3.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label3.Location = new Point(23, 96);
             label3.Name = "label3";
-            label3.Size = new Size(125, 25);
+            label3.Size = new Size(147, 30);
             label3.TabIndex = 39;
             label3.Text = "Email address";
             // 
@@ -259,7 +210,7 @@
             // 
             txtStudentFullName.Location = new Point(129, 45);
             txtStudentFullName.Name = "txtStudentFullName";
-            txtStudentFullName.Size = new Size(735, 31);
+            txtStudentFullName.Size = new Size(735, 36);
             txtStudentFullName.TabIndex = 37;
             // 
             // label1
@@ -268,7 +219,7 @@
             label1.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(23, 45);
             label1.Name = "label1";
-            label1.Size = new Size(78, 25);
+            label1.Size = new Size(91, 30);
             label1.TabIndex = 37;
             label1.Text = "Student";
             // 
@@ -285,6 +236,7 @@
             Controls.Add(panel2);
             Name = "ucItAdmin_learners";
             Size = new Size(960, 691);
+            Load += ucItAdmin_learners_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel2.ResumeLayout(false);
@@ -305,12 +257,6 @@
         private TextBox textBox1;
         private GroupBox groupBox1;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column6;
         private Panel panel2;
         private PictureBox pictureBox1;
         private PictureBox pictureBox3;

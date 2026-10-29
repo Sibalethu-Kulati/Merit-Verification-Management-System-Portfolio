@@ -4,7 +4,6 @@ using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-
 namespace Updated_Information_System_3
 {
     internal class Validations

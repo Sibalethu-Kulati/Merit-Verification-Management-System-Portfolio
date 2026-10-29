@@ -1,6 +1,7 @@
 ﻿using Final_Attempt;
 using Microsoft.Data.SqlClient;
 using System;
+using System.Security.Policy;
 
 namespace Updated_Information_System_3
 {
@@ -50,9 +51,9 @@ namespace Updated_Information_System_3
                         "A user with this email address or phone number already exists.");
             }
 
-            const string insertSql = @"INSERT INTO PERSON (FIRST_NAME, LAST_NAME, GENDER, EMAIL, PHONE, PASSWORD_HASH)
-                                       OUTPUT INSERTED.PERSON_ID
-                                       VALUES (@First, @Last, @Gender, @Email, @Phone, @Hash)";
+            const string insertSql = @"INSERT INTO PERSON(FIRST_NAME, LAST_NAME, GENDER, EMAIL, PHONE, PASSWORD_HASH, PERSON_TYPE)
+                           OUTPUT INSERTED.PERSON_ID
+                           VALUES(@First, @Last, @Gender, @Email, @Phone, @Hash, @Type)";
 
             using (var cmd = new SqlCommand(insertSql, conn, tx))
             {
@@ -62,10 +63,20 @@ namespace Updated_Information_System_3
                 cmd.Parameters.AddWithValue("@Email", u.Email);
                 cmd.Parameters.AddWithValue("@Phone", u.Phone);
                 cmd.Parameters.AddWithValue("@Hash", passwordHash);
+                cmd.Parameters.AddWithValue("@Type", PersonTypeFor(u.Role));
                 return Convert.ToInt32(cmd.ExecuteScalar());
             }
         }
-
+        private static string PersonTypeFor(UserRole role)
+        {
+            switch (role)
+            {
+                case UserRole.SchoolClerk: return "School Clerk";
+                case UserRole.Principal: return "Principal";
+                case UserRole.VerifierRepresentative: return "Verifier Representative";
+                default: throw new ApprovalException("This role is not supported yet.");
+            }
+        }
         internal static string InsertSubtype(SqlConnection conn, SqlTransaction tx, NewUser u, int personId)
         {
             string table;

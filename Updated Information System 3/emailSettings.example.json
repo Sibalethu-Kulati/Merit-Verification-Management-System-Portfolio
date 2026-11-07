@@ -1,0 +1,6 @@
+{
+  "SmtpServer": "smtp.gmail.com",
+  "Port": 587,
+  "SenderEmail": "your-email@gmail.com",
+  "SenderPassword": "YOUR_GMAIL_APP_PASSWORD"
+}
